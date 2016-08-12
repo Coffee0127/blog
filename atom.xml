@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Xuan&#39;s Blog</title>
+  <subtitle>Do the right thing, Do the thing right</subtitle>
+  <link href="/blog/atom.xml" rel="self"/>
+  
+  <link href="https://coffee0127.github.io/blog/"/>
+  <updated>2016-08-12T10:18:42.436Z</updated>
+  <id>https://coffee0127.github.io/blog/</id>
+  
+  <author>
+    <name>Bo-Xuan Fan</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hexo 相關文章摘要</title>
+    <link href="https://coffee0127.github.io/blog/2016/08/11/hexo-abstract-of-related-post/"/>
+    <id>https://coffee0127.github.io/blog/2016/08/11/hexo-abstract-of-related-post/</id>
+    <published>2016-08-11T15:49:26.000Z</published>
+    <updated>2016-08-12T10:18:42.436Z</updated>
+    
+    <content type="html"><![CDATA[<p>在 <a href="/blog/2016/08/09/hexo-configuration/#加入相關文章">Hexo 相關設定</a> 有跟各位介紹過新增“相關文章”功能，</p>
+<p>老實說筆者覺得只有標題實在是太空洞了，因此看看原本的 <a href="https://github.com/nkmk/hexo-list-related-posts" target="_blank" rel="external">hexo-list-related-posts</a> 是否有相關功能</p>
+<p>測試了一下發現其實是有的，只不過原作者並未提供 API 讓人使用，那就只好自己來囉&lt;(￣︶￣)&gt;</p>
+<h3 id="安裝-striptags"><a href="#安裝-striptags" class="headerlink" title="安裝 striptags"></a>安裝 striptags</h3><p>先確認你的 <code>&lt;repository&gt;/node_modules/</code> 是否有 <code>striptags</code> 模組，<br>若未看見該模組再透過以下指令安裝<br><code>$ npm install striptags</code></p>
+<h3 id="修改-hexo-list-related-posts"><a href="#修改-hexo-list-related-posts" class="headerlink" title="修改 hexo-list-related-posts"></a>修改 <code>hexo-list-related-posts</code></h3><p>檔案路徑為 <code>&lt;repository&gt;/node_modules/hexo-list-related-posts/lib/index.js</code><br>查閱筆者發給原作者的 <a href="https://github.com/nkmk/hexo-list-related-posts/pull/3/commits/80e9739cb525f9907881d243bd04b90f6a2264d0#diff-1" target="_blank" rel="external">pull request</a> 會比較容易理解差異</p>
+<ol>
+<li><p>引入 <code>striptags</code> 模組</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> striptags = <span class="built_in">require</span>(<span class="string">'striptags'</span>);</div></pre></td></tr></table></figure>
+</li>
+<li><p>修改 function listRelatedPosts 的 options，程式碼如下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">options = assign(&#123;</div><div class="line">  maxCount: <span class="number">5</span>,</div><div class="line">  ulClass: <span class="string">'related-posts'</span>,</div><div class="line">  liClass: <span class="string">'related-posts-item'</span>,</div><div class="line">  generateAbstract: <span class="literal">false</span>,    <span class="comment">// 是否產生摘要</span></div><div class="line">  abstractClass: <span class="string">'related-posts-item-abstract'</span>,   <span class="comment">// 摘要的 css class</span></div><div class="line">  abstractLength: <span class="number">110</span>,        <span class="comment">// 摘要節錄長度</span></div><div class="line">  orderBy: <span class="string">'date'</span>,</div><div class="line">  isAscending: <span class="literal">false</span></div><div class="line">&#125;, options);</div></pre></td></tr></table></figure>
+</li>
+<li><p>修改function listRelatedPosts 的呈現方式 (在原 function 最末端)，程式碼如下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(count === <span class="number">0</span>)&#123;</div><div class="line">  result += <span class="string">'&lt;p&gt;No related post.&lt;/p&gt;'</span>;</div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">  result += <span class="string">'&lt;ul class="'</span> + options.ulClass + <span class="string">'"&gt;'</span>;</div><div class="line">  <span class="keyword">if</span> (options.generateAbstract) &#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; count; i++) &#123;</div><div class="line">      result += <span class="string">'&lt;li class="'</span> + options.liClass + <span class="string">'"&gt;'</span> + <span class="string">'&lt;a href="'</span> + root + postList[i].path + <span class="string">'"&gt;'</span> + postList[i].title + <span class="string">'&lt;/a&gt;&lt;div class="'</span> + options.abstractClass + <span class="string">'"&gt;'</span> + striptags(postList[i].content).substring(<span class="number">0</span>, options.abstractLength) + <span class="string">'&lt;/div&gt;&lt;/li&gt;'</span>;</div><div class="line">    &#125;</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; count; i++) &#123;</div><div class="line">      result += <span class="string">'&lt;li class="'</span> + options.liClass + <span class="string">'"&gt;'</span> + <span class="string">'&lt;a href="'</span> + root + postList[i].path + <span class="string">'"&gt;'</span> + postList[i].title + <span class="string">'&lt;/a&gt;&lt;/li&gt;'</span>;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>修改文章沒有設置 tags 發生錯誤<br>大家要乖乖替文章加上 tag 啊 (誤)<br>參考另一段 <a href="https://github.com/nkmk/hexo-list-related-posts/pull/2/files" target="_blank" rel="external">pull request</a> 加上檢查即可，程式碼如下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">this</span>.post.tags &amp;&amp; <span class="keyword">this</span>.post.tags.each(<span class="function"><span class="keyword">function</span>(<span class="params">tag</span>)</span>&#123;</div><div class="line">  tag.posts.each(<span class="function"><span class="keyword">function</span>(<span class="params">post</span>)</span>&#123;</div><div class="line">    postList.push(post);</div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="加入-generateAbstract-true"><a href="#加入-generateAbstract-true" class="headerlink" title="加入 generateAbstract: true"></a>加入 <code>generateAbstract: true</code></h3><p>修改 <code>themes/[主题名]/layout/_partial/post/related.ejs</code>  (在 <a href="/blog/2016/08/09/hexo-configuration/#加入相關文章">Hexo 相關設定</a> 新增的檔案)<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;%- list_related_posts(&#123;maxCount: <span class="number">5</span>, orderBy: <span class="string">'random'</span>, generateAbstract: <span class="literal">true</span>&#125;) %&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="加入-CSS"><a href="#加入-CSS" class="headerlink" title="加入 CSS"></a>加入 CSS</h3><p>修改 <code>themes/&lt;主題名稱&gt;/source/css/_partial/article.styl</code>，加入以下樣式<br>重點在於 <code>text-overflow: ellipsis</code> 讓多餘的文字以 <code>...</code> 方式呈現<br><figure class="highlight styl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">ul</span><span class="selector-class">.related-posts</span></div><div class="line">  <span class="attribute">margin-left</span>: <span class="number">0</span></div><div class="line">  <span class="attribute">margin-right</span>: <span class="number">0</span></div><div class="line">  <span class="attribute">padding-left</span>: <span class="number">0</span></div><div class="line">  <span class="attribute">list-style</span>: none</div><div class="line">  <span class="selector-tag">li</span><span class="selector-class">.related-posts-item</span></div><div class="line">    <span class="attribute">font-size</span>: <span class="number">16px</span></div><div class="line">    <span class="selector-tag">div</span><span class="selector-class">.related-posts-item-abstract</span></div><div class="line">      <span class="attribute">overflow</span>: hidden</div><div class="line">      <span class="attribute">white-space</span>: nowrap</div><div class="line">      <span class="attribute">text-overflow</span>: ellipsis</div><div class="line">      <span class="attribute">color</span>: rgb(<span class="number">136</span>, <span class="number">136</span>, <span class="number">136</span>)</div><div class="line">      <span class="attribute">margin-bottom</span>: <span class="number">10px</span></div><div class="line">      <span class="attribute">font-size</span>: <span class="number">85%</span></div></pre></td></tr></table></figure></p>
+<p>這個<del>世界</del>相關文章不再這麼空洞了 (=´∀｀)人(´∀｀=)</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在 &lt;a href=&quot;/blog/2016/08/09/hexo-configuration/#加入相關文章&quot;&gt;Hexo 相關設定&lt;/a&gt; 有跟各位介紹過新增“相關文章”功能，&lt;/p&gt;
+&lt;p&gt;老實說筆者覺得只有標題實在是太空洞了，因此看看原本的 &lt;a href=&quot;https
+    
+    </summary>
+    
+      <category term="Hexo" scheme="https://coffee0127.github.io/blog/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="https://coffee0127.github.io/blog/tags/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo 分享連結失效</title>
+    <link href="https://coffee0127.github.io/blog/2016/08/10/hexo-share-link-fix/"/>
+    <id>https://coffee0127.github.io/blog/2016/08/10/hexo-share-link-fix/</id>
+    <published>2016-08-10T13:29:09.000Z</published>
+    <updated>2016-08-12T10:18:42.435Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天想來試試看分享功能，結果 FB 連結分享出來的卻是 404….XD</p>
+<p>看了一下分享的網址 <a href="https://coffee0127.github.io/blog/blog/2016/08/09/hexo-configuration/">https://coffee0127.github.io/blog/blog/2016/08/09/hexo-configuration/</a></p>
+<p>欸 怎麼網址長出了兩個 <code>/blog</code> (￣□￣|||)a</p>
+<p>Google 了一下發現官網有人提出了一樣的問題 <a href="https://github.com/hexojs/hexo/issues/1812" target="_blank" rel="external">share link wrong with sub path</a></p>
+<p>還好底下有人提供解決方案，或許之後版本作者就會修正了 (筆者使用 Hexo 版本為 3.2.2)</p>
+<p>解決方法其實也不難，僅需修改 <code>hexo/lib/models/post.js</code> 即可</p>
+<p>確切路徑為 <code>&lt;your_repository&gt;/node_modules/hexo/lib/models/post.js</code></p>
+<p>將 57 行開始程式碼<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Post.virtual(<span class="string">'permalink'</span>).get(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> config = ctx.config;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> config.url + config.root + <span class="keyword">this</span>.path;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>修改為以下即可<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Post.virtual(<span class="string">'permalink'</span>).get(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> url_for = ctx.extend.helper.get(<span class="string">'url_for'</span>);</div><div class="line">  <span class="keyword">var</span> config = ctx.config;</div><div class="line">  <span class="keyword">var</span> partial_url = url_for.call(ctx, <span class="keyword">this</span>.path);</div><div class="line">  <span class="keyword">return</span> config.url + _.replace(partial_url, config.root, <span class="string">'/'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>之後重新產生新的 Blog 網頁即可</p>
+<p>p.s 僅針對 Blog 放在子資料夾內的才需修改 (好比筆者之類的…XD)<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># URL</span></div><div class="line"><span class="comment">## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'</span></div><div class="line"><span class="attr">url:</span> https://coffee0127.github.io/blog/</div><div class="line"><span class="attr">root:</span> /blog/</div><div class="line"><span class="attr">permalink:</span> :year/:month/:day/:title/</div><div class="line"><span class="attr">permalink_defaults:</span></div></pre></td></tr></table></figure></p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
+<li><a href="https://github.com/hexojs/hexo/blob/master/lib/models/post.js#L59" target="_blank" rel="external">https://github.com/hexojs/hexo/blob/master/lib/models/post.js#L59</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天想來試試看分享功能，結果 FB 連結分享出來的卻是 404….XD&lt;/p&gt;
+&lt;p&gt;看了一下分享的網址 &lt;a href=&quot;https://coffee0127.github.io/blog/blog/2016/08/09/hexo-configuration/&quot;&gt;http
+    
+    </summary>
+    
+      <category term="Hexo" scheme="https://coffee0127.github.io/blog/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="https://coffee0127.github.io/blog/tags/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo 相關設定</title>
+    <link href="https://coffee0127.github.io/blog/2016/08/09/hexo-configuration/"/>
+    <id>https://coffee0127.github.io/blog/2016/08/09/hexo-configuration/</id>
+    <published>2016-08-09T09:31:38.000Z</published>
+    <updated>2016-08-12T10:18:42.430Z</updated>
+    
+    <content type="html"><![CDATA[<p>經過前兩篇 <a href="/blog/2016/08/08/how-to-install-hexo/">Hexo 安裝</a> &amp; <a href="/blog/2016/08/09/how-to-deploy-to-git">Hexo 佈署</a></p>
+<p>我們已經可以開始編寫 Blog 了&lt;(￣︶￣)&gt;</p>
+<p>但是還是過於陽春，因此這篇會講些簡單設定 Hexo，看起來更有模有樣。</p>
+<h3 id="網頁-Icon"><a href="#網頁-Icon" class="headerlink" title="網頁 Icon"></a>網頁 Icon</h3><p><em>Icon 代表著網站的精神呢，這當然很重要啊ˋ(′ε‵”)ˊ</em></p>
+<ol>
+<li>將你的 <code>favicon.ico</code> 放置於 <code>source</code> 資料夾下</li>
+<li>修改 <code>themes/&lt;主題名稱&gt;/_config.yml</code> 的 favicon 為 <code>favicon.ico</code> (若你圖示名稱是 favicon.png，這步驟可省略)</li>
+<li>修改 <code>themes/&lt;主題名稱&gt;/layout/_partial/head.ejs</code>，加入 context root url<br> 將 <code>&lt;link rel=&quot;icon&quot; href=&quot;&lt;%- theme.favicon %&gt;&quot;&gt;</code> 修改為 <code>&lt;link rel=&quot;icon&quot; href=&quot;&lt;%- config.root %&gt;&lt;%- theme.favicon %&gt;&quot;&gt;</code> 即可</li>
+</ol>
+<h3 id="Read-More"><a href="#Read-More" class="headerlink" title="Read More"></a>Read More</h3><ul>
+<li>方法一：文章中加入 <code>&lt;!--more--&gt;</code> 即可 (但是需要自行設置，頗麻煩)</li>
+<li><p>方法二：參考  <a href="https://twiceyuan.com/2014/05/25/hexo%E8%87%AA%E5%8A%A8%E6%B7%BB%E5%8A%A0readmore%E6%A0%87%E8%AE%B0/" target="_blank" rel="external">Hexo自动添加ReadMore标记</a>，修改 <code>themes/[主题名]/layout/_partial/article.ejs</code>，<br>但該篇提供之方法只會於首頁處顯示第一段落，稍微修改成可以決定要顯示的行數 (即 <code>const THRESH_HOLD = 5</code>)</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;article-entry&quot; itemprop=&quot;articleBody&quot;&gt;</div><div class="line">  &lt;% if (post.excerpt &amp;&amp; index)&#123; %&gt;</div><div class="line">    &lt;%- post.excerpt %&gt;</div><div class="line">    &lt;% if (theme.excerpt_link)&#123; %&gt;</div><div class="line">      &lt;p class=&quot;article-more-link&quot;&gt;</div><div class="line">        &lt;a href=&quot;&lt;%- url_for(post.path) %&gt;#more&quot;&gt;&lt;%= theme.excerpt_link %&gt;&lt;/a&gt;</div><div class="line">      &lt;/p&gt;</div><div class="line">    &lt;% &#125; %&gt;</div><div class="line">  &lt;% &#125; else &#123; %&gt;</div><div class="line">    &lt;%- post.content %&gt;</div><div class="line">  &lt;% &#125; %&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>  修改為</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;article-entry&quot; itemprop=&quot;articleBody&quot;&gt;</div><div class="line">  &lt;% if (post.excerpt &amp;&amp; index) &#123; %&gt;</div><div class="line">    &lt;%- post.excerpt %&gt;</div><div class="line">    &lt;% if (theme.excerpt_link) &#123; %&gt;</div><div class="line">      &lt;p class=&quot;article-more-link&quot;&gt;</div><div class="line">        &lt;a href=&quot;&lt;%=url_for(post.path)%&gt;#more&quot;&gt;&lt;%= theme.excerpt_link %&gt;&lt;/a&gt;</div><div class="line">      &lt;/p&gt;</div><div class="line">    &lt;% &#125; %&gt;</div><div class="line">  &lt;% &#125; else &#123; %&gt;</div><div class="line">    &lt;% if (!index &amp;&amp; post.toc) &#123; %&gt;</div><div class="line">      &lt;div id=&quot;toc&quot; class=&quot;toc-article&quot;&gt;</div><div class="line">        &lt;strong class=&quot;toc-title&quot;&gt;文章目錄&lt;/strong&gt;</div><div class="line">        &lt;%- toc(post.content) %&gt;</div><div class="line">      &lt;/div&gt;</div><div class="line">    &lt;% &#125; %&gt;</div><div class="line">    &lt;%</div><div class="line">       const THRESH_HOLD = 5;   // 要出現的段落數</div><div class="line">       var newLines = (post.content.match(/\n/g) || []).length;</div><div class="line">       var indexOfThreshHold = -1;</div><div class="line">       for (var i = 0; i &lt; THRESH_HOLD; i++) &#123;</div><div class="line">         indexOfThreshHold = post.content.indexOf(&apos;\n&apos;, indexOfThreshHold + 1);</div><div class="line">       &#125;</div><div class="line">    %&gt;</div><div class="line">    &lt;% if (newLines &lt; THRESH_HOLD || !index) &#123; %&gt;</div><div class="line">      &lt;%- post.content %&gt;</div><div class="line">    &lt;% &#125; else &#123; %&gt;</div><div class="line">      &lt;%- post.content.substring(0, indexOfThreshHold) %&gt;</div><div class="line">      &lt;% if (theme.excerpt_link) &#123; %&gt;</div><div class="line">        &lt;p class=&quot;article-more-link&quot;&gt;</div><div class="line">          &lt;a href=&quot;&lt;%=url_for(post.path)%&gt;&quot;&gt;&lt;%= theme.excerpt_link %&gt;&lt;/a&gt;</div><div class="line">        &lt;/p&gt;</div><div class="line">      &lt;% &#125; %&gt;</div><div class="line">    &lt;% &#125; %&gt;</div><div class="line">  &lt;% &#125; %&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="加入評論"><a href="#加入評論" class="headerlink" title="加入評論"></a>加入評論</h3><ol>
+<li>先到 <a href="http://disqus.com/" target="_blank" rel="external">Disqus</a> 註冊帳號後，在 Create New Site 時 ，會根據你的 WebSite Name 提供對應的 Short Name，也可以自訂 Shortname</li>
+<li>修改 <code>_config.yml</code>，加入以下資訊後，即可生效。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># Disqus</div><div class="line">disqus_shortname: &lt;剛剛申請的 Shortname&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="加入相關文章"><a href="#加入相關文章" class="headerlink" title="加入相關文章"></a>加入相關文章</h3><ol>
+<li>透過以下指令安裝 <a href="https://github.com/nkmk/hexo-list-related-posts" target="_blank" rel="external">hexo-list-related-posts</a><br><code>$ npm install hexo-list-related-posts --save</code></li>
+<li>修改 <code>themes/&lt;主題名稱&gt;/layout/_partial/article.ejs</code>，找到 <code>&lt;%- partial(&#39;post/nav&#39;) %&gt;</code> 並於前一段落加入 <code>partial(&#39;post/related&#39;)</code></li>
+<li>接著在 <code>themes/landscape/layout/_partial/post</code> 新增 <code>related.ejs</code> 檔案 (對應前一步驟之檔名)</li>
+<li>相關文章樣式版型可再依個人喜好自行修改，主要程式碼為 <code>&lt;%- list_related_posts([options]) %&gt;</code>，筆者目前樣式為<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;article class=&quot;article&quot;&gt;</div><div class="line">  &lt;div class=&quot;article-inner&quot;&gt;</div><div class="line">    &lt;div class=&quot;article-header&quot;&gt;</div><div class="line">        &lt;h3 class=&quot;article-title&quot; style=&quot;font-size: 20px;&quot;&gt;相關文章&lt;/h3&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;div class=&quot;article-entry&quot;&gt;</div><div class="line">      &lt;%- list_related_posts(&#123;maxCount: 5, orderBy: &apos;random&apos;&#125;) %&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/article&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>並且在 <code>themes/&lt;主題名稱&gt;/source/css/_partial/article.styl</code> 加入樣式<br><figure class="highlight styl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.related-posts-item</span></div><div class="line">  <span class="attribute">font-size</span>: <span class="number">16px</span></div></pre></td></tr></table></figure></p>
+<h3 id="加入-TOC-Table-Of-Content"><a href="#加入-TOC-Table-Of-Content" class="headerlink" title="加入 TOC ( Table Of Content )"></a>加入 TOC ( Table Of Content )</h3><ol>
+<li><p>修改 <code>themes/&lt;主題名稱&gt;/layout/_partial/article.ejs</code>，找到 <code>&lt;%- post.content %&gt;</code> 並於前一段落加入以下程式碼</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;% if (!index &amp;&amp; post.toc)&#123; %&gt;</div><div class="line">  &lt;div id=&quot;toc&quot; class=&quot;toc-article&quot;&gt;</div><div class="line">    &lt;strong class=&quot;toc-title&quot;&gt;文章目錄&lt;/strong&gt;</div><div class="line">    &lt;%- toc(post.content) %&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;% &#125; %&gt;</div></pre></td></tr></table></figure>
+<p>其中 <code>!index</code> 讓首頁摘要不產生目錄，<code>post.toc</code> 則是需於文章設定 <code>toc: true</code> 才生效</p>
+</li>
+<li>修改樣式，<code>themes/&lt;主題名稱&gt;/source/css/_partial/article.styl</code>，於最末端加入以下 CSS 樣式，依個人喜好微調<figure class="highlight styl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*toc*/</span></div><div class="line"><span class="selector-class">.toc-article</span></div><div class="line">  <span class="attribute">background</span> <span class="number">#eee</span></div><div class="line">  <span class="attribute">border</span> <span class="number">1px</span> solid <span class="number">#bbb</span></div><div class="line">  <span class="attribute">border-radius</span> <span class="number">10px</span></div><div class="line">  <span class="attribute">margin</span> <span class="number">1.5em</span> <span class="number">0</span> <span class="number">0.3em</span> <span class="number">1.5em</span></div><div class="line">  <span class="attribute">padding</span> <span class="number">1.2em</span> <span class="number">1em</span> <span class="number">0</span> <span class="number">1em</span></div><div class="line">  <span class="attribute">max-width</span> <span class="number">28%</span></div><div class="line"></div><div class="line"><span class="selector-class">.toc-title</span></div><div class="line">  <span class="attribute">font-size</span> <span class="number">120%</span></div><div class="line"></div><div class="line"><span class="selector-id">#toc</span></div><div class="line">  <span class="attribute">line-height</span> <span class="number">1em</span></div><div class="line">  <span class="attribute">font-size</span> <span class="number">0.9em</span></div><div class="line">  <span class="attribute">float</span> right</div><div class="line">  <span class="selector-class">.toc</span></div><div class="line">    <span class="attribute">padding</span> <span class="number">0</span></div><div class="line">    <span class="attribute">margin</span> <span class="number">1em</span></div><div class="line">    <span class="attribute">line-height</span> <span class="number">1.8em</span></div><div class="line">    <span class="selector-tag">li</span></div><div class="line">      <span class="attribute">list-style-type</span> none</div><div class="line"></div><div class="line">  <span class="selector-class">.toc-child</span></div><div class="line">    <span class="attribute">margin-left</span> <span class="number">1em</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="加入-Google-Analytics"><a href="#加入-Google-Analytics" class="headerlink" title="加入 Google Analytics"></a>加入 Google Analytics</h3><ol>
+<li>先到 <a href="https://www.google.com.tw/intl/zh-TW/analytics/" target="_blank" rel="external">Google Analytics</a> 註冊取得追蹤編號</li>
+<li>修改 <code>themes/&lt;主題名稱&gt;/_config.yml</code>，找到 <code>google_analytics</code>  後，將追蹤編號貼上即可</li>
+</ol>
+<h3 id="加入-sitemap"><a href="#加入-sitemap" class="headerlink" title="加入 sitemap"></a>加入 sitemap</h3><p>「Sitemap」是一種檔案，可以在其中列出網站上的網頁，讓其他搜尋引擎瞭解網站內容架構，以更靈活的方式檢索網站。</p>
+<ol>
+<li>透過以下指令安裝 <a href="https://github.com/hexojs/hexo-generator-sitemap" target="_blank" rel="external">hexo-generator-sitemap</a><br><code>$ npm install hexo-generator-sitemap --save</code></li>
+<li><p>修改 <code>_config.yml</code> 加入以下選項</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># Sitemap</div><div class="line">sitemap:</div><div class="line">    path: sitemap.xml</div></pre></td></tr></table></figure>
+</li>
+<li><p>重啟後連線至 <a href="#">http://localhost:4000/&lt;Blog 名稱&gt;/sitemap.xml</a> 即可看見 sitemap.xml 囉</p>
+</li>
+<li>提交你的 Sitemap<ul>
+<li><a href="https://www.google.com/webmasters/tools" target="_blank" rel="external">Google 網站管理員工具</a></li>
+<li><a href="http://www.bing.com/toolbox/webmaster" target="_blank" rel="external">Yahoo 和 Bing 網站管理員工具</a></li>
+<li><a href="http://zhanzhang.baidu.com" target="_blank" rel="external">百度站長平台</a></li>
+<li><a href="http://zhanzhang.haosou.com" target="_blank" rel="external">360好搜站長平台</a></li>
+</ul>
+</li>
+</ol>
+<h3 id="加入-RSS-Feed"><a href="#加入-RSS-Feed" class="headerlink" title="加入 RSS Feed"></a>加入 RSS Feed</h3><p>透過 RSS，讓別人訂閱你的文章</p>
+<ol>
+<li>透過以下指令安裝 <a href="https://github.com/hexojs/hexo-generator-feed" target="_blank" rel="external">hexo-generator-feed</a><br><code>$ npm install hexo-generator-feed --save</code></li>
+<li><p>修改 <code>_config.yml</code> 加入以下選項</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># Feed Atom</div><div class="line">feed:</div><div class="line">    type: atom</div><div class="line">    path: atom.xml</div><div class="line">    limit: 20</div></pre></td></tr></table></figure>
+</li>
+<li><p>修改 <code>themes/&lt;主題名稱&gt;/layout/_partial/header.ejs</code>，將原本 <code>&lt;%- theme.rss %&gt;</code> 修改為 <code>&lt;%=url_for(theme.rss)%&gt;</code></p>
+</li>
+</ol>
+<h3 id="參考網址"><a href="#參考網址" class="headerlink" title="參考網址"></a>參考網址</h3><ul>
+<li><a href="https://wwssllabcd.github.io/blog/2014/12/22/how-to-install-hexo/" target="_blank" rel="external">Hexo 安裝教學、心得筆記</a></li>
+<li><a href="http://kuangqi.me/tricks/enable-table-of-contents-on-hexo/" target="_blank" rel="external">为Hexo博客添加目录</a></li>
+<li><a href="http://www.jianshu.com/p/05289a4bc8b2" target="_blank" rel="external">如何搭建一个独立博客——简明Github Pages与Hexo教程</a></li>
+<li><a href="http://longxdragon.github.io/2015/03/07/Hexo-GitHub-create-blog/" target="_blank" rel="external">Hexo+GitHub创建博客及使用技巧</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;經過前兩篇 &lt;a href=&quot;/blog/2016/08/08/how-to-install-hexo/&quot;&gt;Hexo 安裝&lt;/a&gt; &amp;amp; &lt;a href=&quot;/blog/2016/08/09/how-to-deploy-to-git&quot;&gt;Hexo 佈署&lt;/a&gt;&lt;/p&gt;
+&lt;
+    
+    </summary>
+    
+      <category term="Hexo" scheme="https://coffee0127.github.io/blog/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="https://coffee0127.github.io/blog/tags/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo 佈署</title>
+    <link href="https://coffee0127.github.io/blog/2016/08/09/how-to-deploy-to-git/"/>
+    <id>https://coffee0127.github.io/blog/2016/08/09/how-to-deploy-to-git/</id>
+    <published>2016-08-09T06:21:18.000Z</published>
+    <updated>2016-08-12T10:18:42.430Z</updated>
+    
+    <content type="html"><![CDATA[<p>接續上一篇 <a href="/blog/2016/08/08/how-to-install-hexo/">Hexo 安裝</a></p>
+<h3 id="認識-GitHub"><a href="#認識-GitHub" class="headerlink" title="認識 GitHub "></a>認識 GitHub <img src="/blog/2016/08/09/how-to-deploy-to-git/PEO-octocat-0.svg" class="inline" width="64"></h3><ul>
+<li><a href="https://zh.wikipedia.org/zh-tw/GitHub" target="_blank" rel="external">GitHub</a></li>
+<li><a href="http://www.ithome.com.tw/news/95283" target="_blank" rel="external">Git達人教你搞懂GitHub基礎觀念</a></li>
+</ul>
+<h3 id="建立-github-io"><a href="#建立-github-io" class="headerlink" title="建立 github.io"></a>建立 github.io</h3><ul>
+<li><a href="https://help.github.com/articles/creating-project-pages-manually/" target="_blank" rel="external">Creating Project Pages manually</a><br>主要目的為替你的 repository 建立一個名為 <code>gh-pages</code> 的 branch</li>
+</ul>
+<p>筆者規劃如下 <img src="/blog/2016/08/09/how-to-deploy-to-git/branch.jpg" class="inline"></p>
+<ul>
+<li>master：用來放 Hexo 相關檔案</li>
+<li>gh-pages：用來放 Hexo 產出之靜態網頁，也就是 Blog</li>
+</ul>
+<h3 id="佈署至-GitHub"><a href="#佈署至-GitHub" class="headerlink" title="佈署至 GitHub"></a>佈署至 GitHub</h3><ol>
+<li><p>手動佈署<br> 下列其中一個指令，皆可產生靜態網頁，再自行 commit &amps; push 到 gh-pages</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div><div class="line">$ hexo g</div></pre></td></tr></table></figure>
+</li>
+<li><p>產生完檔案後佈署 (自動化很棒吧XD)</p>
+<ol>
+<li>使用 NPM 安裝 <a href="https://github.com/hexojs/hexo-deployer-git" target="_blank" rel="external">hexo-deployer-git</a><br><code>npm install hexo-deployer-git --save</code></li>
+<li><p>修改 <code>_config.yml</code></p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">type: git</div><div class="line">repo: https://github.com/Coffee0127/blog.git  // 前一步開的 repository git url</div><div class="line">branch: gh-pages  // github.io</div><div class="line">message:          // 預設值為：Site updated: &#123;&#123; now(&apos;YYYY-MM-DD HH:mm:ss&apos;) &#125;&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>佈署指令<br> 下列的其中一個指令，皆可讓 Hexo 在建立完畢後自動佈署至 GitHub，兩個指令的作用是相同的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo generate --deploy</div><div class="line">$ hexo deploy --generate</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><ul>
+<li><a href="https://blog.ivanwei.co/2015/10/11/2015-10-11-build-blog-by-hexojs/" target="_blank" rel="external">[Hexo] Gtihub 上架 Blog</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;接續上一篇 &lt;a href=&quot;/blog/2016/08/08/how-to-install-hexo/&quot;&gt;Hexo 安裝&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;認識-GitHub&quot;&gt;&lt;a href=&quot;#認識-GitHub&quot; class=&quot;headerlink&quot; title=&quot;認
+    
+    </summary>
+    
+      <category term="Hexo" scheme="https://coffee0127.github.io/blog/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="https://coffee0127.github.io/blog/tags/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo 安裝</title>
+    <link href="https://coffee0127.github.io/blog/2016/08/08/how-to-install-hexo/"/>
+    <id>https://coffee0127.github.io/blog/2016/08/08/how-to-install-hexo/</id>
+    <published>2016-08-08T13:08:49.000Z</published>
+    <updated>2016-08-12T10:18:42.430Z</updated>
+    
+    <content type="html"><![CDATA[<div style="font-size: 24px;"><em>“取之於社會，用之於社會”</em></div>
+
+<p>從土木工程轉行 Key-in 人員也三年多了，現在才開始寫 Blog 會不會太慢 (￣□￣|||)a</p>
+<p>一來是寫下在這行打滾的心得，做個里程碑，<br>二來是希望他日若有人遇到一樣問題，能夠幫上忙。(找到的資料是繁體中文不是很親切嗎 ㄟ(￣▽￣ㄟ))</p>
+<p>選用 GitHub 理由：容量無限啊XD<br><span style="padding-left: 8.5em"><del>(絕對不是有自己的 domain name 是件很 cooooooooooooool 的事)</del></span><br>選用 Hexo 理由：透過 <a href="http://markdown.tw/" target="_blank" rel="external">MarkDown</a> 的簡單語法即可撰寫出有層次網頁！<br><span style="padding-left: 8em">(另一個理由就是我想熟悉他的語法….XD)</span></p>
+<p>因此第一篇 Blog，不免俗就是簡單搭建 Hexo 並且佈署至 GitHub 上來個 Hello World 一下。</p>
+<hr>
+<h3 id="前置安裝"><a href="#前置安裝" class="headerlink" title="前置安裝"></a>前置安裝</h3><p>開始之前，我們需先確認電腦有安裝以下環境</p>
+<ul>
+<li><a href="http://nodejs.org/" target="_blank" rel="external">Node.js</a></li>
+<li><a href="http://git-scm.com/" target="_blank" rel="external">Git</a></li>
+</ul>
+<h3 id="安裝-Hexo"><a href="#安裝-Hexo" class="headerlink" title="安裝 Hexo"></a>安裝 Hexo</h3><p>安裝好 Node.js 後，即可透過 <code>npm</code> 方式快速安裝 hexo<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g hexo-cli</div></pre></td></tr></table></figure></p>
+<h3 id="建立-Hexo"><a href="#建立-Hexo" class="headerlink" title="建立 Hexo"></a>建立 Hexo</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ hexo init &lt;folder&gt;</div><div class="line">$ <span class="built_in">cd</span> &lt;folder&gt;</div><div class="line">$ npm install</div></pre></td></tr></table></figure>
+<p>建立完成後，專案資料夾會有下列檔案：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">.</div><div class="line">├─ _config.yml    // hexo 設定檔</div><div class="line">├─ package.json   // Node.js 相依設定檔</div><div class="line">├─ node_modules   // Node.js 模組</div><div class="line">├─ scaffolds      // Blog 文章 layout</div><div class="line">├─ source</div><div class="line">│　　└─ _posts    // Blog 文章</div><div class="line">└─ themes         // Hexo 主題</div><div class="line">　　 └─ landscape</div></pre></td></tr></table></figure>
+<h3 id="啟動-Hexo-Server"><a href="#啟動-Hexo-Server" class="headerlink" title="啟動 Hexo Server"></a>啟動 Hexo Server</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ hexo server [-p][-s][-l]</div><div class="line">or</div><div class="line">$ hexo s [-p][-s][-l]</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>選項</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-p</code>, <code>--port</code></td>
+<td>覆蓋連接埠設定，預設 4000</td>
+</tr>
+<tr>
+<td><code>-s</code>, <code>--static</code></td>
+<td>只使用靜態檔案</td>
+</tr>
+<tr>
+<td><code>-l</code>, <code>--log</code></td>
+<td>啟動記錄器，或覆蓋記錄格式</td>
+</tr>
+</tbody>
+</table>
+<p>連線至 <a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a> 查看，就可以看到第一篇 Hello World 文章</p>
+<h3 id="自動刷新-Optional"><a href="#自動刷新-Optional" class="headerlink" title="自動刷新 (Optional)"></a>自動刷新 (Optional)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-browsersync --save</div></pre></td></tr></table></figure>
+<h3 id="建立檔案"><a href="#建立檔案" class="headerlink" title="建立檔案"></a>建立檔案</h3><p>接下來我們要建立自己的文章，輸入以下指令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ hexo new [layout] &lt;title&gt;</div><div class="line">or</div><div class="line">$ hexo n [layout] &lt;title&gt;</div></pre></td></tr></table></figure></p>
+<p><code>hexo new FirstBlog</code> 在 <code>source</code> 資料夾下即建立 <code>FirstBlog.md</code> 檔案，就可以開始編寫 Blog 囉</p>
+<h3 id="設定檔-config-yml"><a href="#設定檔-config-yml" class="headerlink" title="設定檔 _config.yml"></a>設定檔 _config.yml</h3><p>Hexo 分兩個設定檔，這邊講的是根目錄下的 <code>_config.yml</code>，而非主題下的</p>
+<h4 id="Site"><a href="#Site" class="headerlink" title="Site"></a>Site</h4><figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Site</span></div><div class="line"><span class="attr">title:</span>  <span class="comment"># 網站主標題</span></div><div class="line"><span class="attr">subtitle:</span> <span class="comment"># 網站副標題</span></div><div class="line"><span class="attr">description:</span> <span class="comment"># 用於產生 &lt;meta property="og:description"&gt; 標籤</span></div><div class="line"><span class="attr">author:</span> <span class="comment"># 網站作者</span></div><div class="line"><span class="attr">language:</span> <span class="comment"># 網站語言</span></div><div class="line"><span class="attr">timezone:</span> <span class="comment"># 網站時區，預設使用電腦時區</span></div></pre></td></tr></table></figure>
+<h4 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h4><p>這邊要注意 <code>url</code> 跟 <code>root</code>，當你的網站是放置於子資料夾下時，例如 <code>http://yoursite.com/child</code>，<br>請將 url 設定為 <code>http://yoursite.com/child</code>，root 則設定為 <code>/child/</code>。<br>note: 子資料夾會有分享連結失效問題，解決方法參考 <a href="/blog/2016/08/10/hexo-share-link-fix/">Hexo 分享連結失效</a></p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># URL</span></div><div class="line"><span class="comment">## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'</span></div><div class="line"><span class="attr">url:</span> https://coffee0127.github.io/blog/ <span class="comment">#網站的網址</span></div><div class="line"><span class="attr">root:</span> /blog/    <span class="comment">#網站的根目錄</span></div><div class="line"><span class="attr">permalink:</span> :year/:month/:day/:title/    <span class="comment"># 文章永久連結的格式</span></div><div class="line"><span class="attr">permalink_defaults:</span>     <span class="comment"># 永久連結中各區段的預設值，筆者沒試過XD</span></div></pre></td></tr></table></figure>
+<h4 id="Writing"><a href="#Writing" class="headerlink" title="Writing"></a>Writing</h4><p>這邊僅針對 <code>new_post_name</code> 稍作說明，<code>new_post_name</code> 是新文章的檔案名稱，預設是 <code>:title.md</code>。<br>筆者將其修改為 <code>:year-:month-:day-:title.md</code>，將其修改為 <code>年-月-日-標題.md</code>，以日期為檔名，方便文章管理。<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Writing</span></div><div class="line"><span class="attr">new_post_name:</span> :year-:month-:day-:title.md</div></pre></td></tr></table></figure></p>
+<p>其他說明可再參考官網 <a href="https://hexo.io/docs/configuration.html" target="_blank" rel="external">Configuration</a></p>
+<p>接著佈署至 GitHub 請見下一篇 <a href="/blog/2016/08/09/how-to-deploy-to-git">Hexo 佈署</a></p>
+<h3 id="參考網址"><a href="#參考網址" class="headerlink" title="參考網址"></a>參考網址</h3><ul>
+<li><a href="https://hexo.io/" target="_blank" rel="external">Hexo</a></li>
+<li><a href="https://wsgzao.github.io/post/hexo-guide/" target="_blank" rel="external">使用GitHub和Hexo搭建免费静态Blog</a></li>
+<li><a href="http://www.jianshu.com/p/05289a4bc8b2" target="_blank" rel="external">如何搭建一个独立博客——简明Github Pages与Hexo教程</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;div style=&quot;font-size: 24px;&quot;&gt;&lt;em&gt;“取之於社會，用之於社會”&lt;/em&gt;&lt;/div&gt;
+
+&lt;p&gt;從土木工程轉行 Key-in 人員也三年多了，現在才開始寫 Blog 會不會太慢 (￣□￣|||)a&lt;/p&gt;
+&lt;p&gt;一來是寫下在這行打滾的心得，做個里程碑
+    
+    </summary>
+    
+      <category term="Hexo" scheme="https://coffee0127.github.io/blog/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="https://coffee0127.github.io/blog/tags/Hexo/"/>
+    
+  </entry>
+  
+</feed>
