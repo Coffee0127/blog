@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://coffee0127.github.io/blog/"/>
-  <updated>2016-08-12T10:18:42.436Z</updated>
+  <updated>2016-08-15T16:13:14.397Z</updated>
   <id>https://coffee0127.github.io/blog/</id>
   
   <author>
@@ -14,6 +14,59 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Eclipse Properties 顯示中文字</title>
+    <link href="https://coffee0127.github.io/blog/2016/08/15/eclipse-poperties/"/>
+    <id>https://coffee0127.github.io/blog/2016/08/15/eclipse-poperties/</id>
+    <published>2016-08-15T10:24:08.000Z</published>
+    <updated>2016-08-15T16:13:14.397Z</updated>
+    
+    <content type="html"><![CDATA[<p>做專案時，往往需要做國際化 (internationalization，簡稱 i18n，因為總共18個字 XD)</p>
+<p>Java 存放這些多國語言檔案使用 properties 檔案，由於該檔案採用 ISO-8859-1 編碼，</p>
+<p>Eclipse 針對那些非英文字會自動轉換為 Unicode，如下圖所示</p>
+<p>輸入階段仍是中文字 <img src="/blog/2016/08/15/eclipse-poperties/before.jpg" class="inline"></p>
+<p>一旦確認後，就<del>是見證奇蹟的時刻</del>自動轉成 Unicode 了 <img src="/blog/2016/08/15/eclipse-poperties/after.jpg" class="inline"></p>
+<p>雖然滑鼠移上去時，可以看到中文字 <img src="/blog/2016/08/15/eclipse-poperties/hint.jpg" class="inline"></p>
+<p>但是如果檔案有上萬行，豈不是看到眼花(￣□￣|||)a</p>
+<p>還好已經有人將外掛開發出來了，我們只需將其安裝到 Eclipse 即可~</p>
+<h3 id="安裝步驟"><a href="#安裝步驟" class="headerlink" title="安裝步驟"></a>安裝步驟</h3><ol>
+<li>Eclipse -&gt; Help -&gt; Install New Software…</li>
+<li>點選 Add…</li>
+<li>Name: Properties Editor<br> Location: <a href="http://propedit.sourceforge.jp/eclipse/updates/" target="_blank" rel="external">http://propedit.sourceforge.jp/eclipse/updates/</a> <img src="/blog/2016/08/15/eclipse-poperties/step1.jpg" class="inline">
+ 讓 Eclipse 搜尋一下…</li>
+<li>勾選 <code>PropertiesEditor</code><br> <code>PropertiesEditor_Asian_NLS</code> 是否安裝外掛多國語言 (非必要) <img src="/blog/2016/08/15/eclipse-poperties/step2.jpg" class="inline"></li>
+<li>接著就是 Eclipse 安裝 plugin 時一些同意條款說明</li>
+<li>安裝完成後，在 Eclipse -&gt; Window -&gt; Preferences 即可看見 <code>Properties Editor</code><br><img src="/blog/2016/08/15/eclipse-poperties/step3.jpg" class="inline" width="600"><br> 若有安裝多國語言則如圖<br> <img src="/blog/2016/08/15/eclipse-poperties/step3-zh.jpg" class="inline"></li>
+<li>使用外掛提供的 <code>PropertiesEditor</code> 開啟 properties 檔案即可看見中文了 <img src="/blog/2016/08/15/eclipse-poperties/step4.jpg" class="inline"></li>
+<li>使用預設的編輯器看，卻仍舊是 Unicode<br> <img src="/blog/2016/08/15/eclipse-poperties/step5.jpg" class="inline"></li>
+<li><p>若不想將註解也轉為 Unicode，則在 Preferences 裡面勾選 Convert Option 的第二個選項</p>
+ <img src="/blog/2016/08/15/eclipse-poperties/step6-1.jpg" class="inline">
+<p> 註解不再轉為 Unicode<br><img src="/blog/2016/08/15/eclipse-poperties/step6-2.jpg" class="inline"></p>
+<p> 若整份 properties 都不需轉為 unicode 則勾選第一個選項。<br> Ｑ：何時會用？<br> Ａ：<a href="https://www.zkoss.org/wiki/ZK_Developer&#39;s_Reference/Internationalization/Labels" target="_blank" rel="external">ZK i18n</a>，由於 ZK i18n 讀取的 properties 檔案編碼為 UTF-8，因此不需額外轉為 Unicode</p>
+</li>
+</ol>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
+<li><a href="http://openhome.cc/Gossip/Rails/i18n.html" target="_blank" rel="external">簡介 i18n</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;做專案時，往往需要做國際化 (internationalization，簡稱 i18n，因為總共18個字 XD)&lt;/p&gt;
+&lt;p&gt;Java 存放這些多國語言檔案使用 properties 檔案，由於該檔案採用 ISO-8859-1 編碼，&lt;/p&gt;
+&lt;p&gt;Eclipse 針對那
+    
+    </summary>
+    
+      <category term="Eclipse" scheme="https://coffee0127.github.io/blog/categories/Eclipse/"/>
+    
+    
+      <category term="Eclipse" scheme="https://coffee0127.github.io/blog/tags/Eclipse/"/>
+    
+      <category term="Java" scheme="https://coffee0127.github.io/blog/tags/Java/"/>
+    
+  </entry>
   
   <entry>
     <title>Hexo 相關文章摘要</title>
@@ -102,7 +155,7 @@
     <link href="https://coffee0127.github.io/blog/2016/08/09/hexo-configuration/"/>
     <id>https://coffee0127.github.io/blog/2016/08/09/hexo-configuration/</id>
     <published>2016-08-09T09:31:38.000Z</published>
-    <updated>2016-08-12T10:18:42.430Z</updated>
+    <updated>2016-08-15T16:13:14.394Z</updated>
     
     <content type="html"><![CDATA[<p>經過前兩篇 <a href="/blog/2016/08/08/how-to-install-hexo/">Hexo 安裝</a> &amp; <a href="/blog/2016/08/09/how-to-deploy-to-git">Hexo 佈署</a></p>
 <p>我們已經可以開始編寫 Blog 了&lt;(￣︶￣)&gt;</p>
@@ -171,7 +224,7 @@
 <li><p>修改 <code>themes/&lt;主題名稱&gt;/layout/_partial/header.ejs</code>，將原本 <code>&lt;%- theme.rss %&gt;</code> 修改為 <code>&lt;%=url_for(theme.rss)%&gt;</code></p>
 </li>
 </ol>
-<h3 id="參考網址"><a href="#參考網址" class="headerlink" title="參考網址"></a>參考網址</h3><ul>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
 <li><a href="https://wwssllabcd.github.io/blog/2014/12/22/how-to-install-hexo/" target="_blank" rel="external">Hexo 安裝教學、心得筆記</a></li>
 <li><a href="http://kuangqi.me/tricks/enable-table-of-contents-on-hexo/" target="_blank" rel="external">为Hexo博客添加目录</a></li>
 <li><a href="http://www.jianshu.com/p/05289a4bc8b2" target="_blank" rel="external">如何搭建一个独立博客——简明Github Pages与Hexo教程</a></li>
@@ -253,7 +306,7 @@
     <link href="https://coffee0127.github.io/blog/2016/08/08/how-to-install-hexo/"/>
     <id>https://coffee0127.github.io/blog/2016/08/08/how-to-install-hexo/</id>
     <published>2016-08-08T13:08:49.000Z</published>
-    <updated>2016-08-12T10:21:06.910Z</updated>
+    <updated>2016-08-15T16:13:14.389Z</updated>
     
     <content type="html"><![CDATA[<div style="font-size: 24px;padding-top: 20px;"><em>“取之於社會，用之於社會”</em></div>
 
@@ -305,7 +358,7 @@
 <h4 id="Writing"><a href="#Writing" class="headerlink" title="Writing"></a>Writing</h4><p>這邊僅針對 <code>new_post_name</code> 稍作說明，<code>new_post_name</code> 是新文章的檔案名稱，預設是 <code>:title.md</code>。<br>筆者將其修改為 <code>:year-:month-:day-:title.md</code>，將其修改為 <code>年-月-日-標題.md</code>，以日期為檔名，方便文章管理。<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Writing</span></div><div class="line"><span class="attr">new_post_name:</span> :year-:month-:day-:title.md</div></pre></td></tr></table></figure></p>
 <p>其他說明可再參考官網 <a href="https://hexo.io/docs/configuration.html" target="_blank" rel="external">Configuration</a></p>
 <p>接著佈署至 GitHub 請見下一篇 <a href="/blog/2016/08/09/how-to-deploy-to-git">Hexo 佈署</a></p>
-<h3 id="參考網址"><a href="#參考網址" class="headerlink" title="參考網址"></a>參考網址</h3><ul>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
 <li><a href="https://hexo.io/" target="_blank" rel="external">Hexo</a></li>
 <li><a href="https://wsgzao.github.io/post/hexo-guide/" target="_blank" rel="external">使用GitHub和Hexo搭建免费静态Blog</a></li>
 <li><a href="http://www.jianshu.com/p/05289a4bc8b2" target="_blank" rel="external">如何搭建一个独立博客——简明Github Pages与Hexo教程</a></li>
