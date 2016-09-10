@@ -6,7 +6,7 @@
   <title>Hexo 相關文章摘要 | Xuan&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="在 Hexo 相關設定 有跟各位介紹過新增“相關文章”功能，
-老實說筆者覺得只有標題實在是太空洞了，因此看看原本的 hexo-list-related-posts 是否有相關功能
+老實說小弟覺得只有標題實在是太空洞了，因此看看原本的 hexo-list-related-posts 是否有相關功能
 測試了一下發現其實是有的，只不過原作者並未提供 API 讓人使用，那就只好自己來囉&amp;lt;(￣︶￣)&amp;gt;
 安裝 striptags先確認你的 &amp;lt;repository&amp;gt;/node_modules/ 是否有">
 <meta property="og:type" content="article">
@@ -14,14 +14,14 @@
 <meta property="og:url" content="https://coffee0127.github.io/blog/2016/08/11/hexo-abstract-of-related-post/index.html">
 <meta property="og:site_name" content="Xuan's Blog">
 <meta property="og:description" content="在 Hexo 相關設定 有跟各位介紹過新增“相關文章”功能，
-老實說筆者覺得只有標題實在是太空洞了，因此看看原本的 hexo-list-related-posts 是否有相關功能
+老實說小弟覺得只有標題實在是太空洞了，因此看看原本的 hexo-list-related-posts 是否有相關功能
 測試了一下發現其實是有的，只不過原作者並未提供 API 讓人使用，那就只好自己來囉&amp;lt;(￣︶￣)&amp;gt;
 安裝 striptags先確認你的 &amp;lt;repository&amp;gt;/node_modules/ 是否有">
-<meta property="og:updated_time" content="2016-08-12T10:18:42.436Z">
+<meta property="og:updated_time" content="2016-09-10T13:45:25.819Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo 相關文章摘要">
 <meta name="twitter:description" content="在 Hexo 相關設定 有跟各位介紹過新增“相關文章”功能，
-老實說筆者覺得只有標題實在是太空洞了，因此看看原本的 hexo-list-related-posts 是否有相關功能
+老實說小弟覺得只有標題實在是太空洞了，因此看看原本的 hexo-list-related-posts 是否有相關功能
 測試了一下發現其實是有的，只不過原作者並未提供 API 讓人使用，那就只好自己來囉&amp;lt;(￣︶￣)&amp;gt;
 安裝 striptags先確認你的 &amp;lt;repository&amp;gt;/node_modules/ 是否有">
   
@@ -127,10 +127,10 @@ ga('send', 'pageview');
         
         
           <p>在 <a href="/blog/2016/08/09/hexo-configuration/#加入相關文章">Hexo 相關設定</a> 有跟各位介紹過新增“相關文章”功能，</p>
-<p>老實說筆者覺得只有標題實在是太空洞了，因此看看原本的 <a href="https://github.com/nkmk/hexo-list-related-posts" target="_blank" rel="external">hexo-list-related-posts</a> 是否有相關功能</p>
+<p>老實說小弟覺得只有標題實在是太空洞了，因此看看原本的 <a href="https://github.com/nkmk/hexo-list-related-posts" target="_blank" rel="external">hexo-list-related-posts</a> 是否有相關功能</p>
 <p>測試了一下發現其實是有的，只不過原作者並未提供 API 讓人使用，那就只好自己來囉&lt;(￣︶￣)&gt;</p>
 <h3 id="安裝-striptags"><a href="#安裝-striptags" class="headerlink" title="安裝 striptags"></a>安裝 striptags</h3><p>先確認你的 <code>&lt;repository&gt;/node_modules/</code> 是否有 <code>striptags</code> 模組，<br>若未看見該模組再透過以下指令安裝<br><code>$ npm install striptags</code></p>
-<h3 id="修改-hexo-list-related-posts"><a href="#修改-hexo-list-related-posts" class="headerlink" title="修改 hexo-list-related-posts"></a>修改 <code>hexo-list-related-posts</code></h3><p>檔案路徑為 <code>&lt;repository&gt;/node_modules/hexo-list-related-posts/lib/index.js</code><br>查閱筆者發給原作者的 <a href="https://github.com/nkmk/hexo-list-related-posts/pull/3/commits/80e9739cb525f9907881d243bd04b90f6a2264d0#diff-1" target="_blank" rel="external">pull request</a> 會比較容易理解差異</p>
+<h3 id="修改-hexo-list-related-posts"><a href="#修改-hexo-list-related-posts" class="headerlink" title="修改 hexo-list-related-posts"></a>修改 <code>hexo-list-related-posts</code></h3><p>檔案路徑為 <code>&lt;repository&gt;/node_modules/hexo-list-related-posts/lib/index.js</code><br>查閱小弟發給原作者的 <a href="https://github.com/nkmk/hexo-list-related-posts/pull/3/commits/80e9739cb525f9907881d243bd04b90f6a2264d0#diff-1" target="_blank" rel="external">pull request</a> 會比較容易理解差異</p>
 <ol>
 <li><p>引入 <code>striptags</code> 模組</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> striptags = <span class="built_in">require</span>(<span class="string">'striptags'</span>);</div></pre></td></tr></table></figure>
@@ -153,7 +153,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://coffee0127.github.io/blog/2016/08/11/hexo-abstract-of-related-post/" data-id="cisr7f4nr000e1gnxry9kwjzo" class="article-share-link">Share</a>
+      <a data-url="https://coffee0127.github.io/blog/2016/08/11/hexo-abstract-of-related-post/" data-id="cisx8vown0006qonxmdd4u3xh" class="article-share-link">Share</a>
       
         <a href="https://coffee0127.github.io/blog/2016/08/11/hexo-abstract-of-related-post/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -169,20 +169,20 @@ ga('send', 'pageview');
         <h3 class="article-title" style="font-size: 20px;">相關文章</h3>
     </div>
     <div class="article-entry">
-      <ul class="related-posts"><li class="related-posts-item"><a href="/blog/2016/08/10/hexo-share-link-fix/">Hexo 分享連結失效</a><div class="related-posts-item-abstract">今天想來試試看分享功能，結果 FB 連結分享出來的卻是 404….XD
-看了一下分享的網址 https://coffee0127.github.io/blog/blog/2016/08/09/hexo-configura</div></li><li class="related-posts-item"><a href="/blog/2016/08/08/how-to-install-hexo/">Hexo 安裝</a><div class="related-posts-item-abstract">“取之於社會，用之於社會”
-
-從土木工程轉行 Key-in 人員也三年多了，現在才開始寫 Blog 會不會太慢 (￣□￣|||)a
-一來是寫下在這行打滾的心得，做個里程碑，二來是希望他日若有人遇到一樣問題，能夠幫上忙。(</div></li><li class="related-posts-item"><a href="/blog/2016/08/09/hexo-configuration/">Hexo 相關設定</a><div class="related-posts-item-abstract">經過前兩篇 Hexo 安裝 &amp; Hexo 佈署
-我們已經可以開始編寫 Blog 了&lt;(￣︶￣)&gt;
-但是還是過於陽春，因此這篇會講些簡單設定 Hexo，看起來更有模有樣。
-網頁 IconIcon 代表著</div></li><li class="related-posts-item"><a href="/blog/2016/08/09/how-to-deploy-to-git/">Hexo 佈署</a><div class="related-posts-item-abstract">接續上一篇 Hexo 安裝
+      <ul class="related-posts"><li class="related-posts-item"><a href="/blog/2016/08/09/how-to-deploy-to-git/">Hexo 佈署</a><div class="related-posts-item-abstract">接續上一篇 Hexo 安裝
 認識 GitHub 
 GitHub
 Git達人教你搞懂GitHub基礎觀念
 
 建立 github.io
-Creating Project Pages manually主要目的為替你的 repo</div></li>
+Creating Project Pages manually主要目的為替你的 repo</div></li><li class="related-posts-item"><a href="/blog/2016/08/08/how-to-install-hexo/">Hexo 安裝</a><div class="related-posts-item-abstract">“取之於社會，用之於社會”
+
+從土木工程轉行 Key-in 人員也三年多了，現在才開始寫 Blog 會不會太慢 (￣□￣|||)a
+一來是寫下在這行打滾的心得，做個里程碑，二來是希望他日若有人遇到一樣問題，能夠幫上忙。(</div></li><li class="related-posts-item"><a href="/blog/2016/08/09/hexo-configuration/">Hexo 相關設定</a><div class="related-posts-item-abstract">經過前兩篇 Hexo 安裝 &amp; Hexo 佈署
+我們已經可以開始編寫 Blog 了&lt;(￣︶￣)&gt;
+但是還是過於陽春，因此這篇會講些簡單設定 Hexo，看起來更有模有樣。
+網頁 IconIcon 代表著</div></li><li class="related-posts-item"><a href="/blog/2016/08/10/hexo-share-link-fix/">Hexo 分享連結失效</a><div class="related-posts-item-abstract">今天想來試試看分享功能，結果 FB 連結分享出來的卻是 404….XD
+看了一下分享的網址 https://coffee0127.github.io/blog/blog/2016/08/09/hexo-configura</div></li>
     </div>
   </div>
 </article>
@@ -223,7 +223,7 @@ Creating Project Pages manually主要目的為替你的 repo</div></li>
   <div class="widget-wrap">
     <h3 class="widget-title">分類</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/Eclipse/">Eclipse</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/Hexo/">Hexo</a><span class="category-list-count">5</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/Eclipse/">Eclipse</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/Hexo/">Hexo</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/Java/">Java</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -233,7 +233,7 @@ Creating Project Pages manually主要目的為替你的 repo</div></li>
   <div class="widget-wrap">
     <h3 class="widget-title">標籤</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Eclipse/">Eclipse</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Hexo/">Hexo</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Java/">Java</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Eclipse/">Eclipse</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Hexo/">Hexo</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Java/">Java</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -243,7 +243,7 @@ Creating Project Pages manually主要目的為替你的 repo</div></li>
   <div class="widget-wrap">
     <h3 class="widget-title">標籤雲</h3>
     <div class="widget tagcloud">
-      <a href="/blog/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/blog/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/blog/tags/Java/" style="font-size: 10px;">Java</a>
+      <a href="/blog/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/blog/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/blog/tags/Java/" style="font-size: 15px;">Java</a>
     </div>
   </div>
 
@@ -252,7 +252,7 @@ Creating Project Pages manually主要目的為替你的 repo</div></li>
   <div class="widget-wrap">
     <h3 class="widget-title">彙整</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li></ul>
     </div>
   </div>
 
@@ -263,6 +263,10 @@ Creating Project Pages manually主要目的為替你的 repo</div></li>
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/blog/2016/09/10/abstract-class-vs-interface/">抽象類別 (Abstract Class) vs 介面 (Interface)</a>
+          </li>
         
           <li>
             <a href="/blog/2016/08/15/eclipse-poperties/">Eclipse Properties 顯示中文字</a>
@@ -278,10 +282,6 @@ Creating Project Pages manually主要目的為替你的 repo</div></li>
         
           <li>
             <a href="/blog/2016/08/09/hexo-configuration/">Hexo 相關設定</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2016/08/09/how-to-deploy-to-git/">Hexo 佈署</a>
           </li>
         
       </ul>

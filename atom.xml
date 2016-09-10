@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://coffee0127.github.io/blog/"/>
-  <updated>2016-08-15T16:13:14.397Z</updated>
+  <updated>2016-09-10T13:45:25.822Z</updated>
   <id>https://coffee0127.github.io/blog/</id>
   
   <author>
@@ -14,6 +14,108 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>抽象類別 (Abstract Class) vs 介面 (Interface)</title>
+    <link href="https://coffee0127.github.io/blog/2016/09/10/abstract-class-vs-interface/"/>
+    <id>https://coffee0127.github.io/blog/2016/09/10/abstract-class-vs-interface/</id>
+    <published>2016-09-10T12:20:40.000Z</published>
+    <updated>2016-09-10T13:45:25.822Z</updated>
+    
+    <content type="html"><![CDATA[<p>許多人初學 Java 時，或許難以理解 <em>抽象類別</em> 和 <em>介面</em> 的差異，<br>簡單整理摘要如下，若有誤還望各位先進指點 Orz</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h3 id="抽象類別-Abstract-Class"><a href="#抽象類別-Abstract-Class" class="headerlink" title="抽象類別 (Abstract Class)"></a>抽象類別 (Abstract Class)</h3><ol>
+<li>使用 <code>abstract</code> 定義抽象類別 (不得宣告為 <code>final class</code>)</li>
+<li><p>無法實體化的類別 (即無法透過 <code>new</code> 關鍵字產生實體)<br> 或許會看到如下這種程式碼</p>
+<ul>
+<li><p>AbstractFooClz.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> AbstractFooClz &#123;</div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">doBar</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>TestMain.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestMain</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        <span class="keyword">new</span> AbstractFooClz() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doFoo</span><span class="params">()</span> </span>&#123;</div><div class="line">                System.out.println(<span class="string">"do foo here."</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;.doFoo();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>這是屬於匿名類別，終究不是原本的抽象類別，因此要特別注意！(小弟曾認為這也是 <code>new AbstractFooClz</code> 的一種…)</p>
+</li>
+</ul>
+</li>
+<li>專門被拿來當作父類別的類別，具有範本作用</li>
+<li>只能被繼承 (使用 <code>extends</code> 關鍵字)，子類別需實作抽象方法 (否則繼續抽象下去)</li>
+<li>其<strong>抽象方法 (abstract method)</strong>封裝等級不能是 <code>private</code> (即必須是 <code>public/protected/(default)</code>)<br> <code>abstract 回傳值型別 抽象方法名稱(參數列);</code>   // 沒有方法實體，以 ; 做結尾</li>
+<li>包含抽象方法的類別，一定要宣告為抽象類別；但是抽象類別不一定有抽象方法</li>
+</ol>
+<h3 id="介面-Interface"><a href="#介面-Interface" class="headerlink" title="介面 (Interface)"></a>介面 (Interface)</h3><ol>
+<li>定義屬性成員皆為常數 (即預設 <code>public static final</code>)，因此必須給定初始值</li>
+<li><p>定義方法時，只能為抽象方法 (即預設 <code>public abstract</code>，定義功能的名稱，實作部分留給相關類別 override</p>
+<ul>
+<li><p>IBar.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IBar</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> MY_NUMBER = <span class="number">0</span>;  <span class="comment">// 編譯器視為 public static final int MY_NUMBER = 0;</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">doBar</span><span class="params">()</span></span>;       <span class="comment">// 編譯器視為 public abstract void doBaz();</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Java8 開始多了 <code>default</code> 關鍵字，可替介面加上預設實作，範例如下<br>(小弟目前還沒有 Java8 開發經驗，還望各位先進指點實務上如此設計之意義)</p>
+</li>
+<li>IBaz.java<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IBaz</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">default</span> <span class="title">doBaz</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"only Java8 can do default baz here."</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+　</li>
+</ul>
+</li>
+<li>不一定需要定義方法，即空介面 (ex: <code>java.io.Serializable</code>)</li>
+<li>只能被實作 (使用 <code>implements</code> 關鍵字)，子類別需實作抽象方法 (否則需宣告為抽象類別)</li>
+<li>子類別實作抽象方法修飾字必須是 <code>public</code> (抽象方法預設使用 <code>public</code> 修飾)</li>
+</ol>
+<h2 id="比較"><a href="#比較" class="headerlink" title="比較"></a>比較</h2><h3 id="相同點"><a href="#相同點" class="headerlink" title="相同點"></a>相同點</h3><ol>
+<li>兩者都無法直接實體化</li>
+<li>子類別都必須實作已宣告之抽象方法 (或繼續抽象)</li>
+</ol>
+<h3 id="相異點"><a href="#相異點" class="headerlink" title="相異點"></a>相異點</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>抽象類別 Abstract Class</th>
+<th>介面 Interface</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>父類別/父介面 繼承</td>
+<td>只能繼承一個類別</td>
+<td>能繼承多個介面 (Java實現多重繼承)</td>
+</tr>
+<tr>
+<td>子類別 繼承/實作</td>
+<td>只能繼承 (<code>extends</code>) 一個抽象類別</td>
+<td>能實作 (<code>implements</code>) 多個介面</td>
+</tr>
+<tr>
+<td>方法</td>
+<td>可包含非抽象方法</td>
+<td>只能是抽象方法 (Java8以前…XD)</td>
+</tr>
+<tr>
+<td>應用</td>
+<td>關係密切的類別中<br>如定義抽象類別 <code>Car</code><br>子類別 <code>Benz</code> 及 <code>Audi</code> 繼承 <code>Car</code></td>
+<td>定義一些功能給較不相干類別使用<br>如定義介面飛翔 <code>Fly</code><br>子類別 <code>AirPlane</code> 及 <code>Bird</code> 實作 <code>Fly</code><br><strong>但實務上其實不會不相干類別實作同一介面</strong></td>
+</tr>
+<tr>
+<td></td>
+<td>必定為父類別</td>
+<td>可視為抽象類別的特例</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a href="https://docs.oracle.com/javase/tutorial/java/IandI/abstract.html" target="_blank" rel="external">Abstract Methods and Classes</a></li>
+<li><a href="https://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html" target="_blank" rel="external">Interfaces</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;許多人初學 Java 時，或許難以理解 &lt;em&gt;抽象類別&lt;/em&gt; 和 &lt;em&gt;介面&lt;/em&gt; 的差異，&lt;br&gt;簡單整理摘要如下，若有誤還望各位先進指點 Orz&lt;/p&gt;
+&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;
+    
+    </summary>
+    
+      <category term="Java" scheme="https://coffee0127.github.io/blog/categories/Java/"/>
+    
+    
+      <category term="Java" scheme="https://coffee0127.github.io/blog/tags/Java/"/>
+    
+  </entry>
   
   <entry>
     <title>Eclipse Properties 顯示中文字</title>
@@ -73,13 +175,13 @@
     <link href="https://coffee0127.github.io/blog/2016/08/11/hexo-abstract-of-related-post/"/>
     <id>https://coffee0127.github.io/blog/2016/08/11/hexo-abstract-of-related-post/</id>
     <published>2016-08-11T15:49:26.000Z</published>
-    <updated>2016-08-12T10:18:42.436Z</updated>
+    <updated>2016-09-10T13:45:25.819Z</updated>
     
     <content type="html"><![CDATA[<p>在 <a href="/blog/2016/08/09/hexo-configuration/#加入相關文章">Hexo 相關設定</a> 有跟各位介紹過新增“相關文章”功能，</p>
-<p>老實說筆者覺得只有標題實在是太空洞了，因此看看原本的 <a href="https://github.com/nkmk/hexo-list-related-posts" target="_blank" rel="external">hexo-list-related-posts</a> 是否有相關功能</p>
+<p>老實說小弟覺得只有標題實在是太空洞了，因此看看原本的 <a href="https://github.com/nkmk/hexo-list-related-posts" target="_blank" rel="external">hexo-list-related-posts</a> 是否有相關功能</p>
 <p>測試了一下發現其實是有的，只不過原作者並未提供 API 讓人使用，那就只好自己來囉&lt;(￣︶￣)&gt;</p>
 <h3 id="安裝-striptags"><a href="#安裝-striptags" class="headerlink" title="安裝 striptags"></a>安裝 striptags</h3><p>先確認你的 <code>&lt;repository&gt;/node_modules/</code> 是否有 <code>striptags</code> 模組，<br>若未看見該模組再透過以下指令安裝<br><code>$ npm install striptags</code></p>
-<h3 id="修改-hexo-list-related-posts"><a href="#修改-hexo-list-related-posts" class="headerlink" title="修改 hexo-list-related-posts"></a>修改 <code>hexo-list-related-posts</code></h3><p>檔案路徑為 <code>&lt;repository&gt;/node_modules/hexo-list-related-posts/lib/index.js</code><br>查閱筆者發給原作者的 <a href="https://github.com/nkmk/hexo-list-related-posts/pull/3/commits/80e9739cb525f9907881d243bd04b90f6a2264d0#diff-1" target="_blank" rel="external">pull request</a> 會比較容易理解差異</p>
+<h3 id="修改-hexo-list-related-posts"><a href="#修改-hexo-list-related-posts" class="headerlink" title="修改 hexo-list-related-posts"></a>修改 <code>hexo-list-related-posts</code></h3><p>檔案路徑為 <code>&lt;repository&gt;/node_modules/hexo-list-related-posts/lib/index.js</code><br>查閱小弟發給原作者的 <a href="https://github.com/nkmk/hexo-list-related-posts/pull/3/commits/80e9739cb525f9907881d243bd04b90f6a2264d0#diff-1" target="_blank" rel="external">pull request</a> 會比較容易理解差異</p>
 <ol>
 <li><p>引入 <code>striptags</code> 模組</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> striptags = <span class="built_in">require</span>(<span class="string">'striptags'</span>);</div></pre></td></tr></table></figure>
@@ -102,7 +204,7 @@
     <summary type="html">
     
       &lt;p&gt;在 &lt;a href=&quot;/blog/2016/08/09/hexo-configuration/#加入相關文章&quot;&gt;Hexo 相關設定&lt;/a&gt; 有跟各位介紹過新增“相關文章”功能，&lt;/p&gt;
-&lt;p&gt;老實說筆者覺得只有標題實在是太空洞了，因此看看原本的 &lt;a href=&quot;https
+&lt;p&gt;老實說小弟覺得只有標題實在是太空洞了，因此看看原本的 &lt;a href=&quot;https
     
     </summary>
     
@@ -118,19 +220,19 @@
     <link href="https://coffee0127.github.io/blog/2016/08/10/hexo-share-link-fix/"/>
     <id>https://coffee0127.github.io/blog/2016/08/10/hexo-share-link-fix/</id>
     <published>2016-08-10T13:29:09.000Z</published>
-    <updated>2016-08-12T10:18:42.435Z</updated>
+    <updated>2016-09-10T13:45:25.815Z</updated>
     
     <content type="html"><![CDATA[<p>今天想來試試看分享功能，結果 FB 連結分享出來的卻是 404….XD</p>
 <p>看了一下分享的網址 <a href="https://coffee0127.github.io/blog/blog/2016/08/09/hexo-configuration/">https://coffee0127.github.io/blog/blog/2016/08/09/hexo-configuration/</a></p>
 <p>欸 怎麼網址長出了兩個 <code>/blog</code> (￣□￣|||)a</p>
 <p>Google 了一下發現官網有人提出了一樣的問題 <a href="https://github.com/hexojs/hexo/issues/1812" target="_blank" rel="external">share link wrong with sub path</a></p>
-<p>還好底下有人提供解決方案，或許之後版本作者就會修正了 (筆者使用 Hexo 版本為 3.2.2)</p>
+<p>還好底下有人提供解決方案，或許之後版本作者就會修正了 (小弟使用 Hexo 版本為 3.2.2)</p>
 <p>解決方法其實也不難，僅需修改 <code>hexo/lib/models/post.js</code> 即可</p>
 <p>確切路徑為 <code>&lt;your_repository&gt;/node_modules/hexo/lib/models/post.js</code></p>
 <p>將 57 行開始程式碼<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Post.virtual(<span class="string">'permalink'</span>).get(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> config = ctx.config;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> config.url + config.root + <span class="keyword">this</span>.path;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
 <p>修改為以下即可<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Post.virtual(<span class="string">'permalink'</span>).get(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> url_for = ctx.extend.helper.get(<span class="string">'url_for'</span>);</div><div class="line">  <span class="keyword">var</span> config = ctx.config;</div><div class="line">  <span class="keyword">var</span> partial_url = url_for.call(ctx, <span class="keyword">this</span>.path);</div><div class="line">  <span class="keyword">return</span> config.url + _.replace(partial_url, config.root, <span class="string">'/'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
 <p>之後重新產生新的 Blog 網頁即可</p>
-<p>p.s 僅針對 Blog 放在子資料夾內的才需修改 (好比筆者之類的…XD)<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># URL</span></div><div class="line"><span class="comment">## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'</span></div><div class="line"><span class="attr">url:</span> https://coffee0127.github.io/blog/</div><div class="line"><span class="attr">root:</span> /blog/</div><div class="line"><span class="attr">permalink:</span> :year/:month/:day/:title/</div><div class="line"><span class="attr">permalink_defaults:</span></div></pre></td></tr></table></figure></p>
+<p>p.s 僅針對 Blog 放在子資料夾內的才需修改 (好比小弟之類的…XD)<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># URL</span></div><div class="line"><span class="comment">## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'</span></div><div class="line"><span class="attr">url:</span> https://coffee0127.github.io/blog/</div><div class="line"><span class="attr">root:</span> /blog/</div><div class="line"><span class="attr">permalink:</span> :year/:month/:day/:title/</div><div class="line"><span class="attr">permalink_defaults:</span></div></pre></td></tr></table></figure></p>
 <h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
 <li><a href="https://github.com/hexojs/hexo/blob/master/lib/models/post.js#L59" target="_blank" rel="external">https://github.com/hexojs/hexo/blob/master/lib/models/post.js#L59</a></li>
 </ul>
@@ -155,7 +257,7 @@
     <link href="https://coffee0127.github.io/blog/2016/08/09/hexo-configuration/"/>
     <id>https://coffee0127.github.io/blog/2016/08/09/hexo-configuration/</id>
     <published>2016-08-09T09:31:38.000Z</published>
-    <updated>2016-08-15T16:13:14.394Z</updated>
+    <updated>2016-09-10T13:45:25.808Z</updated>
     
     <content type="html"><![CDATA[<p>經過前兩篇 <a href="/blog/2016/08/08/how-to-install-hexo/">Hexo 安裝</a> &amp; <a href="/blog/2016/08/09/how-to-deploy-to-git">Hexo 佈署</a></p>
 <p>我們已經可以開始編寫 Blog 了&lt;(￣︶￣)&gt;</p>
@@ -183,7 +285,7 @@
 <li>透過以下指令安裝 <a href="https://github.com/nkmk/hexo-list-related-posts" target="_blank" rel="external">hexo-list-related-posts</a><br><code>$ npm install hexo-list-related-posts --save</code></li>
 <li>修改 <code>themes/&lt;主題名稱&gt;/layout/_partial/article.ejs</code>，找到 <code>&lt;%- partial(&#39;post/nav&#39;) %&gt;</code> 並於前一段落加入 <code>partial(&#39;post/related&#39;)</code></li>
 <li>接著在 <code>themes/landscape/layout/_partial/post</code> 新增 <code>related.ejs</code> 檔案 (對應前一步驟之檔名)</li>
-<li>相關文章樣式版型可再依個人喜好自行修改，主要程式碼為 <code>&lt;%- list_related_posts([options]) %&gt;</code>，筆者目前樣式為<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;article class=&quot;article&quot;&gt;</div><div class="line">  &lt;div class=&quot;article-inner&quot;&gt;</div><div class="line">    &lt;div class=&quot;article-header&quot;&gt;</div><div class="line">        &lt;h3 class=&quot;article-title&quot; style=&quot;font-size: 20px;&quot;&gt;相關文章&lt;/h3&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;div class=&quot;article-entry&quot;&gt;</div><div class="line">      &lt;%- list_related_posts(&#123;maxCount: 5, orderBy: &apos;random&apos;&#125;) %&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/article&gt;</div></pre></td></tr></table></figure>
+<li>相關文章樣式版型可再依個人喜好自行修改，主要程式碼為 <code>&lt;%- list_related_posts([options]) %&gt;</code>，小弟目前樣式為<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;article class=&quot;article&quot;&gt;</div><div class="line">  &lt;div class=&quot;article-inner&quot;&gt;</div><div class="line">    &lt;div class=&quot;article-header&quot;&gt;</div><div class="line">        &lt;h3 class=&quot;article-title&quot; style=&quot;font-size: 20px;&quot;&gt;相關文章&lt;/h3&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;div class=&quot;article-entry&quot;&gt;</div><div class="line">      &lt;%- list_related_posts(&#123;maxCount: 5, orderBy: &apos;random&apos;&#125;) %&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/article&gt;</div></pre></td></tr></table></figure>
 </li>
 </ol>
 <p>並且在 <code>themes/&lt;主題名稱&gt;/source/css/_partial/article.styl</code> 加入樣式<br><figure class="highlight styl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.related-posts-item</span></div><div class="line">  <span class="attribute">font-size</span>: <span class="number">16px</span></div></pre></td></tr></table></figure></p>
@@ -251,7 +353,7 @@
     <link href="https://coffee0127.github.io/blog/2016/08/09/how-to-deploy-to-git/"/>
     <id>https://coffee0127.github.io/blog/2016/08/09/how-to-deploy-to-git/</id>
     <published>2016-08-09T06:21:18.000Z</published>
-    <updated>2016-08-12T10:18:42.430Z</updated>
+    <updated>2016-09-10T13:45:25.811Z</updated>
     
     <content type="html"><![CDATA[<p>接續上一篇 <a href="/blog/2016/08/08/how-to-install-hexo/">Hexo 安裝</a></p>
 <h3 id="認識-GitHub"><a href="#認識-GitHub" class="headerlink" title="認識 GitHub "></a>認識 GitHub <img src="/blog/2016/08/09/how-to-deploy-to-git/PEO-octocat-0.svg" class="inline" width="64"></h3><ul>
@@ -261,7 +363,7 @@
 <h3 id="建立-github-io"><a href="#建立-github-io" class="headerlink" title="建立 github.io"></a>建立 github.io</h3><ul>
 <li><a href="https://help.github.com/articles/creating-project-pages-manually/" target="_blank" rel="external">Creating Project Pages manually</a><br>主要目的為替你的 repository 建立一個名為 <code>gh-pages</code> 的 branch</li>
 </ul>
-<p>筆者規劃如下 <img src="/blog/2016/08/09/how-to-deploy-to-git/branch.jpg" class="inline"></p>
+<p>小弟規劃如下 <img src="/blog/2016/08/09/how-to-deploy-to-git/branch.jpg" class="inline"></p>
 <ul>
 <li>master：用來放 Hexo 相關檔案</li>
 <li>gh-pages：用來放 Hexo 產出之靜態網頁，也就是 Blog</li>
@@ -306,7 +408,7 @@
     <link href="https://coffee0127.github.io/blog/2016/08/08/how-to-install-hexo/"/>
     <id>https://coffee0127.github.io/blog/2016/08/08/how-to-install-hexo/</id>
     <published>2016-08-08T13:08:49.000Z</published>
-    <updated>2016-08-15T16:13:14.389Z</updated>
+    <updated>2016-09-10T13:45:25.804Z</updated>
     
     <content type="html"><![CDATA[<div style="font-size: 24px;padding-top: 20px;"><em>“取之於社會，用之於社會”</em></div>
 
@@ -354,8 +456,8 @@
 <h3 id="設定檔-config-yml"><a href="#設定檔-config-yml" class="headerlink" title="設定檔 _config.yml"></a>設定檔 _config.yml</h3><p>Hexo 分兩個設定檔，這邊講的是根目錄下的 <code>_config.yml</code>，而非主題下的</p>
 <h4 id="Site"><a href="#Site" class="headerlink" title="Site"></a>Site</h4><figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Site</span></div><div class="line"><span class="attr">title:</span>  <span class="comment"># 網站主標題</span></div><div class="line"><span class="attr">subtitle:</span> <span class="comment"># 網站副標題</span></div><div class="line"><span class="attr">description:</span> <span class="comment"># 用於產生 &lt;meta property="og:description"&gt; 標籤</span></div><div class="line"><span class="attr">author:</span> <span class="comment"># 網站作者</span></div><div class="line"><span class="attr">language:</span> <span class="comment"># 網站語言</span></div><div class="line"><span class="attr">timezone:</span> <span class="comment"># 網站時區，預設使用電腦時區</span></div></pre></td></tr></table></figure>
 <h4 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h4><p>這邊要注意 <code>url</code> 跟 <code>root</code>，當你的網站是放置於子資料夾下時，例如 <code>http://yoursite.com/child</code>，<br>請將 url 設定為 <code>http://yoursite.com/child</code>，root 則設定為 <code>/child/</code>。<br>note: 子資料夾會有分享連結失效問題，解決方法參考 <a href="/blog/2016/08/10/hexo-share-link-fix/">Hexo 分享連結失效</a></p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># URL</span></div><div class="line"><span class="comment">## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'</span></div><div class="line"><span class="attr">url:</span> https://coffee0127.github.io/blog/ <span class="comment">#網站的網址</span></div><div class="line"><span class="attr">root:</span> /blog/    <span class="comment">#網站的根目錄</span></div><div class="line"><span class="attr">permalink:</span> :year/:month/:day/:title/    <span class="comment"># 文章永久連結的格式</span></div><div class="line"><span class="attr">permalink_defaults:</span>     <span class="comment"># 永久連結中各區段的預設值，筆者沒試過XD</span></div></pre></td></tr></table></figure>
-<h4 id="Writing"><a href="#Writing" class="headerlink" title="Writing"></a>Writing</h4><p>這邊僅針對 <code>new_post_name</code> 稍作說明，<code>new_post_name</code> 是新文章的檔案名稱，預設是 <code>:title.md</code>。<br>筆者將其修改為 <code>:year-:month-:day-:title.md</code>，將其修改為 <code>年-月-日-標題.md</code>，以日期為檔名，方便文章管理。<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Writing</span></div><div class="line"><span class="attr">new_post_name:</span> :year-:month-:day-:title.md</div></pre></td></tr></table></figure></p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># URL</span></div><div class="line"><span class="comment">## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'</span></div><div class="line"><span class="attr">url:</span> https://coffee0127.github.io/blog/ <span class="comment">#網站的網址</span></div><div class="line"><span class="attr">root:</span> /blog/    <span class="comment">#網站的根目錄</span></div><div class="line"><span class="attr">permalink:</span> :year/:month/:day/:title/    <span class="comment"># 文章永久連結的格式</span></div><div class="line"><span class="attr">permalink_defaults:</span>     <span class="comment"># 永久連結中各區段的預設值，小弟沒試過XD</span></div></pre></td></tr></table></figure>
+<h4 id="Writing"><a href="#Writing" class="headerlink" title="Writing"></a>Writing</h4><p>這邊僅針對 <code>new_post_name</code> 稍作說明，<code>new_post_name</code> 是新文章的檔案名稱，預設是 <code>:title.md</code>。<br>小弟將其修改為 <code>:year-:month-:day-:title.md</code>，將其修改為 <code>年-月-日-標題.md</code>，以日期為檔名，方便文章管理。<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Writing</span></div><div class="line"><span class="attr">new_post_name:</span> :year-:month-:day-:title.md</div></pre></td></tr></table></figure></p>
 <p>其他說明可再參考官網 <a href="https://hexo.io/docs/configuration.html" target="_blank" rel="external">Configuration</a></p>
 <p>接著佈署至 GitHub 請見下一篇 <a href="/blog/2016/08/09/how-to-deploy-to-git">Hexo 佈署</a></p>
 <h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
