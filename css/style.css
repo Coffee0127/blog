@@ -1066,8 +1066,12 @@ ul.related-posts li.related-posts-item div.related-posts-item-abstract {
   transition: color 0.2s;
   line-height: 1.6em;
 }
-.archive-article-title:hover {
+.archive-article-title a {
   color: #258fb8;
+  text-decoration: none;
+}
+.archive-article-title a:hover {
+  text-decoration: underline;
 }
 .archive-article-footer {
   margin-top: 1em;
