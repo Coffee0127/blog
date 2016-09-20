@@ -641,12 +641,18 @@ body {
 .article-entry blockquote {
   font-family: Georgia, "Times New Roman", serif;
   font-size: 1.4em;
-  margin: 1.6em 20px;
-  text-align: center;
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  border-left: 5px solid #eee;
+}
+.article-entry blockquote p {
+  margin: 0 0 0.5em 0;
+}
+.article-entry blockquote p:last-child {
+  margin-bottom: 0;
 }
 .article-entry blockquote footer {
   font-size: 14px;
-  margin: 1.6em 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .article-entry blockquote footer cite:before {

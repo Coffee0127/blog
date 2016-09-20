@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://coffee0127.github.io/blog/"/>
-  <updated>2016-09-10T13:45:25.822Z</updated>
+  <updated>2016-09-20T12:41:22.226Z</updated>
   <id>https://coffee0127.github.io/blog/</id>
   
   <author>
@@ -16,11 +16,57 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Angular2 自訂元素</title>
+    <link href="https://coffee0127.github.io/blog/2016/09/20/Angular2-Custom-Element/"/>
+    <id>https://coffee0127.github.io/blog/2016/09/20/Angular2-Custom-Element/</id>
+    <published>2016-09-20T11:53:24.000Z</published>
+    <updated>2016-09-20T12:41:22.226Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://angular.io/" target="_blank" rel="external">Angular2</a> 終於在 2016-09-15 發布正式版本，</p>
+<p>由於之前使用的 <a href="https://cli.angular.io/" target="_blank" rel="external">Angular CLI</a> 建立的專案版本為 <code>2.0.0-rc.5</code> 才一直沒注意到這個問題，</p>
+<p>直到今天升級後發現專案直接掛了…XD</p>
+<img src="/blog/2016/09/20/Angular2-Custom-Element/template-parse-errors.jpg" class="inline">
+<p>錯誤訊息很明顯：<code>&#39;hgroup&#39; is not a known element</code></p>
+<p>由於 Angular2 將網頁視為元件，因此 HTML 標籤都必須是合法的 Directive 元件才行。</p>
+<p>最簡單作法當然是將 hgroup 元素改成用 div 表示即可(無誤)</p>
+<p>若真的必須使用這種非 Angular2 可以接受的標籤，還是可以透過設定讓這些標籤繼續使用</p>
+<hr>
+<p>修改 <code>src/app.module.ts</code>，使用 <code>NO_ERRORS_SCHEMA</code> schema</p>
+<img src="/blog/2016/09/20/Angular2-Custom-Element/import-module.jpg" class="inline">
+<p>根據官方說明，schemas 可傳入兩種 <code>SchemaMetadata</code></p>
+<ul>
+<li><code>NO_ERRORS_SCHEMA</code>：允許任意元素及屬性</li>
+<li><code>CUSTOM_ELEMENTS_SCHEMA</code>：允許元素名稱中帶減號(-)的任意元素</li>
+</ul>
+<p>設定完成後，畫面即正常運作了～</p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
+<li><a href="http://blog.miniasp.com/post/2016/09/19/Angular-2-Custom-Element-Tips.aspx" target="_blank" rel="external">Angular 2 開發心得分享 (01)：使用 HTML 自訂元素的注意事項</a></li>
+<li><a href="https://angular.io/docs/ts/latest/api/core/index/NgModule-interface.html" target="_blank" rel="external">Angular2 NgModule</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://angular.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Angular2&lt;/a&gt; 終於在 2016-09-15 發布正式版本，&lt;/p&gt;
+&lt;p&gt;由於之前使用的 &lt;a href=&quot;https://cli.angu
+    
+    </summary>
+    
+      <category term="Angular2" scheme="https://coffee0127.github.io/blog/categories/Angular2/"/>
+    
+    
+      <category term="Angular2" scheme="https://coffee0127.github.io/blog/tags/Angular2/"/>
+    
+      <category term="JavaScript" scheme="https://coffee0127.github.io/blog/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
     <title>抽象類別 (Abstract Class) vs 介面 (Interface)</title>
     <link href="https://coffee0127.github.io/blog/2016/09/10/abstract-class-vs-interface/"/>
     <id>https://coffee0127.github.io/blog/2016/09/10/abstract-class-vs-interface/</id>
     <published>2016-09-10T12:20:40.000Z</published>
-    <updated>2016-09-10T13:45:25.822Z</updated>
+    <updated>2016-09-18T14:31:22.960Z</updated>
     
     <content type="html"><![CDATA[<p>許多人初學 Java 時，或許難以理解 <em>抽象類別</em> 和 <em>介面</em> 的差異，<br>簡單整理摘要如下，若有誤還望各位先進指點 Orz</p>
 <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h3 id="抽象類別-Abstract-Class"><a href="#抽象類別-Abstract-Class" class="headerlink" title="抽象類別 (Abstract Class)"></a>抽象類別 (Abstract Class)</h3><ol>
@@ -122,7 +168,7 @@
     <link href="https://coffee0127.github.io/blog/2016/08/15/eclipse-poperties/"/>
     <id>https://coffee0127.github.io/blog/2016/08/15/eclipse-poperties/</id>
     <published>2016-08-15T10:24:08.000Z</published>
-    <updated>2016-08-15T16:13:14.397Z</updated>
+    <updated>2016-09-18T14:31:22.937Z</updated>
     
     <content type="html"><![CDATA[<p>做專案時，往往需要做國際化 (internationalization，簡稱 i18n，因為總共18個字 XD)</p>
 <p>Java 存放這些多國語言檔案使用 properties 檔案，由於該檔案採用 ISO-8859-1 編碼，</p>
@@ -175,7 +221,7 @@
     <link href="https://coffee0127.github.io/blog/2016/08/11/hexo-abstract-of-related-post/"/>
     <id>https://coffee0127.github.io/blog/2016/08/11/hexo-abstract-of-related-post/</id>
     <published>2016-08-11T15:49:26.000Z</published>
-    <updated>2016-09-10T13:45:25.819Z</updated>
+    <updated>2016-09-18T14:31:22.905Z</updated>
     
     <content type="html"><![CDATA[<p>在 <a href="/blog/2016/08/09/hexo-configuration/#加入相關文章">Hexo 相關設定</a> 有跟各位介紹過新增“相關文章”功能，</p>
 <p>老實說小弟覺得只有標題實在是太空洞了，因此看看原本的 <a href="https://github.com/nkmk/hexo-list-related-posts" target="_blank" rel="external">hexo-list-related-posts</a> 是否有相關功能</p>
@@ -220,7 +266,7 @@
     <link href="https://coffee0127.github.io/blog/2016/08/10/hexo-share-link-fix/"/>
     <id>https://coffee0127.github.io/blog/2016/08/10/hexo-share-link-fix/</id>
     <published>2016-08-10T13:29:09.000Z</published>
-    <updated>2016-09-10T13:45:25.815Z</updated>
+    <updated>2016-09-18T14:31:22.901Z</updated>
     
     <content type="html"><![CDATA[<p>今天想來試試看分享功能，結果 FB 連結分享出來的卻是 404….XD</p>
 <p>看了一下分享的網址 <a href="https://coffee0127.github.io/blog/blog/2016/08/09/hexo-configuration/">https://coffee0127.github.io/blog/blog/2016/08/09/hexo-configuration/</a></p>
@@ -257,7 +303,7 @@
     <link href="https://coffee0127.github.io/blog/2016/08/09/hexo-configuration/"/>
     <id>https://coffee0127.github.io/blog/2016/08/09/hexo-configuration/</id>
     <published>2016-08-09T09:31:38.000Z</published>
-    <updated>2016-09-10T13:45:25.808Z</updated>
+    <updated>2016-09-18T14:31:22.891Z</updated>
     
     <content type="html"><![CDATA[<p>經過前兩篇 <a href="/blog/2016/08/08/how-to-install-hexo/">Hexo 安裝</a> &amp; <a href="/blog/2016/08/09/how-to-deploy-to-git">Hexo 佈署</a></p>
 <p>我們已經可以開始編寫 Blog 了&lt;(￣︶￣)&gt;</p>
@@ -353,7 +399,7 @@
     <link href="https://coffee0127.github.io/blog/2016/08/09/how-to-deploy-to-git/"/>
     <id>https://coffee0127.github.io/blog/2016/08/09/how-to-deploy-to-git/</id>
     <published>2016-08-09T06:21:18.000Z</published>
-    <updated>2016-09-10T13:45:25.811Z</updated>
+    <updated>2016-09-18T14:31:22.891Z</updated>
     
     <content type="html"><![CDATA[<p>接續上一篇 <a href="/blog/2016/08/08/how-to-install-hexo/">Hexo 安裝</a></p>
 <h3 id="認識-GitHub"><a href="#認識-GitHub" class="headerlink" title="認識 GitHub "></a>認識 GitHub <img src="/blog/2016/08/09/how-to-deploy-to-git/PEO-octocat-0.svg" class="inline" width="64"></h3><ul>
@@ -408,7 +454,7 @@
     <link href="https://coffee0127.github.io/blog/2016/08/08/how-to-install-hexo/"/>
     <id>https://coffee0127.github.io/blog/2016/08/08/how-to-install-hexo/</id>
     <published>2016-08-08T13:08:49.000Z</published>
-    <updated>2016-09-10T13:45:25.804Z</updated>
+    <updated>2016-09-18T14:31:22.880Z</updated>
     
     <content type="html"><![CDATA[<div style="font-size: 24px;padding-top: 20px;"><em>“取之於社會，用之於社會”</em></div>
 
