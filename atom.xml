@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://coffee0127.github.io/blog/"/>
-  <updated>2016-09-24T15:27:36.242Z</updated>
+  <updated>2016-09-24T15:36:15.614Z</updated>
   <id>https://coffee0127.github.io/blog/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://coffee0127.github.io/blog/2016/09/24/js-tips/"/>
     <id>https://coffee0127.github.io/blog/2016/09/24/js-tips/</id>
     <published>2016-09-24T07:15:35.000Z</published>
-    <updated>2016-09-24T15:27:36.242Z</updated>
+    <updated>2016-09-24T15:36:15.614Z</updated>
     
     <content type="html"><![CDATA[<p>JavaScript 對小弟而言，真是一門似懂非懂的語言XD</p>
 <p>儘管使用 JavaScript 也三年多，但畢竟 Java 後端工程師會用到的仍有限。</p>
@@ -28,9 +28,9 @@
 <p>一來做個紀錄，增加印象未來也方便複習XD</p>
 <p>二來希望能幫上初學 JavaScript 的朋友們～</p>
 <h3 id="字串轉數字"><a href="#字串轉數字" class="headerlink" title="字串轉數字"></a>字串轉數字</h3><p>假設今天有個數字字串如 ‘1’ 或 ‘3.14159’，要轉成數字可能會用以下幾種方法<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> numberStr = <span class="string">'3.14159'</span>;</div><div class="line"><span class="keyword">var</span> number1 = <span class="built_in">Number</span>(numberStr); <span class="comment">// 3.14159</span></div><div class="line"><span class="keyword">var</span> number2 = <span class="built_in">parseFloat</span>(numberStr); <span class="comment">// 3.14159</span></div></pre></td></tr></table></figure></p>
-<p><del>工程師是很懶惰的職業</del>，因此要這樣寫才夠短，一個 <code>+</code> 搞定XD<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> number3 = +numberStr;  <span class="comment">// 3.14159</span></div></pre></td></tr></table></figure></p>
+<p>我們也可以使用一個 <code>+</code> 搞定XD <del>工程師是很懶惰的職業，這樣寫才夠短</del><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> number3 = +numberStr;  <span class="comment">// 3.14159</span></div></pre></td></tr></table></figure></p>
 <h4 id="浮點數字串轉整數"><a href="#浮點數字串轉整數" class="headerlink" title="浮點數字串轉整數"></a>浮點數字串轉整數</h4><p>還是剛剛那個 ‘3.14159’，今天將其轉成整數 3 的話可以這樣寫<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> number4 = <span class="built_in">Math</span>.floor(numberStr);</div><div class="line"><span class="keyword">var</span> number5 = <span class="built_in">parseInt</span>(numberStr);</div></pre></td></tr></table></figure></p>
-<p><del>工程師真的很懶惰</del>，你也可以這樣寫<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * ~ (Tilde) 運算元是指 -(N+1)</div><div class="line"> * example:</div><div class="line"> *  ~(-1) = 0</div><div class="line"> *  ~(0) = -1</div><div class="line"> *  ~1 = -2</div><div class="line"> */</div><div class="line"><span class="keyword">var</span> number6 = ~~numberStr;</div></pre></td></tr></table></figure></p>
+<p>你也可以使用 <code>~</code> 這樣寫 <del>工程師真的很懶惰</del><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * ~ (Tilde) 運算元是指 -(N+1)</div><div class="line"> * example:</div><div class="line"> *  ~(-1) = 0</div><div class="line"> *  ~(0) = -1</div><div class="line"> *  ~1 = -2</div><div class="line"> */</div><div class="line"><span class="keyword">var</span> number6 = ~~numberStr;</div></pre></td></tr></table></figure></p>
 <hr>
 <h3 id="簡化字串-indexOf-gt-0"><a href="#簡化字串-indexOf-gt-0" class="headerlink" title="簡化字串 indexOf() &gt;= 0"></a>簡化字串 <code>indexOf() &gt;= 0</code></h3><p>還記得前例的 <code>~(-1) = 0</code> 嗎，因此我們又可以繼續<del>偷懶</del>簡化程式碼了<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (someStr.indexOf(<span class="string">'a'</span>) &gt;= <span class="number">0</span>) &#123;</div><div class="line">    <span class="comment">// Found</span></div><div class="line">&#125; <span class="keyword">else</span>  &#123;</div><div class="line">    <span class="comment">// Not Found</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>使用 <code>~</code> 將其改為<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (~someStr.indexOf(<span class="string">'a'</span>)) &#123;</div><div class="line">    <span class="comment">// Found</span></div><div class="line">&#125; <span class="keyword">else</span>  &#123;</div><div class="line">    <span class="comment">// Not Found</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
@@ -69,7 +69,7 @@
 </ul>
 <hr>
 <p>希望這些小技巧能幫助到那些跟我一樣對 JavaScript 不是太熟的朋友們～</p>
-<p>若文章內容有誤，還請不吝指教 &lt;(<em> </em>)&gt;</p>
+<p>若文章內容有誤，還請不吝指教 &lt;(＿ ＿)&gt;</p>
 ]]></content>
     
     <summary type="html">
