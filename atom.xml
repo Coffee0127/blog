@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://coffee0127.github.io/blog/"/>
-  <updated>2016-09-20T12:41:22.226Z</updated>
+  <updated>2016-09-24T15:27:36.242Z</updated>
   <id>https://coffee0127.github.io/blog/</id>
   
   <author>
@@ -14,6 +14,79 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaScript 小技巧</title>
+    <link href="https://coffee0127.github.io/blog/2016/09/24/js-tips/"/>
+    <id>https://coffee0127.github.io/blog/2016/09/24/js-tips/</id>
+    <published>2016-09-24T07:15:35.000Z</published>
+    <updated>2016-09-24T15:27:36.242Z</updated>
+    
+    <content type="html"><![CDATA[<p>JavaScript 對小弟而言，真是一門似懂非懂的語言XD</p>
+<p>儘管使用 JavaScript 也三年多，但畢竟 Java 後端工程師會用到的仍有限。</p>
+<p>最近到處惡補後，蒐集整理了一些 JavaScript 小技巧，</p>
+<p>一來做個紀錄，增加印象未來也方便複習XD</p>
+<p>二來希望能幫上初學 JavaScript 的朋友們～</p>
+<h3 id="字串轉數字"><a href="#字串轉數字" class="headerlink" title="字串轉數字"></a>字串轉數字</h3><p>假設今天有個數字字串如 ‘1’ 或 ‘3.14159’，要轉成數字可能會用以下幾種方法<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> numberStr = <span class="string">'3.14159'</span>;</div><div class="line"><span class="keyword">var</span> number1 = <span class="built_in">Number</span>(numberStr); <span class="comment">// 3.14159</span></div><div class="line"><span class="keyword">var</span> number2 = <span class="built_in">parseFloat</span>(numberStr); <span class="comment">// 3.14159</span></div></pre></td></tr></table></figure></p>
+<p><del>工程師是很懶惰的職業</del>，因此要這樣寫才夠短，一個 <code>+</code> 搞定XD<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> number3 = +numberStr;  <span class="comment">// 3.14159</span></div></pre></td></tr></table></figure></p>
+<h4 id="浮點數字串轉整數"><a href="#浮點數字串轉整數" class="headerlink" title="浮點數字串轉整數"></a>浮點數字串轉整數</h4><p>還是剛剛那個 ‘3.14159’，今天將其轉成整數 3 的話可以這樣寫<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> number4 = <span class="built_in">Math</span>.floor(numberStr);</div><div class="line"><span class="keyword">var</span> number5 = <span class="built_in">parseInt</span>(numberStr);</div></pre></td></tr></table></figure></p>
+<p><del>工程師真的很懶惰</del>，你也可以這樣寫<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * ~ (Tilde) 運算元是指 -(N+1)</div><div class="line"> * example:</div><div class="line"> *  ~(-1) = 0</div><div class="line"> *  ~(0) = -1</div><div class="line"> *  ~1 = -2</div><div class="line"> */</div><div class="line"><span class="keyword">var</span> number6 = ~~numberStr;</div></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="簡化字串-indexOf-gt-0"><a href="#簡化字串-indexOf-gt-0" class="headerlink" title="簡化字串 indexOf() &gt;= 0"></a>簡化字串 <code>indexOf() &gt;= 0</code></h3><p>還記得前例的 <code>~(-1) = 0</code> 嗎，因此我們又可以繼續<del>偷懶</del>簡化程式碼了<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (someStr.indexOf(<span class="string">'a'</span>) &gt;= <span class="number">0</span>) &#123;</div><div class="line">    <span class="comment">// Found</span></div><div class="line">&#125; <span class="keyword">else</span>  &#123;</div><div class="line">    <span class="comment">// Not Found</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>使用 <code>~</code> 將其改為<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (~someStr.indexOf(<span class="string">'a'</span>)) &#123;</div><div class="line">    <span class="comment">// Found</span></div><div class="line">&#125; <span class="keyword">else</span>  &#123;</div><div class="line">    <span class="comment">// Not Found</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>p.s 這邊應用到的是 JavaScript 的 if 條件為 <code>0</code> 是不成立的</p>
+<hr>
+<h3 id="檢查布林值"><a href="#檢查布林值" class="headerlink" title="檢查布林值"></a>檢查布林值</h3><p>有時需要對一個變數檢查是否存在(或是否有值)，若存在(或有值)則回傳 <code>true</code>。<br>可以使用 <code>!!</code> 做到這件事情，只要該變數的值為：<code>0</code>、<code>null</code>、<code>&#39;&#39;</code>(空字串)、<code>undefined</code>、<code>NaN</code>(Not a Number)、<code>false</code> 都會回傳 <code>false</code>，其餘則會回傳 <code>true</code><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> foo;</div><div class="line"><span class="built_in">console</span>.log(!!foo); <span class="comment">// false</span></div><div class="line">foo = <span class="number">1</span>;</div><div class="line"><span class="built_in">console</span>.log(!!foo); <span class="comment">// true</span></div><div class="line">foo = &#123;&#125;;</div><div class="line"><span class="built_in">console</span>.log(!!foo); <span class="comment">// true</span></div><div class="line">foo = <span class="string">"false"</span>;</div><div class="line"><span class="built_in">console</span>.log(!!foo); <span class="comment">// true</span></div></pre></td></tr></table></figure></p>
+<p>請注意，變數為字串 ‘false’，在 <code>!!</code> 轉換下仍會變為 <code>true</code></p>
+<hr>
+<h3 id="簡化-if"><a href="#簡化-if" class="headerlink" title="簡化 if"></a>簡化 if</h3><p>如果今天需先檢查某個條件，程式碼如下<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (isConnected) &#123;</div><div class="line">    sendMsg();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>可以使用 <code>&amp;&amp;</code> 來簡化程式碼如下<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">isConnected &amp;&amp; sendMsg();</div></pre></td></tr></table></figure></p>
+<p>如果是要確定物件不是 <code>null</code> 後，呼叫該物件方法也可以這樣寫<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * if (messenger != null) &#123;</div><div class="line"> *     messenger.sendMsg();</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line">messenger &amp;&amp; messenger.sendMsg();</div></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="替參數設定預設值"><a href="#替參數設定預設值" class="headerlink" title="替參數設定預設值"></a>替參數設定預設值</h3><p>在 ES6 中，有所謂的 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Default_parameters" target="_blank" rel="external">Default parameters</a> 替參數設定初始值<br>萬一瀏覽器不支援 ES6 怎麼辦呢，我們可以使用 <code>||</code> 實現這件事情<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">i, j</span>) </span>&#123;</div><div class="line">    i = i || <span class="number">1</span>;</div><div class="line">    j = j || <span class="number">2</span>;</div><div class="line">    <span class="keyword">return</span> i + j;</div><div class="line">&#125;</div><div class="line">add();      <span class="comment">// 3</span></div><div class="line">add(<span class="number">10</span>);    <span class="comment">// 12</span></div><div class="line">add(<span class="literal">undefined</span>, <span class="number">5</span>);  <span class="comment">// 6</span></div></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="陣列"><a href="#陣列" class="headerlink" title="陣列"></a>陣列</h3><h4 id="陣列合併"><a href="#陣列合併" class="headerlink" title="陣列合併"></a>陣列合併</h4><p>如果要不靠迴圈合併兩個陣列，一般會使用 <code>Array.concat()</code>：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr1 = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>];</div><div class="line"><span class="keyword">var</span> arr2 = [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</div><div class="line"><span class="built_in">console</span>.log(arr1.concat(arr2)); <span class="comment">// [0, 1, 2, 3, 4, 5]</span></div></pre></td></tr></table></figure></p>
+<p>由於 <code>Array.concat()</code> 是另外建立新的陣列後合併，因此在合併較大陣列時，會大量消耗記憶體….</p>
+<p>為了效能考量，建議使用 <code>Array.prototype.push.apply(arr1, arr2);</code><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr1 = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>];</div><div class="line"><span class="keyword">var</span> arr2 = [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</div><div class="line"><span class="built_in">Array</span>.prototype.push.apply(arr1, arr2);</div><div class="line"><span class="built_in">console</span>.log(arr1);  <span class="comment">// [0, 1, 2, 3, 4, 5]</span></div></pre></td></tr></table></figure></p>
+<p>如果使用 ES6，還可以利用<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator" target="_blank" rel="external">展開運算子</a><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr1 = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>];</div><div class="line"><span class="keyword">var</span> arr2 = [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</div><div class="line">arr1.push(...arr2); <span class="comment">// 沒錯，展開運算子就是"..."XD</span></div><div class="line"><span class="built_in">console</span>.log(arr1);  <span class="comment">// [0, 1, 2, 3, 4, 5]</span></div></pre></td></tr></table></figure></p>
+<hr>
+<h4 id="陣列清空"><a href="#陣列清空" class="headerlink" title="陣列清空"></a>陣列清空</h4><h5 id="宣告一個新的陣列"><a href="#宣告一個新的陣列" class="headerlink" title="宣告一個新的陣列"></a>宣告一個新的陣列</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr1 = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>];</div><div class="line"><span class="keyword">var</span> arr2 = arr1;  <span class="comment">// 宣告另一變數參照 arr1</span></div><div class="line">arr1 = [];</div><div class="line"><span class="built_in">console</span>.log(arr2); <span class="comment">// [0, 1, 2]</span></div></pre></td></tr></table></figure>
+<p>此方法雖然簡單，但是若該陣列有被別的變數參照時，會無法清除</p>
+<hr>
+<h5 id="將陣列長度設為-0"><a href="#將陣列長度設為-0" class="headerlink" title="將陣列長度設為 0"></a>將陣列長度設為 0</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr1 = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>];</div><div class="line"><span class="keyword">var</span> arr2 = arr1;  <span class="comment">// 宣告另一變數參照 arr1</span></div><div class="line">arr1.length = <span class="number">0</span>;</div><div class="line"><span class="built_in">console</span>.log(arr2); <span class="comment">// []</span></div></pre></td></tr></table></figure>
+<p>若想清除其他也參照此陣列的變數，那麼應該採用此方法</p>
+<hr>
+<h5 id="應該避免的各種方法…"><a href="#應該避免的各種方法…" class="headerlink" title="應該避免的各種方法….!!"></a>應該避免的各種方法….!!</h5><ul>
+<li><p><code>Array.splice()</code></p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr1 = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>];</div><div class="line"><span class="keyword">var</span> arr2 = arr1;</div><div class="line">arr1.splice(<span class="number">0</span>, arr1.length);</div><div class="line"><span class="built_in">console</span>.log(arr2); <span class="comment">// []</span></div></pre></td></tr></table></figure>
+</li>
+<li><p><code>Array.slice()</code></p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr1 = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>];</div><div class="line"><span class="keyword">var</span> arr2 = arr1;</div><div class="line">arr1 = arr1.slice(arr1.length); <span class="comment">// 需重新 assign</span></div><div class="line"><span class="built_in">console</span>.log(arr2);  <span class="comment">// [0, 1, 2]</span></div></pre></td></tr></table></figure>
+</li>
+<li><p><code>while</code> 迴圈 + <code>Array.pop()</code> ，速度最慢，千萬不要這樣寫!!</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr1 = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>];</div><div class="line"><span class="keyword">var</span> arr2 = arr1;</div><div class="line"><span class="keyword">while</span>(arr1.length) &#123;</div><div class="line">    arr1.pop();</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(arr2);  <span class="comment">// []</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<p>希望這些小技巧能幫助到那些跟我一樣對 JavaScript 不是太熟的朋友們～</p>
+<p>若文章內容有誤，還請不吝指教 &lt;(<em> </em>)&gt;</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;JavaScript 對小弟而言，真是一門似懂非懂的語言XD&lt;/p&gt;
+&lt;p&gt;儘管使用 JavaScript 也三年多，但畢竟 Java 後端工程師會用到的仍有限。&lt;/p&gt;
+&lt;p&gt;最近到處惡補後，蒐集整理了一些 JavaScript 小技巧，&lt;/p&gt;
+&lt;p&gt;一來做個紀錄，增加
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="https://coffee0127.github.io/blog/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="https://coffee0127.github.io/blog/tags/JavaScript/"/>
+    
+  </entry>
   
   <entry>
     <title>Angular2 自訂元素</title>
