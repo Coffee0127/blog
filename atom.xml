@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://coffee0127.github.io/blog/"/>
-  <updated>2016-09-24T15:36:15.614Z</updated>
+  <updated>2016-10-18T15:46:16.646Z</updated>
   <id>https://coffee0127.github.io/blog/</id>
   
   <author>
@@ -14,6 +14,68 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>User Timing API</title>
+    <link href="https://coffee0127.github.io/blog/2016/10/18/User-Timing-API/"/>
+    <id>https://coffee0127.github.io/blog/2016/10/18/User-Timing-API/</id>
+    <published>2016-10-18T14:27:24.000Z</published>
+    <updated>2016-10-18T15:46:16.646Z</updated>
+    
+    <content type="html"><![CDATA[<p>常常在寫 JavaScript 時，會想知道效能到底好不好之類的</p>
+<p>最直覺的方法就是測 JavaScript 執行時間</p>
+<p>開始之前先寫個假裝讓 JavaScript 執行很久的 <code>sleep</code> 函式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sleep</span>(<span class="params">seconds</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> e = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime() + (seconds * <span class="number">1000</span>);</div><div class="line">    <span class="keyword">while</span> (<span class="keyword">new</span> <span class="built_in">Date</span>().getTime() &lt;= e) &#123; &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>接著在呼叫函式的前後做個時間戳記，以便觀察時間長短</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// 設定起始時間戳記</span></div><div class="line">    <span class="keyword">var</span> start = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</div><div class="line"></div><div class="line">    sleep(<span class="number">3</span>);   <span class="comment">// 要測試效能的函式</span></div><div class="line"></div><div class="line">    <span class="comment">// 設定結束時間戳記</span></div><div class="line">    <span class="keyword">var</span> end = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</div><div class="line">    <span class="comment">// 測量時間間隔</span></div><div class="line">    <span class="keyword">var</span> duration = end - start;</div><div class="line"></div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'taking time: '</span> + duration + <span class="string">' ms'</span>);</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+<p>但也因此必須額外付出相對應的代價，最起碼需要宣告 <code>start</code> 變數</p>
+<p>現在，我們可以使用 <code>User Timing API</code> 來實現這件事情<br>同樣必須在呼叫函式前後做時間戳記，只是這次改為使用 <code>window.performance</code> 物件`<br>會使用到的程式碼如下</p>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Performance/mark" target="_blank" rel="external">performance.mark()</a>：設定時間戳記</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Performance/measure" target="_blank" rel="external">performance.measure()</a>：測量時間間隔</li>
+<li>取得 <a href="https://developer.mozilla.org/en-US/docs/Web/API/PerformanceEntry" target="_blank" rel="external">PerformanceEntry</a> 方法有以下三種<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Performance/getEntries" target="_blank" rel="external">performance.getEntries()</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Performance/getEntriesByName" target="_blank" rel="external">performance.getEntriesByName()</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Performance/getEntriesByType" target="_blank" rel="external">performance.getEntriesByType()</a></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// 設定起始時間戳記</span></div><div class="line">    performance.mark(<span class="string">'start'</span>);</div><div class="line"></div><div class="line">    sleep(<span class="number">3</span>);   <span class="comment">// 要測試效能的函式</span></div><div class="line"></div><div class="line">    <span class="comment">// 設定結束時間戳記</span></div><div class="line">    performance.mark(<span class="string">'end'</span>);</div><div class="line">    <span class="comment">// 測量時間間隔</span></div><div class="line">    performance.measure(<span class="string">'myPerformance'</span>, <span class="string">'start'</span>, <span class="string">'end'</span>);</div><div class="line"></div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'taking time: '</span> + performance.getEntriesByName(<span class="string">'myPerformance'</span>)[<span class="number">0</span>].duration + <span class="string">' ms'</span>);</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+<p>這邊使用 <code>performance.getEntriesByName()</code> 取得 <a href="https://developer.mozilla.org/en-US/docs/Web/API/PerformanceEntry" target="_blank" rel="external">PerformanceEntry</a> 物件<br>兩個較為重要屬性如下：</p>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/PerformanceEntry/startTime" target="_blank" rel="external">PerformanceEntry.startTime</a>：紀錄開始時間<ul>
+<li>要特別注意這邊回傳的是 <a href="https://developer.mozilla.org/en-US/docs/Web/API/DOMHighResTimeStamp" target="_blank" rel="external">DOMHighResTimeStamp</a>，即從頁面瀏覽起始開始測量的高解析度時間。</li>
+</ul>
+</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/PerformanceEntry/duration" target="_blank" rel="external">PerformanceEntry.duration</a>：紀錄效能持續間隔</li>
+</ul>
+<p>最後需要清除時間戳記，則是透過 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Performance/clearMarks" target="_blank" rel="external">performance.clearMarks()</a>，此方法會清除所有時間戳記。<br>當然若是想清除特定時間戳記，可以傳入你要清除的戳記名稱，例如 <code>performance.clearMarks(&#39;myPerformance&#39;)</code></p>
+<p>對應清除測量結果，則是透過 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Performance/clearMeasures" target="_blank" rel="external">performance.clearMeasures()</a></p>
+<h3 id="瀏覽器不支援怎麼辦？"><a href="#瀏覽器不支援怎麼辦？" class="headerlink" title="瀏覽器不支援怎麼辦？"></a>瀏覽器不支援怎麼辦？</h3><p>根據 MDN 上面所寫，各瀏覽器支援度如下<br><img src="/blog/2016/10/18/User-Timing-API/browser-compatibility.jpg" class="inline"></p>
+<p>不過還好已經有人寫好類似的 API 程式了：<a href="https://gist.github.com/pmeenan/5902672" target="_blank" rel="external">user-timing-rum.js</a></p>
+<p>透過時間戳記效能追蹤，讓自己撰寫出更好的程式碼 GO!ヾ( ⁰ д ⁰)ﾉ</p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Performance" target="_blank" rel="external">Performance</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/PerformanceEntry" target="_blank" rel="external">PerformanceEntry</a></li>
+<li><a href="https://www.sitepoint.com/10-html5-apis-worth-looking/" target="_blank" rel="external">10 HTML5 APIs Worth Looking Into</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;常常在寫 JavaScript 時，會想知道效能到底好不好之類的&lt;/p&gt;
+&lt;p&gt;最直覺的方法就是測 JavaScript 執行時間&lt;/p&gt;
+&lt;p&gt;開始之前先寫個假裝讓 JavaScript 執行很久的 &lt;code&gt;sleep&lt;/code&gt; 函式&lt;/p&gt;
+&lt;figure cl
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="https://coffee0127.github.io/blog/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="https://coffee0127.github.io/blog/tags/JavaScript/"/>
+    
+  </entry>
   
   <entry>
     <title>JavaScript 小技巧</title>
@@ -128,9 +190,9 @@
       <category term="Angular2" scheme="https://coffee0127.github.io/blog/categories/Angular2/"/>
     
     
-      <category term="Angular2" scheme="https://coffee0127.github.io/blog/tags/Angular2/"/>
-    
       <category term="JavaScript" scheme="https://coffee0127.github.io/blog/tags/JavaScript/"/>
+    
+      <category term="Angular2" scheme="https://coffee0127.github.io/blog/tags/Angular2/"/>
     
   </entry>
   
