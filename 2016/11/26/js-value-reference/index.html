@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>畫圖理解 JavaScript value reference | Xuan&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="這篇是上完保哥的《JavaScript 開發實戰：核心概念篇》筆記之一 (狀態顯示為拖稿)
+開始之前可以先看看 Stack Overflow 上這篇 Is JavaScript a pass-by-reference or pass-by-value language?
+看完程式碼好想有點感覺，但真相是仍舊什麼都不懂 (￣□￣|||)a
+以下就用保哥嫡傳畫圖理解來做說明 ㄟ(￣▽￣ㄟ)
+
+“物件是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="畫圖理解 JavaScript value reference">
+<meta property="og:url" content="https://coffee0127.github.io/blog/2016/11/26/js-value-reference/index.html">
+<meta property="og:site_name" content="Xuan's Blog">
+<meta property="og:description" content="這篇是上完保哥的《JavaScript 開發實戰：核心概念篇》筆記之一 (狀態顯示為拖稿)
+開始之前可以先看看 Stack Overflow 上這篇 Is JavaScript a pass-by-reference or pass-by-value language?
+看完程式碼好想有點感覺，但真相是仍舊什麼都不懂 (￣□￣|||)a
+以下就用保哥嫡傳畫圖理解來做說明 ㄟ(￣▽￣ㄟ)
+
+“物件是">
+<meta property="og:image" content="https://coffee0127.github.io/blog/blog/2016/11/26/js-value-reference/layout.jpg">
+<meta property="og:image" content="https://coffee0127.github.io/blog/blog/2016/11/26/js-value-reference/ex1-1.jpg">
+<meta property="og:image" content="https://coffee0127.github.io/blog/blog/2016/11/26/js-value-reference/ex1-2.jpg">
+<meta property="og:image" content="https://coffee0127.github.io/blog/blog/2016/11/26/js-value-reference/ex1-3.jpg">
+<meta property="og:image" content="https://coffee0127.github.io/blog/blog/2016/11/26/js-value-reference/ex1-4.jpg">
+<meta property="og:image" content="https://coffee0127.github.io/blog/blog/2016/11/26/js-value-reference/ex1-5.jpg">
+<meta property="og:image" content="https://coffee0127.github.io/blog/blog/2016/11/26/js-value-reference/ex1-6.jpg">
+<meta property="og:image" content="https://coffee0127.github.io/blog/blog/2016/11/26/js-value-reference/ex2-1.jpg">
+<meta property="og:image" content="https://coffee0127.github.io/blog/blog/2016/11/26/js-value-reference/ex2-2.jpg">
+<meta property="og:image" content="https://coffee0127.github.io/blog/blog/2016/11/26/js-value-reference/ex2-3.jpg">
+<meta property="og:image" content="https://coffee0127.github.io/blog/blog/2016/11/26/js-value-reference/ex3-1.jpg">
+<meta property="og:image" content="https://coffee0127.github.io/blog/blog/2016/11/26/js-value-reference/ex3-2.jpg">
+<meta property="og:image" content="https://coffee0127.github.io/blog/blog/2016/11/26/js-value-reference/ex3-3.jpg">
+<meta property="og:image" content="https://coffee0127.github.io/blog/blog/2016/11/26/js-value-reference/ex3-4.jpg">
+<meta property="og:image" content="https://coffee0127.github.io/blog/blog/2016/11/26/js-value-reference/ex3-5.jpg">
+<meta property="og:image" content="https://coffee0127.github.io/blog/blog/2016/11/26/js-value-reference/ex4-1.jpg">
+<meta property="og:image" content="https://coffee0127.github.io/blog/blog/2016/11/26/js-value-reference/ex5-1.jpg">
+<meta property="og:image" content="https://coffee0127.github.io/blog/blog/2016/11/26/js-value-reference/ex6-1.jpg">
+<meta property="og:image" content="https://coffee0127.github.io/blog/blog/2016/11/26/js-value-reference/ex7-1.jpg">
+<meta property="og:image" content="https://coffee0127.github.io/blog/blog/2016/11/26/js-value-reference/ex8-1.jpg">
+<meta property="og:image" content="https://coffee0127.github.io/blog/blog/2016/11/26/js-value-reference/ex8-2.jpg">
+<meta property="og:image" content="https://coffee0127.github.io/blog/blog/2016/11/26/js-value-reference/ex8-3.jpg">
+<meta property="og:image" content="https://coffee0127.github.io/blog/blog/2016/11/26/js-value-reference/ex8-4.jpg">
+<meta property="og:updated_time" content="2016-11-27T05:32:01.354Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="畫圖理解 JavaScript value reference">
+<meta name="twitter:description" content="這篇是上完保哥的《JavaScript 開發實戰：核心概念篇》筆記之一 (狀態顯示為拖稿)
+開始之前可以先看看 Stack Overflow 上這篇 Is JavaScript a pass-by-reference or pass-by-value language?
+看完程式碼好想有點感覺，但真相是仍舊什麼都不懂 (￣□￣|||)a
+以下就用保哥嫡傳畫圖理解來做說明 ㄟ(￣▽￣ㄟ)
+
+“物件是">
+<meta name="twitter:image" content="https://coffee0127.github.io/blog/blog/2016/11/26/js-value-reference/layout.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Xuan&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/blog/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/blog/css/style.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-82226610-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/blog/" id="logo">Xuan&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/blog/" id="subtitle">Do the right thing, Do the thing right</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/blog/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <a id="linkedin-link" class="nav-icon" href="https://www.linkedin.com/in/bo-xuan-fan-48218a85" title="Linkedin"></a>
+        <a id="fb-link" class="nav-icon" href="https://www.facebook.com/Boxuan.Fan" title="Facebook"></a>
+        <a id="github-link" class="nav-icon" href="https://github.com/Coffee0127" title="GitHub"></a>
+        
+          <a id="nav-rss-link" class="nav-icon" href="/blog/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜尋"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://coffee0127.github.io/blog"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-js-value-reference" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2016/11/26/js-value-reference/" class="article-date">
+  <time datetime="2016-11-26T15:49:27.000Z" itemprop="datePublished">2016-11-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/JavaScript/">JavaScript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  <h1 class="article-title" itemprop="name">
+    <a  href="/blog/2016/11/26/js-value-reference/">畫圖理解 JavaScript value reference</a>
+  </h1>
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        
+        
+          <p>這篇是上完<a href="https://www.facebook.com/will.fans" target="_blank" rel="external">保哥</a>的《JavaScript 開發實戰：核心概念篇》筆記之一 <del>(狀態顯示為拖稿)</del></p>
+<p>開始之前可以先看看 Stack Overflow 上這篇 <a href="http://stackoverflow.com/questions/518000/is-javascript-a-pass-by-reference-or-pass-by-value-language" target="_blank" rel="external">Is JavaScript a pass-by-reference or pass-by-value language?</a></p>
+<p>看完程式碼好想有點感覺，但真相是仍舊什麼都不懂 (￣□￣|||)a</p>
+<p>以下就用保哥嫡傳畫圖理解來做說明 ㄟ(￣▽￣ㄟ)</p>
+<hr>
+<h4 id="“物件是記憶體中的資料，跟變數關聯，並在執行時期擁有型別”"><a href="#“物件是記憶體中的資料，跟變數關聯，並在執行時期擁有型別”" class="headerlink" title="“物件是記憶體中的資料，跟變數關聯，並在執行時期擁有型別”"></a>“物件是記憶體中的資料，跟變數關聯，並在執行時期擁有型別”</h4><p>開始之前，先準備紙筆繪出以下樣板</p>
+<img src="/blog/2016/11/26/js-value-reference/layout.jpg" class="inline">
+<p>大致可分為兩區塊：</p>
+<ol>
+<li>程式碼區塊：就是用來寫 JavaScript 程式碼的…XD</li>
+<li>變數、記憶體空間、型別：說明“物件是<strong>記憶體中的資料</strong>，跟<strong>變數</strong>關聯，並在執行時期擁有<strong>型別</strong>”</li>
+</ol>
+<hr>
+<p>在以下程式碼片段執行的過程中，出現過幾個物件？幾個變數？幾種型別？<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a;</div><div class="line">a = <span class="number">1</span>;</div><div class="line">a = <span class="string">"a"</span>;</div><div class="line">a = <span class="string">"a"</span> + a;</div></pre></td></tr></table></figure></p>
+<p>接下來就將程式碼一步一步寫下，並繪製對應圖形～</p>
+<ol>
+<li><p>在程式碼區塊寫上 <code>var a</code>，並於變數畫上 a，因為沒給值因此是 <code>undefined</code>，那 <code>undefined</code> 的型別叫 <code>undefined</code></p>
+<img src="/blog/2016/11/26/js-value-reference/ex1-1.jpg" class="inline">
+</li>
+<li><p>將 1 assign 給 a，因此記憶體內會產生型別為 <code>number</code> 的 <code>1</code>，並且變數 <code>a</code> 指向 <code>1</code></p>
+<img src="/blog/2016/11/26/js-value-reference/ex1-2.jpg" class="inline">
+</li>
+<li><p>將字串 a assign 給 a，因此記憶體內會產生型別為 <code>string</code> 的 <code>a</code>，並且變數 <code>a</code> 指向 <code>a</code>；而原本的 <code>1</code> 則會被 GC (Garbage Collection)，因此改為虛線</p>
+<img src="/blog/2016/11/26/js-value-reference/ex1-3.jpg" class="inline">
+</li>
+<li><p>等號右邊先執行，因此記憶體內會再產生另一型別為 <code>string</code> 的 <code>a</code> (JavaScript 沒有所謂字串池觀念，因此會產生新的字串)，並且跟原本變數 <code>a</code> 指向的字串 <code>a</code> 相加後產生新的字串 <code>aa</code></p>
+<img src="/blog/2016/11/26/js-value-reference/ex1-4.jpg" class="inline">
+</li>
+<li><p>並將新產生的字串 <code>aa</code> assign 給 a (原本變數 <code>a</code> 指向的字串 <code>a</code> 及新產生的字串 <code>a</code> 都會被 GC)</p>
+<img src="/blog/2016/11/26/js-value-reference/ex1-5.jpg" class="inline">
+</li>
+<li><p>最後整理一下圖形</p>
+<img src="/blog/2016/11/26/js-value-reference/ex1-6.jpg" class="inline">
+<p>計算一下即可得知程式碼執行過程中，一共產生了 5 個物件、1 個變數、3 個型別 &lt;( ‵▽′)b good job</p>
+</li>
+</ol>
+<p><strong>請注意 <code>undefined</code> 並不會被 GC！</strong> 因為永遠有個變數指向 <code>undefined</code>，即 <code>window.undefined</code></p>
+<hr>
+<p>接下來看看<strong>物件</strong>的圖形又應該怎麼畫</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.myKey = <span class="number">1</span>;</div><div class="line"><span class="built_in">window</span>.myKey = <span class="number">2</span>;</div></pre></td></tr></table></figure>
+<ol>
+<li><p>如法炮製先寫上程式碼 <code>window.myKey = 1</code> 以及畫上變數 <code>window</code>，這邊比較不一樣的是在記憶體空間內除了用物件的表示法外，值的部分是另外指向記憶體空間的資料</p>
+<img src="/blog/2016/11/26/js-value-reference/ex2-1.jpg" class="inline">
+</li>
+<li><p>將 2 assign 給 myKey，因此記憶體內會產生型別為 <code>number</code> 的 <code>2</code>，並且變數 <code>myKey</code> 指向 <code>2</code>；而原本的 <code>1</code> 則會被 GC</p>
+<img src="/blog/2016/11/26/js-value-reference/ex2-2.jpg" class="inline">
+</li>
+<li><p>最後整理一下圖形</p>
+<img src="/blog/2016/11/26/js-value-reference/ex2-3.jpg" class="inline">
+</li>
+</ol>
+<hr>
+<p>看完以上兩個範例，應該稍微了解圖形應該怎麼畫，再來就是要多練習囉～</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = &#123; a1: <span class="number">1</span>, a2: <span class="number">2</span> &#125;;</div><div class="line"><span class="keyword">var</span> b = [];</div><div class="line">b.push(a);</div><div class="line">b.push(a);</div><div class="line">b[<span class="number">0</span>][<span class="string">'a1'</span>] = <span class="number">2</span>;</div><div class="line"><span class="comment">// b[1]['a1'] = ???</span></div></pre></td></tr></table></figure>
+<ol>
+<li><p>畫上變數 <code>a</code> 、指向的物件及物件的值</p>
+<img src="/blog/2016/11/26/js-value-reference/ex3-1.jpg" class="inline">
+</li>
+<li><p>畫上變數 <code>b</code> 及指向的陣列 (注意到 <code>Array</code> 的型別仍舊是 <code>object</code> )</p>
+<img src="/blog/2016/11/26/js-value-reference/ex3-2.jpg" class="inline">
+</li>
+<li><p>在陣列 <code>b</code> 加入兩次 <code>a</code></p>
+<img src="/blog/2016/11/26/js-value-reference/ex3-3.jpg" class="inline">
+</li>
+<li><p>將陣列 <code>b</code> 第一個元素的 <code>a1</code> 的值指向 <code>2</code>；而原本的 <code>1</code> 則會被 GC</p>
+<img src="/blog/2016/11/26/js-value-reference/ex3-4.jpg" class="inline">
+</li>
+<li><p>最後整理一下圖形，即可得知 <code>b[1][&#39;a1&#39;]</code> 是指向 <code>2</code></p>
+<img src="/blog/2016/11/26/js-value-reference/ex3-5.jpg" class="inline">
+</li>
+</ol>
+<hr>
+<p>更多的練習題～</p>
+<ul>
+<li><p>Example 1</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = &#123; a1: <span class="number">1</span>, a2: <span class="number">2</span> &#125;;</div><div class="line"><span class="keyword">var</span> b = [];</div><div class="line">b.push(a);</div><div class="line">b[<span class="number">0</span>][<span class="string">'a1'</span>] = <span class="number">2</span>;</div><div class="line"><span class="comment">// a['a1'] = ???</span></div></pre></td></tr></table></figure>
+  <img src="/blog/2016/11/26/js-value-reference/ex4-1.jpg" class="inline">
+</li>
+<li><p>Example 2</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = &#123; x: <span class="number">1</span> &#125;;</div><div class="line"><span class="keyword">var</span> b = a;</div><div class="line">a = &#123; x: <span class="number">2</span> &#125;;</div><div class="line"><span class="comment">// b.x = ???</span></div></pre></td></tr></table></figure>
+  <img src="/blog/2016/11/26/js-value-reference/ex5-1.jpg" class="inline">
+<ol>
+<li>變數 <code>a</code> 指向新的物件 <code>{ x: 2 }</code>，因此不影響變數 <code>b.x</code></li>
+<li>因為變數 <code>b</code> 仍指向物件 <code>{ x: 1 }</code> ，因此物件 <code>{ x: 1 }</code> 不會被 GC</li>
+</ol>
+</li>
+<li><p>Example 3</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = &#123; a1: <span class="number">1</span>, a2: <span class="number">2</span> &#125;;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">p</span>) </span>&#123;</div><div class="line">  p.a1 = <span class="number">2</span>;</div><div class="line">&#125;</div><div class="line">test(a);</div><div class="line"><span class="comment">// a.a1 = ???</span></div></pre></td></tr></table></figure>
+  <img src="/blog/2016/11/26/js-value-reference/ex6-1.jpg" class="inline">
+<ol>
+<li>變數 <code>p</code> 因為是宣告在 <code>function</code> 內，因此當 <code>function</code> 執行完畢會被銷毀</li>
+</ol>
+</li>
+<li><p>Example 4</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">p</span>) </span>&#123;</div><div class="line">  p = <span class="number">2</span>;</div><div class="line">&#125;</div><div class="line">test(a);</div><div class="line"><span class="comment">// a = ???</span></div></pre></td></tr></table></figure>
+  <img src="/blog/2016/11/26/js-value-reference/ex7-1.jpg" class="inline">
+<ol>
+<li>變數 <code>p</code> 指向的 <code>1</code> 跟原本變數 <code>a</code> 指向的 <code>1</code> 是不同的</li>
+<li>在 <code>function</code> 內產生的 <code>1</code> 和 <code>2</code> 會隨著 <code>function</code> 執行完畢而被 GC</li>
+<li>變數 <code>p</code> 因為是宣告在 <code>function</code> 內，因此當 <code>function</code> 執行完畢會被銷毀</li>
+</ol>
+</li>
+</ul>
+<hr>
+<p>進階題，理解同時 assign (如 <a href="https://github.com/jquery/jquery/blob/1.6.2/jquery.js" target="_blank" rel="external">jQuery</a> 的 <code>window.jQuery = window.$ = jQuery;</code> )</p>
+<ul>
+<li>Example 5<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = &#123; x: <span class="number">1</span> &#125;;</div><div class="line"><span class="keyword">var</span> b = a;</div><div class="line">a.x = a = &#123; x: <span class="number">2</span> &#125;;</div><div class="line"><span class="comment">// b.x = ???</span></div><div class="line"><span class="comment">// a.x = ???</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol>
+<li><p>畫上變數 <code>a</code> 、指向的物件及物件的值</p>
+<img src="/blog/2016/11/26/js-value-reference/ex8-1.jpg" class="inline">
+</li>
+<li><p>畫上變數 <code>b</code> ，並指向變數 <code>a</code> <strong>指向的物件</strong></p>
+<img src="/blog/2016/11/26/js-value-reference/ex8-2.jpg" class="inline">
+</li>
+<li><p>將【變數 <code>a</code>】及【變數 <code>a</code> 指向的物件 <code>{ x: 1}</code> 的變數 <code>x</code>】同時指向新的物件 <code>{ x: 2 }</code>；而原本的 <code>1</code> 則會被 GC</p>
+<img src="/blog/2016/11/26/js-value-reference/ex8-3.jpg" class="inline">
+</li>
+<li><p>最後整理一下圖形，即可得知 <code>b.x</code> 指向 <code>{ x: 2 }</code>，而 <code>a.x</code> 則是指向 <code>2</code></p>
+<img src="/blog/2016/11/26/js-value-reference/ex8-4.jpg" class="inline">
+</li>
+</ol>
+<p>所謂 “一圖抵萬言”，透過圖形理解 JavaScript value reference，可以避免產生很多淺在性的 BUG (即當你想的跟執行的不一致 😂)</p>
+
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://coffee0127.github.io/blog/2016/11/26/js-value-reference/" data-id="ciw07lypv0000bknxkd6e6x1m" class="article-share-link">Share</a>
+      
+        <a href="https://coffee0127.github.io/blog/2016/11/26/js-value-reference/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Must-Know/">Must-Know</a></li></ul>
+
+    </footer>
+  </div>
+  
+    <article class="article">
+  <div class="article-inner">
+    <div class="article-header">
+        <h3 class="article-title" style="font-size: 20px;">相關文章</h3>
+    </div>
+    <div class="article-entry">
+      <ul class="related-posts"><li class="related-posts-item"><a href="/blog/2016/10/18/User-Timing-API/">User Timing API</a><div class="related-posts-item-abstract">常常在寫 JavaScript 時，會想知道效能到底好不好之類的
+最直覺的方法就是測 JavaScript 執行時間
+開始之前先寫個假裝讓 JavaScript 執行很久的 sleep 函式
+1234function s</div></li><li class="related-posts-item"><a href="/blog/2016/09/20/Angular2-Custom-Element/">Angular2 自訂元素</a><div class="related-posts-item-abstract">Angular2 終於在 2016-09-15 發布正式版本，
+由於之前使用的 Angular CLI 建立的專案版本為 2.0.0-rc.5 才一直沒注意到這個問題，
+直到今天升級後發現專案直接掛了…XD
+
+錯誤訊息很</div></li><li class="related-posts-item"><a href="/blog/2016/09/24/js-tips/">JavaScript 小技巧</a><div class="related-posts-item-abstract">JavaScript 對小弟而言，真是一門似懂非懂的語言XD
+儘管使用 JavaScript 也三年多，但畢竟 Java 後端工程師會用到的仍有限。
+最近到處惡補後，蒐集整理了一些 JavaScript 小技巧，
+一來做</div></li>
+    </div>
+  </div>
+</article>
+    
+<nav id="article-nav">
+  
+  
+    <a href="/blog/2016/10/18/User-Timing-API/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">User Timing API</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分類</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/Angular2/">Angular2</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/Eclipse/">Eclipse</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/Hexo/">Hexo</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/Java/">Java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/JavaScript/">JavaScript</a><span class="category-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">標籤</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Angular2/">Angular2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Eclipse/">Eclipse</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Hexo/">Hexo</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Java/">Java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Must-Know/">Must-Know</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">標籤雲</h3>
+    <div class="widget tagcloud">
+      <a href="/blog/tags/Angular2/" style="font-size: 10px;">Angular2</a> <a href="/blog/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/blog/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/blog/tags/Java/" style="font-size: 13.33px;">Java</a> <a href="/blog/tags/JavaScript/" style="font-size: 16.67px;">JavaScript</a> <a href="/blog/tags/Must-Know/" style="font-size: 10px;">Must-Know</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">彙整</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/09/">九月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog/2016/11/26/js-value-reference/">畫圖理解 JavaScript value reference</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2016/10/18/User-Timing-API/">User Timing API</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2016/09/24/js-tips/">JavaScript 小技巧</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2016/09/20/Angular2-Custom-Element/">Angular2 自訂元素</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2016/09/10/abstract-class-vs-interface/">抽象類別 (Abstract Class) vs 介面 (Interface)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Bo-Xuan Fan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/blog/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/blog/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'xuans-blog';
+  
+  var disqus_url = 'https://coffee0127.github.io/blog/2016/11/26/js-value-reference/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css">
+  <script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/blog/js/script.js"></script>
+
+  </div>
+</body>
+</html>

@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://coffee0127.github.io/blog/2016/11/26/js-value-reference/</loc>
+    
+    <lastmod>2016-11-27T05:32:01.354Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://coffee0127.github.io/blog/2016/10/18/User-Timing-API/</loc>
     
     <lastmod>2016-10-18T15:46:16.646Z</lastmod>
