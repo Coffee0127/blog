@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://coffee0127.github.io/blog/"/>
-  <updated>2016-11-27T05:32:01.354Z</updated>
+  <updated>2016-11-28T08:06:12.343Z</updated>
   <id>https://coffee0127.github.io/blog/</id>
   
   <author>
@@ -14,6 +14,111 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaScript Hoisting</title>
+    <link href="https://coffee0127.github.io/blog/2016/11/28/js-hoisting/"/>
+    <id>https://coffee0127.github.io/blog/2016/11/28/js-hoisting/</id>
+    <published>2016-11-28T06:17:15.000Z</published>
+    <updated>2016-11-28T08:06:12.343Z</updated>
+    
+    <content type="html"><![CDATA[<p>這篇是上完<a href="https://www.facebook.com/will.fans" target="_blank" rel="external">保哥</a>的《JavaScript 開發實戰：核心概念篇》筆記之二 <del>(狀態仍顯示為拖稿)</del></p>
+<p><strong>Hoisting</strong> 翻成中文是提升，在 JavaScript 是要提升什麼呢？</p>
+<p>W3Schools <a href="http://www.w3schools.com/js/js_hoisting.asp" target="_blank" rel="external">JavaScript Hoisting</a> 是這樣定義的：<br><blockquote><p>Hoisting is JavaScript’s default behavior of moving declarations to the top.</p>
+<footer><strong>JavaScript Hoisting</strong><cite><a href="http://www.w3schools.com/js/js_hoisting.asp" target="_blank" rel="external">W3Schools</a></cite></footer></blockquote></p>
+<p>JavaScript 預設會把<strong>宣告(declarations)提升到最上端</strong></p>
+<p>即變數可以先使用，後宣告 (這跟一般程式語言不一樣XD)，以下兩段範例程式碼輸出結果是完全相同的</p>
+<ul>
+<li><p>Example 1</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">x = <span class="number">5</span>; <span class="comment">// Assign 5 to x</span></div><div class="line"><span class="built_in">console</span>.log(x);     <span class="comment">// print 5</span></div><div class="line"><span class="keyword">var</span> x; <span class="comment">// Declare x</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>Example 2</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> x; <span class="comment">// Declare x</span></div><div class="line">x = <span class="number">5</span>; <span class="comment">// Assign 5 to x</span></div><div class="line"><span class="built_in">console</span>.log(x);     <span class="comment">// print 5</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<p>再來談談哪些是<strong>宣告(declarations)</strong></p>
+<ul>
+<li>使用 <code>var</code> 關鍵字宣告的變數</li>
+<li>使用宣告式的具名函數 (如下宣告 foo 的 function)<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"I'm a function and my name is 'foo'"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>因此以下程式碼也是可以正常執行的</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">foo();</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"I'm a function and my name is 'foo'"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>那麼當 <code>var</code> 跟 <code>function</code> 一起來的時候該怎麼辦呢XD</p>
+<p>幾點原則如下：</p>
+<ol>
+<li><code>var</code> 僅提升變數宣告，而非初始化(Initializations)</li>
+<li><code>function</code> 則是連同函式定義提升</li>
+<li><code>var</code> 跟 <code>function</code> 先宣告者先提升</li>
+</ol>
+<p>看似理解了，但是還是需要多加練習才可以</p>
+<hr>
+<p>請問以下程式碼執行時會回傳什麼?</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> test();</div><div class="line">    <span class="keyword">var</span> test = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="number">1</span>; &#125;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="number">2</span>; &#125;</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+<ol>
+<li><p>逐行尋找 <code>var</code> 及 <code>function</code> 宣告，並提升至 function scope 的最上層。因此先將 <code>var test</code> 提升，初始化仍維持原位置</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> test;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> test();</div><div class="line">    test = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="number">1</span>; &#125;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="number">2</span>; &#125;</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+</li>
+<li><p>接著再往下遇到 <code>function test()</code>，一樣提升至 function scope 最上層 (注意提升後的位置，是在 <code>var test</code> 之後)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> test;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="number">2</span>; &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> test();</div><div class="line">    test = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="number">1</span>; &#125;</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+</li>
+<li><p>因此這樣便很清楚知道 <code>return test()</code> 會回傳 <code>2</code> &lt;( ‵▽′)b good job</p>
+</li>
+</ol>
+<hr>
+<p>再來一次逐步提升 (其實只是將 test 換個位置而已XD)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> test = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="number">1</span>; &#125;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="number">2</span>; &#125;</div><div class="line">    <span class="keyword">return</span> test();</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+<ol>
+<li><p>提升 <code>var test</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> test;</div><div class="line"></div><div class="line">    test = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="number">1</span>; &#125;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="number">2</span>; &#125;</div><div class="line">    <span class="keyword">return</span> test();</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+</li>
+<li><p>再來提升 <code>function</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> test;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="number">2</span>; &#125;</div><div class="line"></div><div class="line">    test = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="number">1</span>; &#125;</div><div class="line">    <span class="keyword">return</span> test();</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+</li>
+<li><p>因此這樣便很清楚知道 <code>return test()</code> 會回傳 <code>1</code> &lt;( ‵▽′)b good job<br>很神奇的，明明 <code>function</code> 比較晚宣告，但是最後仍是會回傳 <code>1</code> XD<br>這就是 JavaScript 迷人之處(?)</p>
+</li>
+</ol>
+<hr>
+<p>更多的練習題～ (還是將 test 換個位置而已XD)</p>
+<ul>
+<li><p>Example 1</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="number">2</span>; &#125;</div><div class="line">    <span class="keyword">var</span> test = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="number">1</span>; &#125;</div><div class="line">    <span class="keyword">return</span> test();</div><div class="line">&#125;)();   <span class="comment">// return 1</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>Example 2</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="number">2</span>; &#125;</div><div class="line">    <span class="keyword">return</span> test();</div><div class="line">    <span class="keyword">var</span> test = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="number">1</span>; &#125;</div><div class="line">&#125;)();   <span class="comment">// return 2</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>Example 3</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> test = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="number">1</span>; &#125;</div><div class="line">    <span class="keyword">return</span> test();</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="number">2</span>; &#125;</div><div class="line">&#125;)();   <span class="comment">// return 1</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>Example 4</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> test();</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="number">2</span>; &#125;</div><div class="line">    <span class="keyword">var</span> test = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="number">1</span>; &#125;</div><div class="line">&#125;)();   <span class="comment">// return 2</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<p>由於 JavaScript 允許函式在任何位置使用 <code>var</code> 宣告變數，因此要特別小心 <code>Hoisting</code> 造成的奇怪現象</p>
+<p>其實我們只要養成幾個好習慣</p>
+<ol>
+<li>將所有的變數在 <code>function</code> 一開始的時候即使用 <code>var</code> 宣告 (甚至是 <code>for</code> 迴圈的變數 <code>i</code>)<br><strong>若未採用 <code>var</code> 宣告會成為全域變數</strong>，要特別注意！</li>
+<li>函式採用 <code>函式表示法 (function expression)</code> 方式宣告 (即 <code>var test = function() {}</code>)</li>
+</ol>
+<p>可參考範例 <a href="https://github.com/jquery/jquery/blob/1.6.2/jquery.js" target="_blank" rel="external">jQuery</a> 25 行開始宣告一堆的變數、72 行宣告了 fcamelCase 函式…等</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;這篇是上完&lt;a href=&quot;https://www.facebook.com/will.fans&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;保哥&lt;/a&gt;的《JavaScript 開發實戰：核心概念篇》筆記之二 &lt;del&gt;(狀態仍顯示為拖稿)&lt;/del&gt;
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="https://coffee0127.github.io/blog/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="https://coffee0127.github.io/blog/tags/JavaScript/"/>
+    
+      <category term="Must-Know" scheme="https://coffee0127.github.io/blog/tags/Must-Know/"/>
+    
+  </entry>
   
   <entry>
     <title>畫圖理解 JavaScript value reference</title>
