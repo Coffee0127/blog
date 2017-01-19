@@ -76,7 +76,7 @@ ga('send', 'pageview');
         </h2>
       
     </div>
-    <div id="header-inner" class="inner">
+    <div id="header-inner" class="inner ovf-h">
       <nav id="main-nav">
         <a id="main-nav-toggle" class="nav-icon"></a>
         
@@ -95,10 +95,14 @@ ga('send', 'pageview');
           <a id="nav-rss-link" class="nav-icon" href="/blog/atom.xml" title="RSS Feed"></a>
         
         <a id="nav-search-btn" class="nav-icon" title="搜尋"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://coffee0127.github.io/blog"></form>
-      </div>
+        </nav>
+        <div id="search-form-wrap">
+          <div id="site_search" class="search-form">
+            <input id="local-search-input" type="search" name="q" results="0" class="form-control search-form-input" placeholder="Search" />
+            <span class="search-form-submit"></span>
+            <div id="local-search-result"></div>
+          </div>
+        </div>
     </div>
   </div>
 </header>
@@ -172,13 +176,13 @@ ga('send', 'pageview');
         <h3 class="article-title" style="font-size: 20px;">相關文章</h3>
     </div>
     <div class="article-entry">
-      <ul class="related-posts"><li class="related-posts-item"><a href="/blog/2016/10/18/User-Timing-API/">User Timing API</a><div class="related-posts-item-abstract">常常在寫 JavaScript 時，會想知道效能到底好不好之類的
-最直覺的方法就是測 JavaScript 執行時間
-開始之前先寫個假裝讓 JavaScript 執行很久的 sleep 函式
-1234function s</div></li><li class="related-posts-item"><a href="/blog/2016/11/26/js-value-reference/">畫圖理解 JavaScript value reference</a><div class="related-posts-item-abstract">這篇是上完保哥的《JavaScript 開發實戰：核心概念篇》筆記之一 (狀態顯示為拖稿)
+      <ul class="related-posts"><li class="related-posts-item"><a href="/blog/2016/11/26/js-value-reference/">畫圖理解 JavaScript value reference</a><div class="related-posts-item-abstract">這篇是上完保哥的《JavaScript 開發實戰：核心概念篇》筆記之一 (狀態顯示為拖稿)
 開始之前可以先看看 Stack Overflow 上這篇 Is JavaScript a pass-by-reference o</div></li><li class="related-posts-item"><a href="/blog/2016/11/28/js-hoisting/">JavaScript Hoisting</a><div class="related-posts-item-abstract">這篇是上完保哥的《JavaScript 開發實戰：核心概念篇》筆記之二 (狀態仍顯示為拖稿)
 Hoisting 翻成中文是提升，在 JavaScript 是要提升什麼呢？
-W3Schools JavaScript Hoi</div></li><li class="related-posts-item"><a href="/blog/2016/09/24/js-tips/">JavaScript 小技巧</a><div class="related-posts-item-abstract">JavaScript 對小弟而言，真是一門似懂非懂的語言XD
+W3Schools JavaScript Hoi</div></li><li class="related-posts-item"><a href="/blog/2016/10/18/User-Timing-API/">User Timing API</a><div class="related-posts-item-abstract">常常在寫 JavaScript 時，會想知道效能到底好不好之類的
+最直覺的方法就是測 JavaScript 執行時間
+開始之前先寫個假裝讓 JavaScript 執行很久的 sleep 函式
+1234function s</div></li><li class="related-posts-item"><a href="/blog/2016/09/24/js-tips/">JavaScript 小技巧</a><div class="related-posts-item-abstract">JavaScript 對小弟而言，真是一門似懂非懂的語言XD
 儘管使用 JavaScript 也三年多，但畢竟 Java 後端工程師會用到的仍有限。
 最近到處惡補後，蒐集整理了一些 JavaScript 小技巧，
 一來做</div></li>
@@ -334,7 +338,15 @@ W3Schools JavaScript Hoi</div></li><li class="related-posts-item"><a href="/blog
 
 
 <script src="/blog/js/script.js"></script>
-
+<script src="/blog/js/search.js"></script>
+<script type="text/javascript">
+     var search_path = "search.xml";
+     if (search_path.length == 0) {
+     	search_path = "search.xml";
+     }
+     var path = "/blog/" + search_path;
+     searchFunc(path, 'local-search-input', 'local-search-result');
+</script>
   </div>
 </body>
 </html>
