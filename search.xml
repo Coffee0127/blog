@@ -1,28 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Xuan&#39;s Blog</title>
-  <subtitle>Do the right thing, Do the thing right</subtitle>
-  <link href="/blog/atom.xml" rel="self"/>
+<search>
   
-  <link href="https://coffee0127.github.io/blog/"/>
-  <updated>2017-02-19T15:49:10.987Z</updated>
-  <id>https://coffee0127.github.io/blog/</id>
   
-  <author>
-    <name>Bo-Xuan Fan</name>
     
-  </author>
-  
-  <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>JavaScript Hoisting</title>
-    <link href="https://coffee0127.github.io/blog/2016/11/28/js-hoisting/"/>
-    <id>https://coffee0127.github.io/blog/2016/11/28/js-hoisting/</id>
-    <published>2016-11-28T06:17:15.000Z</published>
-    <updated>2017-02-19T15:49:10.987Z</updated>
-    
-    <content type="html"><![CDATA[<p>=== 2017-02-19 Updated ===<br>因原文寫得不夠清楚<del>(其實是之前亂寫一通)</del>，導致錯誤的理解</p>
+    <entry>
+      <title><![CDATA[JavaScript Hoisting]]></title>
+      <url>https://coffee0127.github.io/blog/blog/2016/11/28/js-hoisting/</url>
+      <content type="html"><![CDATA[<p>=== 2017-02-19 Updated ===<br>因原文寫得不夠清楚<del>(其實是之前亂寫一通)</del>，導致錯誤的理解</p>
 <p>先補上 MDN 的說明：<br><blockquote><p>Hoisting was thought up as a general way of thinking about how execution context (specifically the creation and execution phases) work in JavaScript.<br>For example, hoisting teaches that variable and function declarations are physically moved to the top your coding, but this is not what happens at all.<br>What does happen is the variable and function declarations are put into memory during the compile phase, but stays exactly where you typed it in your coding.  </p>
 <footer><strong>Hoisting</strong><cite><a href="https://developer.mozilla.org/zh-TW/docs/Glossary/Hoisting" target="_blank" rel="external">MDN</a></cite></footer></blockquote></p>
 <p>第一段是說 Hoisting 通常被用來理解 JavaScript 的 execution context 如何運行(老實說我現在還是不知道該怎麼翻 context，翻”上下文”總覺得怪怪的…)，分為 creation phase 及 execution phase<br>第二段是說 hoisting 總是教我們把 變數宣告 及 宣告式函數 “物理上” 的提升到最上端，但<strong>實際上不是這麼一回事</strong>！<br>第三段則是說 變數宣告 及 宣告式函數 會在 compile phase 存入記憶體內，但實際上仍舊待在原本程式碼的位置</p>
@@ -112,31 +96,12 @@
 <hr>
 <p>=== 2017-02-19 Updated ===<br>由於 <code>var</code> 是屬於 function scoped (或宣告全域變數)，因此到了 ES6 便有了 <a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Statements/let" target="_blank" rel="external">let</a> 及 <a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Statements/const" target="_blank" rel="external">const</a> 屬於 block scoped (也不會汙染全域變數) 新的宣告關鍵字</p>
 ]]></content>
+    </entry>
     
-    <summary type="html">
-    
-      &lt;p&gt;=== 2017-02-19 Updated ===&lt;br&gt;因原文寫得不夠清楚&lt;del&gt;(其實是之前亂寫一通)&lt;/del&gt;，導致錯誤的理解&lt;/p&gt;
-&lt;p&gt;先補上 MDN 的說明：&lt;br&gt;&lt;blockquote&gt;&lt;p&gt;Hoisting was thought up as a 
-    
-    </summary>
-    
-      <category term="JavaScript" scheme="https://coffee0127.github.io/blog/categories/JavaScript/"/>
-    
-    
-      <category term="JavaScript" scheme="https://coffee0127.github.io/blog/tags/JavaScript/"/>
-    
-      <category term="Must-Know" scheme="https://coffee0127.github.io/blog/tags/Must-Know/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>畫圖理解 JavaScript value reference</title>
-    <link href="https://coffee0127.github.io/blog/2016/11/26/js-value-reference/"/>
-    <id>https://coffee0127.github.io/blog/2016/11/26/js-value-reference/</id>
-    <published>2016-11-26T15:49:27.000Z</published>
-    <updated>2016-11-27T14:48:59.150Z</updated>
-    
-    <content type="html"><![CDATA[<p>這篇是上完<a href="https://www.facebook.com/will.fans" target="_blank" rel="external">保哥</a>的《JavaScript 開發實戰：核心概念篇》筆記之一 <del>(狀態顯示為拖稿)</del></p>
+    <entry>
+      <title><![CDATA[畫圖理解 JavaScript value reference]]></title>
+      <url>https://coffee0127.github.io/blog/blog/2016/11/26/js-value-reference/</url>
+      <content type="html"><![CDATA[<p>這篇是上完<a href="https://www.facebook.com/will.fans" target="_blank" rel="external">保哥</a>的《JavaScript 開發實戰：核心概念篇》筆記之一 <del>(狀態顯示為拖稿)</del></p>
 <p>開始之前可以先看看 Stack Overflow 上這篇 <a href="http://stackoverflow.com/questions/518000/is-javascript-a-pass-by-reference-or-pass-by-value-language" target="_blank" rel="external">Is JavaScript a pass-by-reference or pass-by-value language?</a></p>
 <p>看完程式碼好想有點感覺，但真相是仍舊什麼都不懂 (￣□￣|||)a</p>
 <p>以下就用保哥嫡傳畫圖理解來做說明 ㄟ(￣▽￣ㄟ)</p>
@@ -261,30 +226,12 @@
 </ol>
 <p>所謂 “一圖抵萬言”，透過圖形理解 JavaScript value reference，可以避免產生很多淺在性的 BUG (即當你想的跟執行的不一致 😂)</p>
 ]]></content>
+    </entry>
     
-    <summary type="html">
-    
-      &lt;p&gt;這篇是上完&lt;a href=&quot;https://www.facebook.com/will.fans&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;保哥&lt;/a&gt;的《JavaScript 開發實戰：核心概念篇》筆記之一 &lt;del&gt;(狀態顯示為拖稿)&lt;/del&gt;&lt;
-    
-    </summary>
-    
-      <category term="JavaScript" scheme="https://coffee0127.github.io/blog/categories/JavaScript/"/>
-    
-    
-      <category term="JavaScript" scheme="https://coffee0127.github.io/blog/tags/JavaScript/"/>
-    
-      <category term="Must-Know" scheme="https://coffee0127.github.io/blog/tags/Must-Know/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>User Timing API</title>
-    <link href="https://coffee0127.github.io/blog/2016/10/18/User-Timing-API/"/>
-    <id>https://coffee0127.github.io/blog/2016/10/18/User-Timing-API/</id>
-    <published>2016-10-18T14:27:24.000Z</published>
-    <updated>2016-11-27T14:48:59.148Z</updated>
-    
-    <content type="html"><![CDATA[<p>常常在寫 JavaScript 時，會想知道效能到底好不好之類的</p>
+    <entry>
+      <title><![CDATA[User Timing API]]></title>
+      <url>https://coffee0127.github.io/blog/blog/2016/10/18/User-Timing-API/</url>
+      <content type="html"><![CDATA[<p>常常在寫 JavaScript 時，會想知道效能到底好不好之類的</p>
 <p>最直覺的方法就是測 JavaScript 執行時間</p>
 <p>開始之前先寫個假裝讓 JavaScript 執行很久的 <code>sleep</code> 函式</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sleep</span>(<span class="params">seconds</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> e = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime() + (seconds * <span class="number">1000</span>);</div><div class="line">    <span class="keyword">while</span> (<span class="keyword">new</span> <span class="built_in">Date</span>().getTime() &lt;= e) &#123; &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -322,31 +269,12 @@
 <li><a href="https://www.sitepoint.com/10-html5-apis-worth-looking/" target="_blank" rel="external">10 HTML5 APIs Worth Looking Into</a></li>
 </ul>
 ]]></content>
+    </entry>
     
-    <summary type="html">
-    
-      &lt;p&gt;常常在寫 JavaScript 時，會想知道效能到底好不好之類的&lt;/p&gt;
-&lt;p&gt;最直覺的方法就是測 JavaScript 執行時間&lt;/p&gt;
-&lt;p&gt;開始之前先寫個假裝讓 JavaScript 執行很久的 &lt;code&gt;sleep&lt;/code&gt; 函式&lt;/p&gt;
-&lt;figure cl
-    
-    </summary>
-    
-      <category term="JavaScript" scheme="https://coffee0127.github.io/blog/categories/JavaScript/"/>
-    
-    
-      <category term="JavaScript" scheme="https://coffee0127.github.io/blog/tags/JavaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JavaScript 小技巧</title>
-    <link href="https://coffee0127.github.io/blog/2016/09/24/js-tips/"/>
-    <id>https://coffee0127.github.io/blog/2016/09/24/js-tips/</id>
-    <published>2016-09-24T07:15:35.000Z</published>
-    <updated>2016-11-27T14:48:59.147Z</updated>
-    
-    <content type="html"><![CDATA[<p>JavaScript 對小弟而言，真是一門似懂非懂的語言XD</p>
+    <entry>
+      <title><![CDATA[JavaScript 小技巧]]></title>
+      <url>https://coffee0127.github.io/blog/blog/2016/09/24/js-tips/</url>
+      <content type="html"><![CDATA[<p>JavaScript 對小弟而言，真是一門似懂非懂的語言XD</p>
 <p>儘管使用 JavaScript 也三年多，但畢竟 Java 後端工程師會用到的仍有限。</p>
 <p>最近到處惡補後，蒐集整理了一些 JavaScript 小技巧，</p>
 <p>一來做個紀錄，增加印象未來也方便複習XD</p>
@@ -395,31 +323,12 @@
 <p>希望這些小技巧能幫助到那些跟我一樣對 JavaScript 不是太熟的朋友們～</p>
 <p>若文章內容有誤，還請不吝指教 &lt;(＿ ＿)&gt;</p>
 ]]></content>
+    </entry>
     
-    <summary type="html">
-    
-      &lt;p&gt;JavaScript 對小弟而言，真是一門似懂非懂的語言XD&lt;/p&gt;
-&lt;p&gt;儘管使用 JavaScript 也三年多，但畢竟 Java 後端工程師會用到的仍有限。&lt;/p&gt;
-&lt;p&gt;最近到處惡補後，蒐集整理了一些 JavaScript 小技巧，&lt;/p&gt;
-&lt;p&gt;一來做個紀錄，增加
-    
-    </summary>
-    
-      <category term="JavaScript" scheme="https://coffee0127.github.io/blog/categories/JavaScript/"/>
-    
-    
-      <category term="JavaScript" scheme="https://coffee0127.github.io/blog/tags/JavaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Angular2 自訂元素</title>
-    <link href="https://coffee0127.github.io/blog/2016/09/20/Angular2-Custom-Element/"/>
-    <id>https://coffee0127.github.io/blog/2016/09/20/Angular2-Custom-Element/</id>
-    <published>2016-09-20T11:53:24.000Z</published>
-    <updated>2016-11-27T14:48:59.142Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="https://angular.io/" target="_blank" rel="external">Angular2</a> 終於在 2016-09-15 發布正式版本，</p>
+    <entry>
+      <title><![CDATA[Angular2 自訂元素]]></title>
+      <url>https://coffee0127.github.io/blog/blog/2016/09/20/Angular2-Custom-Element/</url>
+      <content type="html"><![CDATA[<p><a href="https://angular.io/" target="_blank" rel="external">Angular2</a> 終於在 2016-09-15 發布正式版本，</p>
 <p>由於之前使用的 <a href="https://cli.angular.io/" target="_blank" rel="external">Angular CLI</a> 建立的專案版本為 <code>2.0.0-rc.5</code> 才一直沒注意到這個問題，</p>
 <p>直到今天升級後發現專案直接掛了…XD</p>
 <img src="/blog/2016/09/20/Angular2-Custom-Element/template-parse-errors.jpg" class="inline">
@@ -441,31 +350,12 @@
 <li><a href="https://angular.io/docs/ts/latest/api/core/index/NgModule-interface.html" target="_blank" rel="external">Angular2 NgModule</a></li>
 </ul>
 ]]></content>
+    </entry>
     
-    <summary type="html">
-    
-      &lt;p&gt;&lt;a href=&quot;https://angular.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Angular2&lt;/a&gt; 終於在 2016-09-15 發布正式版本，&lt;/p&gt;
-&lt;p&gt;由於之前使用的 &lt;a href=&quot;https://cli.angu
-    
-    </summary>
-    
-      <category term="Angular2" scheme="https://coffee0127.github.io/blog/categories/Angular2/"/>
-    
-    
-      <category term="Angular2" scheme="https://coffee0127.github.io/blog/tags/Angular2/"/>
-    
-      <category term="JavaScript" scheme="https://coffee0127.github.io/blog/tags/JavaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>抽象類別 (Abstract Class) vs 介面 (Interface)</title>
-    <link href="https://coffee0127.github.io/blog/2016/09/10/abstract-class-vs-interface/"/>
-    <id>https://coffee0127.github.io/blog/2016/09/10/abstract-class-vs-interface/</id>
-    <published>2016-09-10T12:20:40.000Z</published>
-    <updated>2016-11-27T14:48:59.141Z</updated>
-    
-    <content type="html"><![CDATA[<p>許多人初學 Java 時，或許難以理解 <em>抽象類別</em> 和 <em>介面</em> 的差異，<br>簡單整理摘要如下，若有誤還望各位先進指點 Orz</p>
+    <entry>
+      <title><![CDATA[抽象類別 (Abstract Class) vs 介面 (Interface)]]></title>
+      <url>https://coffee0127.github.io/blog/blog/2016/09/10/abstract-class-vs-interface/</url>
+      <content type="html"><![CDATA[<p>許多人初學 Java 時，或許難以理解 <em>抽象類別</em> 和 <em>介面</em> 的差異，<br>簡單整理摘要如下，若有誤還望各位先進指點 Orz</p>
 <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h3 id="抽象類別-Abstract-Class"><a href="#抽象類別-Abstract-Class" class="headerlink" title="抽象類別 (Abstract Class)"></a>抽象類別 (Abstract Class)</h3><ol>
 <li>使用 <code>abstract</code> 定義抽象類別 (不得宣告為 <code>final class</code>)</li>
 <li><p>無法實體化的類別 (即無法透過 <code>new</code> 關鍵字產生實體)<br> 或許會看到如下這種程式碼</p>
@@ -545,29 +435,12 @@
 <li><a href="https://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html" target="_blank" rel="external">Interfaces</a></li>
 </ul>
 ]]></content>
+    </entry>
     
-    <summary type="html">
-    
-      &lt;p&gt;許多人初學 Java 時，或許難以理解 &lt;em&gt;抽象類別&lt;/em&gt; 和 &lt;em&gt;介面&lt;/em&gt; 的差異，&lt;br&gt;簡單整理摘要如下，若有誤還望各位先進指點 Orz&lt;/p&gt;
-&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;
-    
-    </summary>
-    
-      <category term="Java" scheme="https://coffee0127.github.io/blog/categories/Java/"/>
-    
-    
-      <category term="Java" scheme="https://coffee0127.github.io/blog/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Eclipse Properties 顯示中文字</title>
-    <link href="https://coffee0127.github.io/blog/2016/08/15/eclipse-poperties/"/>
-    <id>https://coffee0127.github.io/blog/2016/08/15/eclipse-poperties/</id>
-    <published>2016-08-15T10:24:08.000Z</published>
-    <updated>2016-11-27T14:48:59.124Z</updated>
-    
-    <content type="html"><![CDATA[<p>做專案時，往往需要做國際化 (internationalization，簡稱 i18n，因為總共18個字 XD)</p>
+    <entry>
+      <title><![CDATA[Eclipse Properties 顯示中文字]]></title>
+      <url>https://coffee0127.github.io/blog/blog/2016/08/15/eclipse-poperties/</url>
+      <content type="html"><![CDATA[<p>做專案時，往往需要做國際化 (internationalization，簡稱 i18n，因為總共18個字 XD)</p>
 <p>Java 存放這些多國語言檔案使用 properties 檔案，由於該檔案採用 ISO-8859-1 編碼，</p>
 <p>Eclipse 針對那些非英文字會自動轉換為 Unicode，如下圖所示</p>
 <p>輸入階段仍是中文字 <img src="/blog/2016/08/15/eclipse-poperties/before.jpg" class="inline"></p>
@@ -595,32 +468,12 @@
 <li><a href="http://openhome.cc/Gossip/Rails/i18n.html" target="_blank" rel="external">簡介 i18n</a></li>
 </ul>
 ]]></content>
+    </entry>
     
-    <summary type="html">
-    
-      &lt;p&gt;做專案時，往往需要做國際化 (internationalization，簡稱 i18n，因為總共18個字 XD)&lt;/p&gt;
-&lt;p&gt;Java 存放這些多國語言檔案使用 properties 檔案，由於該檔案採用 ISO-8859-1 編碼，&lt;/p&gt;
-&lt;p&gt;Eclipse 針對那
-    
-    </summary>
-    
-      <category term="Eclipse" scheme="https://coffee0127.github.io/blog/categories/Eclipse/"/>
-    
-    
-      <category term="Eclipse" scheme="https://coffee0127.github.io/blog/tags/Eclipse/"/>
-    
-      <category term="Java" scheme="https://coffee0127.github.io/blog/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo 相關文章摘要</title>
-    <link href="https://coffee0127.github.io/blog/2016/08/11/hexo-abstract-of-related-post/"/>
-    <id>https://coffee0127.github.io/blog/2016/08/11/hexo-abstract-of-related-post/</id>
-    <published>2016-08-11T15:49:26.000Z</published>
-    <updated>2017-02-19T15:49:10.986Z</updated>
-    
-    <content type="html"><![CDATA[<p>在 <a href="/blog/2016/08/09/hexo-configuration/#加入相關文章">Hexo 相關設定</a> 有跟各位介紹過新增“相關文章”功能，</p>
+    <entry>
+      <title><![CDATA[Hexo 相關文章摘要]]></title>
+      <url>https://coffee0127.github.io/blog/blog/2016/08/11/hexo-abstract-of-related-post/</url>
+      <content type="html"><![CDATA[<p>在 <a href="/blog/2016/08/09/hexo-configuration/#加入相關文章">Hexo 相關設定</a> 有跟各位介紹過新增“相關文章”功能，</p>
 <p>老實說小弟覺得只有標題實在是太空洞了，因此看看原本的 <a href="https://github.com/nkmk/hexo-list-related-posts" target="_blank" rel="external">hexo-list-related-posts</a> 是否有相關功能</p>
 <p><del>測試了一下發現其實是有的，只不過原作者並未提供 API 讓人使用，那就只好自己來囉&lt;(￣︶￣)&gt;</del><br>=== 2016-09-11 Updated ===<br>原作者已接受 PR，因此不需要再自行修改。不過沒有設置 tags 導致的錯誤，原作者並未修復，因此還是要修改一下XD</p>
 <h3 id="安裝-striptags"><a href="#安裝-striptags" class="headerlink" title="安裝 striptags"></a>安裝 striptags</h3><p>先確認你的 <code>&lt;repository&gt;/node_modules/</code> 是否有 <code>striptags</code> 模組，<br>若未看見該模組再透過以下指令安裝<br><code>$ npm install striptags</code></p>
@@ -643,29 +496,12 @@
 <h3 id="加入-CSS"><a href="#加入-CSS" class="headerlink" title="加入 CSS"></a>加入 CSS</h3><p>修改 <code>themes/&lt;主題名稱&gt;/source/css/_partial/article.styl</code>，加入以下樣式<br>重點在於 <code>text-overflow: ellipsis</code> 讓多餘的文字以 <code>...</code> 方式呈現<br><figure class="highlight styl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">ul</span><span class="selector-class">.related-posts</span></div><div class="line">  <span class="attribute">margin-left</span>: <span class="number">0</span></div><div class="line">  <span class="attribute">margin-right</span>: <span class="number">0</span></div><div class="line">  <span class="attribute">padding-left</span>: <span class="number">0</span></div><div class="line">  <span class="attribute">list-style</span>: none</div><div class="line">  <span class="selector-tag">li</span><span class="selector-class">.related-posts-item</span></div><div class="line">    <span class="attribute">font-size</span>: <span class="number">16px</span></div><div class="line">    <span class="selector-tag">div</span><span class="selector-class">.related-posts-item-abstract</span></div><div class="line">      <span class="attribute">overflow</span>: hidden</div><div class="line">      <span class="attribute">white-space</span>: nowrap</div><div class="line">      <span class="attribute">text-overflow</span>: ellipsis</div><div class="line">      <span class="attribute">color</span>: rgb(<span class="number">136</span>, <span class="number">136</span>, <span class="number">136</span>)</div><div class="line">      <span class="attribute">margin-bottom</span>: <span class="number">10px</span></div><div class="line">      <span class="attribute">font-size</span>: <span class="number">85%</span></div></pre></td></tr></table></figure></p>
 <p>這個<del>世界</del>相關文章不再這麼空洞了 (=´∀｀)人(´∀｀=)</p>
 ]]></content>
+    </entry>
     
-    <summary type="html">
-    
-      &lt;p&gt;在 &lt;a href=&quot;/blog/2016/08/09/hexo-configuration/#加入相關文章&quot;&gt;Hexo 相關設定&lt;/a&gt; 有跟各位介紹過新增“相關文章”功能，&lt;/p&gt;
-&lt;p&gt;老實說小弟覺得只有標題實在是太空洞了，因此看看原本的 &lt;a href=&quot;https
-    
-    </summary>
-    
-      <category term="Hexo" scheme="https://coffee0127.github.io/blog/categories/Hexo/"/>
-    
-    
-      <category term="Hexo" scheme="https://coffee0127.github.io/blog/tags/Hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo 分享連結失效</title>
-    <link href="https://coffee0127.github.io/blog/2016/08/10/hexo-share-link-fix/"/>
-    <id>https://coffee0127.github.io/blog/2016/08/10/hexo-share-link-fix/</id>
-    <published>2016-08-10T13:29:09.000Z</published>
-    <updated>2016-11-27T14:48:59.064Z</updated>
-    
-    <content type="html"><![CDATA[<p>今天想來試試看分享功能，結果 FB 連結分享出來的卻是 404….XD</p>
+    <entry>
+      <title><![CDATA[Hexo 分享連結失效]]></title>
+      <url>https://coffee0127.github.io/blog/blog/2016/08/10/hexo-share-link-fix/</url>
+      <content type="html"><![CDATA[<p>今天想來試試看分享功能，結果 FB 連結分享出來的卻是 404….XD</p>
 <p>看了一下分享的網址 <a href="https://coffee0127.github.io/blog/blog/2016/08/09/hexo-configuration/">https://coffee0127.github.io/blog/blog/2016/08/09/hexo-configuration/</a></p>
 <p>欸 怎麼網址長出了兩個 <code>/blog</code> (￣□￣|||)a</p>
 <p>Google 了一下發現官網有人提出了一樣的問題 <a href="https://github.com/hexojs/hexo/issues/1812" target="_blank" rel="external">share link wrong with sub path</a></p>
@@ -680,29 +516,12 @@
 <li><a href="https://github.com/hexojs/hexo/blob/master/lib/models/post.js#L59" target="_blank" rel="external">https://github.com/hexojs/hexo/blob/master/lib/models/post.js#L59</a></li>
 </ul>
 ]]></content>
+    </entry>
     
-    <summary type="html">
-    
-      &lt;p&gt;今天想來試試看分享功能，結果 FB 連結分享出來的卻是 404….XD&lt;/p&gt;
-&lt;p&gt;看了一下分享的網址 &lt;a href=&quot;https://coffee0127.github.io/blog/blog/2016/08/09/hexo-configuration/&quot;&gt;http
-    
-    </summary>
-    
-      <category term="Hexo" scheme="https://coffee0127.github.io/blog/categories/Hexo/"/>
-    
-    
-      <category term="Hexo" scheme="https://coffee0127.github.io/blog/tags/Hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo 相關設定</title>
-    <link href="https://coffee0127.github.io/blog/2016/08/09/hexo-configuration/"/>
-    <id>https://coffee0127.github.io/blog/2016/08/09/hexo-configuration/</id>
-    <published>2016-08-09T09:31:38.000Z</published>
-    <updated>2016-11-27T14:48:59.058Z</updated>
-    
-    <content type="html"><![CDATA[<p>經過前兩篇 <a href="/blog/2016/08/08/how-to-install-hexo/">Hexo 安裝</a> &amp; <a href="/blog/2016/08/09/how-to-deploy-to-git">Hexo 佈署</a></p>
+    <entry>
+      <title><![CDATA[Hexo 相關設定]]></title>
+      <url>https://coffee0127.github.io/blog/blog/2016/08/09/hexo-configuration/</url>
+      <content type="html"><![CDATA[<p>經過前兩篇 <a href="/blog/2016/08/08/how-to-install-hexo/">Hexo 安裝</a> &amp; <a href="/blog/2016/08/09/how-to-deploy-to-git">Hexo 佈署</a></p>
 <p>我們已經可以開始編寫 Blog 了&lt;(￣︶￣)&gt;</p>
 <p>但是還是過於陽春，因此這篇會講些簡單設定 Hexo，看起來更有模有樣。</p>
 <h3 id="網頁-Icon"><a href="#網頁-Icon" class="headerlink" title="網頁 Icon"></a>網頁 Icon</h3><p><em>Icon 代表著網站的精神呢，這當然很重要啊ˋ(′ε‵”)ˊ</em></p>
@@ -776,29 +595,12 @@
 <li><a href="http://longxdragon.github.io/2015/03/07/Hexo-GitHub-create-blog/" target="_blank" rel="external">Hexo+GitHub创建博客及使用技巧</a></li>
 </ul>
 ]]></content>
+    </entry>
     
-    <summary type="html">
-    
-      &lt;p&gt;經過前兩篇 &lt;a href=&quot;/blog/2016/08/08/how-to-install-hexo/&quot;&gt;Hexo 安裝&lt;/a&gt; &amp;amp; &lt;a href=&quot;/blog/2016/08/09/how-to-deploy-to-git&quot;&gt;Hexo 佈署&lt;/a&gt;&lt;/p&gt;
-&lt;
-    
-    </summary>
-    
-      <category term="Hexo" scheme="https://coffee0127.github.io/blog/categories/Hexo/"/>
-    
-    
-      <category term="Hexo" scheme="https://coffee0127.github.io/blog/tags/Hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo 佈署</title>
-    <link href="https://coffee0127.github.io/blog/2016/08/09/how-to-deploy-to-git/"/>
-    <id>https://coffee0127.github.io/blog/2016/08/09/how-to-deploy-to-git/</id>
-    <published>2016-08-09T06:21:18.000Z</published>
-    <updated>2016-11-27T14:48:59.059Z</updated>
-    
-    <content type="html"><![CDATA[<p>接續上一篇 <a href="/blog/2016/08/08/how-to-install-hexo/">Hexo 安裝</a></p>
+    <entry>
+      <title><![CDATA[Hexo 佈署]]></title>
+      <url>https://coffee0127.github.io/blog/blog/2016/08/09/how-to-deploy-to-git/</url>
+      <content type="html"><![CDATA[<p>接續上一篇 <a href="/blog/2016/08/08/how-to-install-hexo/">Hexo 安裝</a></p>
 <h3 id="認識-GitHub"><a href="#認識-GitHub" class="headerlink" title="認識 GitHub "></a>認識 GitHub <img src="/blog/2016/08/09/how-to-deploy-to-git/PEO-octocat-0.svg" class="inline" width="64"></h3><ul>
 <li><a href="https://zh.wikipedia.org/zh-tw/GitHub" target="_blank" rel="external">GitHub</a></li>
 <li><a href="http://www.ithome.com.tw/news/95283" target="_blank" rel="external">Git達人教你搞懂GitHub基礎觀念</a></li>
@@ -831,29 +633,12 @@
 <li><a href="https://blog.ivanwei.co/2015/10/11/2015-10-11-build-blog-by-hexojs/" target="_blank" rel="external">[Hexo] Gtihub 上架 Blog</a></li>
 </ul>
 ]]></content>
+    </entry>
     
-    <summary type="html">
-    
-      &lt;p&gt;接續上一篇 &lt;a href=&quot;/blog/2016/08/08/how-to-install-hexo/&quot;&gt;Hexo 安裝&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;認識-GitHub&quot;&gt;&lt;a href=&quot;#認識-GitHub&quot; class=&quot;headerlink&quot; title=&quot;認
-    
-    </summary>
-    
-      <category term="Hexo" scheme="https://coffee0127.github.io/blog/categories/Hexo/"/>
-    
-    
-      <category term="Hexo" scheme="https://coffee0127.github.io/blog/tags/Hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo 安裝</title>
-    <link href="https://coffee0127.github.io/blog/2016/08/08/how-to-install-hexo/"/>
-    <id>https://coffee0127.github.io/blog/2016/08/08/how-to-install-hexo/</id>
-    <published>2016-08-08T13:08:49.000Z</published>
-    <updated>2016-11-27T14:48:59.046Z</updated>
-    
-    <content type="html"><![CDATA[<div style="font-size: 24px;padding-top: 20px;"><em>“取之於社會，用之於社會”</em></div>
+    <entry>
+      <title><![CDATA[Hexo 安裝]]></title>
+      <url>https://coffee0127.github.io/blog/blog/2016/08/08/how-to-install-hexo/</url>
+      <content type="html"><![CDATA[<div style="font-size: 24px;padding-top: 20px;"><em>“取之於社會，用之於社會”</em></div>
 
 <p>從土木工程轉行 Key-in 人員也三年多了，現在才開始寫 Blog 會不會太慢 (￣□￣|||)a</p>
 <p>一來是寫下在這行打滾的心得，做個里程碑，<br>二來是希望他日若有人遇到一樣問題，能夠幫上忙。(找到的資料是繁體中文不是很親切嗎 ㄟ(￣▽￣ㄟ))</p>
@@ -909,21 +694,8 @@
 <li><a href="http://www.jianshu.com/p/05289a4bc8b2" target="_blank" rel="external">如何搭建一个独立博客——简明Github Pages与Hexo教程</a></li>
 </ul>
 ]]></content>
+    </entry>
     
-    <summary type="html">
-    
-      &lt;div style=&quot;font-size: 24px;padding-top: 20px;&quot;&gt;&lt;em&gt;“取之於社會，用之於社會”&lt;/em&gt;&lt;/div&gt;
-
-&lt;p&gt;從土木工程轉行 Key-in 人員也三年多了，現在才開始寫 Blog 會不會太慢 (￣□￣|||)a&lt;/p&gt;
-&lt;p&gt;一
-    
-    </summary>
-    
-      <category term="Hexo" scheme="https://coffee0127.github.io/blog/categories/Hexo/"/>
-    
-    
-      <category term="Hexo" scheme="https://coffee0127.github.io/blog/tags/Hexo/"/>
-    
-  </entry>
   
-</feed>
+  
+</search>

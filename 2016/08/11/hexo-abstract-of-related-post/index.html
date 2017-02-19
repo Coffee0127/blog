@@ -7,23 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="在 Hexo 相關設定 有跟各位介紹過新增“相關文章”功能，
 老實說小弟覺得只有標題實在是太空洞了，因此看看原本的 hexo-list-related-posts 是否有相關功能
-測試了一下發現其實是有的，只不過原作者並未提供 API 讓人使用，那就只好自己來囉&amp;lt;(￣︶￣)&amp;gt;
-安裝 striptags先確認你的 &amp;lt;repository&amp;gt;/node_modules/ 是否有">
+測試了一下發現其實是有的，只不過原作者並未提供 API 讓人使用，那就只好自己來囉&amp;lt;(￣︶￣)&amp;gt;=== 2016-09-11 Updated ===原作者已接受 PR，因此不需要再自行修改。不過沒有設置 ta">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo 相關文章摘要">
 <meta property="og:url" content="https://coffee0127.github.io/blog/2016/08/11/hexo-abstract-of-related-post/index.html">
 <meta property="og:site_name" content="Xuan's Blog">
 <meta property="og:description" content="在 Hexo 相關設定 有跟各位介紹過新增“相關文章”功能，
 老實說小弟覺得只有標題實在是太空洞了，因此看看原本的 hexo-list-related-posts 是否有相關功能
-測試了一下發現其實是有的，只不過原作者並未提供 API 讓人使用，那就只好自己來囉&amp;lt;(￣︶￣)&amp;gt;
-安裝 striptags先確認你的 &amp;lt;repository&amp;gt;/node_modules/ 是否有">
-<meta property="og:updated_time" content="2016-09-18T14:31:22.905Z">
+測試了一下發現其實是有的，只不過原作者並未提供 API 讓人使用，那就只好自己來囉&amp;lt;(￣︶￣)&amp;gt;=== 2016-09-11 Updated ===原作者已接受 PR，因此不需要再自行修改。不過沒有設置 ta">
+<meta property="og:updated_time" content="2017-02-19T15:49:10.986Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo 相關文章摘要">
 <meta name="twitter:description" content="在 Hexo 相關設定 有跟各位介紹過新增“相關文章”功能，
 老實說小弟覺得只有標題實在是太空洞了，因此看看原本的 hexo-list-related-posts 是否有相關功能
-測試了一下發現其實是有的，只不過原作者並未提供 API 讓人使用，那就只好自己來囉&amp;lt;(￣︶￣)&amp;gt;
-安裝 striptags先確認你的 &amp;lt;repository&amp;gt;/node_modules/ 是否有">
+測試了一下發現其實是有的，只不過原作者並未提供 API 讓人使用，那就只好自己來囉&amp;lt;(￣︶￣)&amp;gt;=== 2016-09-11 Updated ===原作者已接受 PR，因此不需要再自行修改。不過沒有設置 ta">
   
     <link rel="alternate" href="/atom.xml" title="Xuan&#39;s Blog" type="application/atom+xml">
   
@@ -132,7 +129,7 @@ ga('send', 'pageview');
         
           <p>在 <a href="/blog/2016/08/09/hexo-configuration/#加入相關文章">Hexo 相關設定</a> 有跟各位介紹過新增“相關文章”功能，</p>
 <p>老實說小弟覺得只有標題實在是太空洞了，因此看看原本的 <a href="https://github.com/nkmk/hexo-list-related-posts" target="_blank" rel="external">hexo-list-related-posts</a> 是否有相關功能</p>
-<p>測試了一下發現其實是有的，只不過原作者並未提供 API 讓人使用，那就只好自己來囉&lt;(￣︶￣)&gt;</p>
+<p><del>測試了一下發現其實是有的，只不過原作者並未提供 API 讓人使用，那就只好自己來囉&lt;(￣︶￣)&gt;</del><br>=== 2016-09-11 Updated ===<br>原作者已接受 PR，因此不需要再自行修改。不過沒有設置 tags 導致的錯誤，原作者並未修復，因此還是要修改一下XD</p>
 <h3 id="安裝-striptags"><a href="#安裝-striptags" class="headerlink" title="安裝 striptags"></a>安裝 striptags</h3><p>先確認你的 <code>&lt;repository&gt;/node_modules/</code> 是否有 <code>striptags</code> 模組，<br>若未看見該模組再透過以下指令安裝<br><code>$ npm install striptags</code></p>
 <h3 id="修改-hexo-list-related-posts"><a href="#修改-hexo-list-related-posts" class="headerlink" title="修改 hexo-list-related-posts"></a>修改 <code>hexo-list-related-posts</code></h3><p>檔案路徑為 <code>&lt;repository&gt;/node_modules/hexo-list-related-posts/lib/index.js</code><br>查閱小弟發給原作者的 <a href="https://github.com/nkmk/hexo-list-related-posts/pull/3/commits/80e9739cb525f9907881d243bd04b90f6a2264d0#diff-1" target="_blank" rel="external">pull request</a> 會比較容易理解差異</p>
 <ol>
@@ -140,7 +137,7 @@ ga('send', 'pageview');
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> striptags = <span class="built_in">require</span>(<span class="string">'striptags'</span>);</div></pre></td></tr></table></figure>
 </li>
 <li><p>修改 function listRelatedPosts 的 options，程式碼如下</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">options = assign(&#123;</div><div class="line">  maxCount: <span class="number">5</span>,</div><div class="line">  ulClass: <span class="string">'related-posts'</span>,</div><div class="line">  liClass: <span class="string">'related-posts-item'</span>,</div><div class="line">  generateAbstract: <span class="literal">false</span>,    <span class="comment">// 是否產生摘要</span></div><div class="line">  abstractClass: <span class="string">'related-posts-item-abstract'</span>,   <span class="comment">// 摘要的 css class</span></div><div class="line">  abstractLength: <span class="number">110</span>,        <span class="comment">// 摘要節錄長度</span></div><div class="line">  orderBy: <span class="string">'date'</span>,</div><div class="line">  isAscending: <span class="literal">false</span></div><div class="line">&#125;, options);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">options = assign(&#123;</div><div class="line">  <span class="attr">maxCount</span>: <span class="number">5</span>,</div><div class="line">  <span class="attr">ulClass</span>: <span class="string">'related-posts'</span>,</div><div class="line">  <span class="attr">liClass</span>: <span class="string">'related-posts-item'</span>,</div><div class="line">  <span class="attr">generateAbstract</span>: <span class="literal">false</span>,    <span class="comment">// 是否產生摘要</span></div><div class="line">  abstractClass: <span class="string">'related-posts-item-abstract'</span>,   <span class="comment">// 摘要的 css class</span></div><div class="line">  abstractLength: <span class="number">110</span>,        <span class="comment">// 摘要節錄長度</span></div><div class="line">  orderBy: <span class="string">'date'</span>,</div><div class="line">  <span class="attr">isAscending</span>: <span class="literal">false</span></div><div class="line">&#125;, options);</div></pre></td></tr></table></figure>
 </li>
 <li><p>修改function listRelatedPosts 的呈現方式 (在原 function 最末端)，程式碼如下</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(count === <span class="number">0</span>)&#123;</div><div class="line">  result += <span class="string">'&lt;p&gt;No related post.&lt;/p&gt;'</span>;</div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">  result += <span class="string">'&lt;ul class="'</span> + options.ulClass + <span class="string">'"&gt;'</span>;</div><div class="line">  <span class="keyword">if</span> (options.generateAbstract) &#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; count; i++) &#123;</div><div class="line">      result += <span class="string">'&lt;li class="'</span> + options.liClass + <span class="string">'"&gt;'</span> + <span class="string">'&lt;a href="'</span> + root + postList[i].path + <span class="string">'"&gt;'</span> + postList[i].title + <span class="string">'&lt;/a&gt;&lt;div class="'</span> + options.abstractClass + <span class="string">'"&gt;'</span> + striptags(postList[i].content).substring(<span class="number">0</span>, options.abstractLength) + <span class="string">'&lt;/div&gt;&lt;/li&gt;'</span>;</div><div class="line">    &#125;</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; count; i++) &#123;</div><div class="line">      result += <span class="string">'&lt;li class="'</span> + options.liClass + <span class="string">'"&gt;'</span> + <span class="string">'&lt;a href="'</span> + root + postList[i].path + <span class="string">'"&gt;'</span> + postList[i].title + <span class="string">'&lt;/a&gt;&lt;/li&gt;'</span>;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -149,7 +146,7 @@ ga('send', 'pageview');
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">this</span>.post.tags &amp;&amp; <span class="keyword">this</span>.post.tags.each(<span class="function"><span class="keyword">function</span>(<span class="params">tag</span>)</span>&#123;</div><div class="line">  tag.posts.each(<span class="function"><span class="keyword">function</span>(<span class="params">post</span>)</span>&#123;</div><div class="line">    postList.push(post);</div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </li>
 </ol>
-<h3 id="加入-generateAbstract-true"><a href="#加入-generateAbstract-true" class="headerlink" title="加入 generateAbstract: true"></a>加入 <code>generateAbstract: true</code></h3><p>修改 <code>themes/[主题名]/layout/_partial/post/related.ejs</code>  (在 <a href="/blog/2016/08/09/hexo-configuration/#加入相關文章">Hexo 相關設定</a> 新增的檔案)<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;%- list_related_posts(&#123;maxCount: <span class="number">5</span>, orderBy: <span class="string">'random'</span>, generateAbstract: <span class="literal">true</span>&#125;) %&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="加入-generateAbstract-true"><a href="#加入-generateAbstract-true" class="headerlink" title="加入 generateAbstract: true"></a>加入 <code>generateAbstract: true</code></h3><p>修改 <code>themes/[主题名]/layout/_partial/post/related.ejs</code>  (在 <a href="/blog/2016/08/09/hexo-configuration/#加入相關文章">Hexo 相關設定</a> 新增的檔案)<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;%- list_related_posts(&#123;<span class="attr">maxCount</span>: <span class="number">5</span>, <span class="attr">orderBy</span>: <span class="string">'random'</span>, <span class="attr">generateAbstract</span>: <span class="literal">true</span>&#125;) %&gt;</div></pre></td></tr></table></figure></p>
 <h3 id="加入-CSS"><a href="#加入-CSS" class="headerlink" title="加入 CSS"></a>加入 CSS</h3><p>修改 <code>themes/&lt;主題名稱&gt;/source/css/_partial/article.styl</code>，加入以下樣式<br>重點在於 <code>text-overflow: ellipsis</code> 讓多餘的文字以 <code>...</code> 方式呈現<br><figure class="highlight styl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">ul</span><span class="selector-class">.related-posts</span></div><div class="line">  <span class="attribute">margin-left</span>: <span class="number">0</span></div><div class="line">  <span class="attribute">margin-right</span>: <span class="number">0</span></div><div class="line">  <span class="attribute">padding-left</span>: <span class="number">0</span></div><div class="line">  <span class="attribute">list-style</span>: none</div><div class="line">  <span class="selector-tag">li</span><span class="selector-class">.related-posts-item</span></div><div class="line">    <span class="attribute">font-size</span>: <span class="number">16px</span></div><div class="line">    <span class="selector-tag">div</span><span class="selector-class">.related-posts-item-abstract</span></div><div class="line">      <span class="attribute">overflow</span>: hidden</div><div class="line">      <span class="attribute">white-space</span>: nowrap</div><div class="line">      <span class="attribute">text-overflow</span>: ellipsis</div><div class="line">      <span class="attribute">color</span>: rgb(<span class="number">136</span>, <span class="number">136</span>, <span class="number">136</span>)</div><div class="line">      <span class="attribute">margin-bottom</span>: <span class="number">10px</span></div><div class="line">      <span class="attribute">font-size</span>: <span class="number">85%</span></div></pre></td></tr></table></figure></p>
 <p>這個<del>世界</del>相關文章不再這麼空洞了 (=´∀｀)人(´∀｀=)</p>
 
@@ -157,9 +154,9 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://coffee0127.github.io/blog/2016/08/11/hexo-abstract-of-related-post/" data-id="ciufnx6h0000fu8nx6p7grp3t" class="article-share-link">Share</a>
+      <a data-url="https://coffee0127.github.io/blog/blog/2016/08/11/hexo-abstract-of-related-post/" data-id="ciyofynic00030snxx5we2pl7" class="article-share-link">Share</a>
       
-        <a href="https://coffee0127.github.io/blog/2016/08/11/hexo-abstract-of-related-post/#disqus_thread" class="article-comment-link">留言</a>
+        <a href="https://coffee0127.github.io/blog/blog/2016/08/11/hexo-abstract-of-related-post/#disqus_thread" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Hexo/">Hexo</a></li></ul>
@@ -173,20 +170,7 @@ ga('send', 'pageview');
         <h3 class="article-title" style="font-size: 20px;">相關文章</h3>
     </div>
     <div class="article-entry">
-      <ul class="related-posts"><li class="related-posts-item"><a href="/blog/2016/08/09/hexo-configuration/">Hexo 相關設定</a><div class="related-posts-item-abstract">經過前兩篇 Hexo 安裝 &amp; Hexo 佈署
-我們已經可以開始編寫 Blog 了&lt;(￣︶￣)&gt;
-但是還是過於陽春，因此這篇會講些簡單設定 Hexo，看起來更有模有樣。
-網頁 IconIcon 代表著</div></li><li class="related-posts-item"><a href="/blog/2016/08/09/how-to-deploy-to-git/">Hexo 佈署</a><div class="related-posts-item-abstract">接續上一篇 Hexo 安裝
-認識 GitHub 
-GitHub
-Git達人教你搞懂GitHub基礎觀念
-
-建立 github.io
-Creating Project Pages manually主要目的為替你的 repo</div></li><li class="related-posts-item"><a href="/blog/2016/08/10/hexo-share-link-fix/">Hexo 分享連結失效</a><div class="related-posts-item-abstract">今天想來試試看分享功能，結果 FB 連結分享出來的卻是 404….XD
-看了一下分享的網址 https://coffee0127.github.io/blog/blog/2016/08/09/hexo-configura</div></li><li class="related-posts-item"><a href="/blog/2016/08/08/how-to-install-hexo/">Hexo 安裝</a><div class="related-posts-item-abstract">“取之於社會，用之於社會”
-
-從土木工程轉行 Key-in 人員也三年多了，現在才開始寫 Blog 會不會太慢 (￣□￣|||)a
-一來是寫下在這行打滾的心得，做個里程碑，二來是希望他日若有人遇到一樣問題，能夠幫上忙。(</div></li>
+      <ul class="related-posts"><li class="related-posts-item"><a href="/blog/2016/08/09/how-to-deploy-to-git/">Hexo 佈署</a></li><li class="related-posts-item"><a href="/blog/2016/08/09/hexo-configuration/">Hexo 相關設定</a></li><li class="related-posts-item"><a href="/blog/2016/08/08/how-to-install-hexo/">Hexo 安裝</a></li><li class="related-posts-item"><a href="/blog/2016/08/10/hexo-share-link-fix/">Hexo 分享連結失效</a></li>
     </div>
   </div>
 </article>
@@ -319,7 +303,7 @@ Creating Project Pages manually主要目的為替你的 repo</div></li><li class
 <script>
   var disqus_shortname = 'xuans-blog';
   
-  var disqus_url = 'https://coffee0127.github.io/blog/2016/08/11/hexo-abstract-of-related-post/';
+  var disqus_url = 'https://coffee0127.github.io/blog/blog/2016/08/11/hexo-abstract-of-related-post/';
   
   (function(){
     var dsq = document.createElement('script');

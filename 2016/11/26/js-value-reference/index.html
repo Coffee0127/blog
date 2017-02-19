@@ -44,7 +44,7 @@
 <meta property="og:image" content="https://coffee0127.github.io/blog/blog/2016/11/26/js-value-reference/ex8-2.jpg">
 <meta property="og:image" content="https://coffee0127.github.io/blog/blog/2016/11/26/js-value-reference/ex8-3.jpg">
 <meta property="og:image" content="https://coffee0127.github.io/blog/blog/2016/11/26/js-value-reference/ex8-4.jpg">
-<meta property="og:updated_time" content="2016-11-27T05:32:01.354Z">
+<meta property="og:updated_time" content="2016-11-27T14:48:59.150Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="畫圖理解 JavaScript value reference">
 <meta name="twitter:description" content="這篇是上完保哥的《JavaScript 開發實戰：核心概念篇》筆記之一 (狀態顯示為拖稿)
@@ -208,7 +208,7 @@ ga('send', 'pageview');
 </ol>
 <hr>
 <p>看完以上兩個範例，應該稍微了解圖形應該怎麼畫，再來就是要多練習囉～</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = &#123; a1: <span class="number">1</span>, a2: <span class="number">2</span> &#125;;</div><div class="line"><span class="keyword">var</span> b = [];</div><div class="line">b.push(a);</div><div class="line">b.push(a);</div><div class="line">b[<span class="number">0</span>][<span class="string">'a1'</span>] = <span class="number">2</span>;</div><div class="line"><span class="comment">// b[1]['a1'] = ???</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = &#123; <span class="attr">a1</span>: <span class="number">1</span>, <span class="attr">a2</span>: <span class="number">2</span> &#125;;</div><div class="line"><span class="keyword">var</span> b = [];</div><div class="line">b.push(a);</div><div class="line">b.push(a);</div><div class="line">b[<span class="number">0</span>][<span class="string">'a1'</span>] = <span class="number">2</span>;</div><div class="line"><span class="comment">// b[1]['a1'] = ???</span></div></pre></td></tr></table></figure>
 <ol>
 <li><p>畫上變數 <code>a</code> 、指向的物件及物件的值</p>
 <img src="/blog/2016/11/26/js-value-reference/ex3-1.jpg" class="inline">
@@ -230,11 +230,11 @@ ga('send', 'pageview');
 <p>更多的練習題～</p>
 <ul>
 <li><p>Example 1</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = &#123; a1: <span class="number">1</span>, a2: <span class="number">2</span> &#125;;</div><div class="line"><span class="keyword">var</span> b = [];</div><div class="line">b.push(a);</div><div class="line">b[<span class="number">0</span>][<span class="string">'a1'</span>] = <span class="number">2</span>;</div><div class="line"><span class="comment">// a['a1'] = ???</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = &#123; <span class="attr">a1</span>: <span class="number">1</span>, <span class="attr">a2</span>: <span class="number">2</span> &#125;;</div><div class="line"><span class="keyword">var</span> b = [];</div><div class="line">b.push(a);</div><div class="line">b[<span class="number">0</span>][<span class="string">'a1'</span>] = <span class="number">2</span>;</div><div class="line"><span class="comment">// a['a1'] = ???</span></div></pre></td></tr></table></figure>
   <img src="/blog/2016/11/26/js-value-reference/ex4-1.jpg" class="inline">
 </li>
 <li><p>Example 2</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = &#123; x: <span class="number">1</span> &#125;;</div><div class="line"><span class="keyword">var</span> b = a;</div><div class="line">a = &#123; x: <span class="number">2</span> &#125;;</div><div class="line"><span class="comment">// b.x = ???</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = &#123; <span class="attr">x</span>: <span class="number">1</span> &#125;;</div><div class="line"><span class="keyword">var</span> b = a;</div><div class="line">a = &#123; <span class="attr">x</span>: <span class="number">2</span> &#125;;</div><div class="line"><span class="comment">// b.x = ???</span></div></pre></td></tr></table></figure>
   <img src="/blog/2016/11/26/js-value-reference/ex5-1.jpg" class="inline">
 <ol>
 <li>變數 <code>a</code> 指向新的物件 <code>{ x: 2 }</code>，因此不影響變數 <code>b.x</code></li>
@@ -242,7 +242,7 @@ ga('send', 'pageview');
 </ol>
 </li>
 <li><p>Example 3</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = &#123; a1: <span class="number">1</span>, a2: <span class="number">2</span> &#125;;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">p</span>) </span>&#123;</div><div class="line">  p.a1 = <span class="number">2</span>;</div><div class="line">&#125;</div><div class="line">test(a);</div><div class="line"><span class="comment">// a.a1 = ???</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = &#123; <span class="attr">a1</span>: <span class="number">1</span>, <span class="attr">a2</span>: <span class="number">2</span> &#125;;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">p</span>) </span>&#123;</div><div class="line">  p.a1 = <span class="number">2</span>;</div><div class="line">&#125;</div><div class="line">test(a);</div><div class="line"><span class="comment">// a.a1 = ???</span></div></pre></td></tr></table></figure>
   <img src="/blog/2016/11/26/js-value-reference/ex6-1.jpg" class="inline">
 <ol>
 <li>變數 <code>p</code> 因為是宣告在 <code>function</code> 內，因此當 <code>function</code> 執行完畢會被銷毀</li>
@@ -261,7 +261,7 @@ ga('send', 'pageview');
 <hr>
 <p>進階題，理解同時 assign (如 <a href="https://github.com/jquery/jquery/blob/1.6.2/jquery.js" target="_blank" rel="external">jQuery</a> 的 <code>window.jQuery = window.$ = jQuery;</code> )</p>
 <ul>
-<li>Example 5<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = &#123; x: <span class="number">1</span> &#125;;</div><div class="line"><span class="keyword">var</span> b = a;</div><div class="line">a.x = a = &#123; x: <span class="number">2</span> &#125;;</div><div class="line"><span class="comment">// b.x = ???</span></div><div class="line"><span class="comment">// a.x = ???</span></div></pre></td></tr></table></figure>
+<li>Example 5<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = &#123; <span class="attr">x</span>: <span class="number">1</span> &#125;;</div><div class="line"><span class="keyword">var</span> b = a;</div><div class="line">a.x = a = &#123; <span class="attr">x</span>: <span class="number">2</span> &#125;;</div><div class="line"><span class="comment">// b.x = ???</span></div><div class="line"><span class="comment">// a.x = ???</span></div></pre></td></tr></table></figure>
 </li>
 </ul>
 <ol>
@@ -284,9 +284,9 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://coffee0127.github.io/blog/2016/11/26/js-value-reference/" data-id="ciw07lypv0000bknxkd6e6x1m" class="article-share-link">Share</a>
+      <a data-url="https://coffee0127.github.io/blog/blog/2016/11/26/js-value-reference/" data-id="ciyofynjs000i0snxfeahvd6r" class="article-share-link">Share</a>
       
-        <a href="https://coffee0127.github.io/blog/2016/11/26/js-value-reference/#disqus_thread" class="article-comment-link">留言</a>
+        <a href="https://coffee0127.github.io/blog/blog/2016/11/26/js-value-reference/#disqus_thread" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Must-Know/">Must-Know</a></li></ul>
@@ -300,19 +300,7 @@ ga('send', 'pageview');
         <h3 class="article-title" style="font-size: 20px;">相關文章</h3>
     </div>
     <div class="article-entry">
-      <ul class="related-posts"><li class="related-posts-item"><a href="/blog/2016/11/28/js-hoisting/">JavaScript Hoisting</a><div class="related-posts-item-abstract">這篇是上完保哥的《JavaScript 開發實戰：核心概念篇》筆記之二 (狀態仍顯示為拖稿)
-Hoisting 翻成中文是提升，在 JavaScript 是要提升什麼呢？
-W3Schools JavaScript Hoi</div></li><li class="related-posts-item"><a href="/blog/2016/09/20/Angular2-Custom-Element/">Angular2 自訂元素</a><div class="related-posts-item-abstract">Angular2 終於在 2016-09-15 發布正式版本，
-由於之前使用的 Angular CLI 建立的專案版本為 2.0.0-rc.5 才一直沒注意到這個問題，
-直到今天升級後發現專案直接掛了…XD
-
-錯誤訊息很</div></li><li class="related-posts-item"><a href="/blog/2016/10/18/User-Timing-API/">User Timing API</a><div class="related-posts-item-abstract">常常在寫 JavaScript 時，會想知道效能到底好不好之類的
-最直覺的方法就是測 JavaScript 執行時間
-開始之前先寫個假裝讓 JavaScript 執行很久的 sleep 函式
-1234function s</div></li><li class="related-posts-item"><a href="/blog/2016/09/24/js-tips/">JavaScript 小技巧</a><div class="related-posts-item-abstract">JavaScript 對小弟而言，真是一門似懂非懂的語言XD
-儘管使用 JavaScript 也三年多，但畢竟 Java 後端工程師會用到的仍有限。
-最近到處惡補後，蒐集整理了一些 JavaScript 小技巧，
-一來做</div></li>
+      <ul class="related-posts"><li class="related-posts-item"><a href="/blog/2016/11/28/js-hoisting/">JavaScript Hoisting</a></li><li class="related-posts-item"><a href="/blog/2016/10/18/User-Timing-API/">User Timing API</a></li><li class="related-posts-item"><a href="/blog/2016/09/20/Angular2-Custom-Element/">Angular2 自訂元素</a></li><li class="related-posts-item"><a href="/blog/2016/09/24/js-tips/">JavaScript 小技巧</a></li>
     </div>
   </div>
 </article>
@@ -445,7 +433,7 @@ W3Schools JavaScript Hoi</div></li><li class="related-posts-item"><a href="/blog
 <script>
   var disqus_shortname = 'xuans-blog';
   
-  var disqus_url = 'https://coffee0127.github.io/blog/2016/11/26/js-value-reference/';
+  var disqus_url = 'https://coffee0127.github.io/blog/blog/2016/11/26/js-value-reference/';
   
   (function(){
     var dsq = document.createElement('script');

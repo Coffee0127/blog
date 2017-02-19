@@ -5,22 +5,19 @@
   
   <title>JavaScript Hoisting | Xuan&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="這篇是上完保哥的《JavaScript 開發實戰：核心概念篇》筆記之二 (狀態仍顯示為拖稿)
-Hoisting 翻成中文是提升，在 JavaScript 是要提升什麼呢？
-W3Schools JavaScript Hoisting 是這樣定義的：Hoisting is JavaScript’s default behavior of moving declarations to the top.">
+  <meta name="description" content="=== 2017-02-19 Updated ===因原文寫得不夠清楚(其實是之前亂寫一通)，導致錯誤的理解
+先補上 MDN 的說明：Hoisting was thought up as a general way of thinking about how execution context (specifically the creation and execution phases) wor">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript Hoisting">
 <meta property="og:url" content="https://coffee0127.github.io/blog/2016/11/28/js-hoisting/index.html">
 <meta property="og:site_name" content="Xuan's Blog">
-<meta property="og:description" content="這篇是上完保哥的《JavaScript 開發實戰：核心概念篇》筆記之二 (狀態仍顯示為拖稿)
-Hoisting 翻成中文是提升，在 JavaScript 是要提升什麼呢？
-W3Schools JavaScript Hoisting 是這樣定義的：Hoisting is JavaScript’s default behavior of moving declarations to the top.">
-<meta property="og:updated_time" content="2016-11-28T08:06:12.343Z">
+<meta property="og:description" content="=== 2017-02-19 Updated ===因原文寫得不夠清楚(其實是之前亂寫一通)，導致錯誤的理解
+先補上 MDN 的說明：Hoisting was thought up as a general way of thinking about how execution context (specifically the creation and execution phases) wor">
+<meta property="og:updated_time" content="2017-02-19T15:49:10.987Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript Hoisting">
-<meta name="twitter:description" content="這篇是上完保哥的《JavaScript 開發實戰：核心概念篇》筆記之二 (狀態仍顯示為拖稿)
-Hoisting 翻成中文是提升，在 JavaScript 是要提升什麼呢？
-W3Schools JavaScript Hoisting 是這樣定義的：Hoisting is JavaScript’s default behavior of moving declarations to the top.">
+<meta name="twitter:description" content="=== 2017-02-19 Updated ===因原文寫得不夠清楚(其實是之前亂寫一通)，導致錯誤的理解
+先補上 MDN 的說明：Hoisting was thought up as a general way of thinking about how execution context (specifically the creation and execution phases) wor">
   
     <link rel="alternate" href="/atom.xml" title="Xuan&#39;s Blog" type="application/atom+xml">
   
@@ -122,11 +119,17 @@ ga('send', 'pageview');
         
         
         
-          <p>這篇是上完<a href="https://www.facebook.com/will.fans" target="_blank" rel="external">保哥</a>的《JavaScript 開發實戰：核心概念篇》筆記之二 <del>(狀態仍顯示為拖稿)</del></p>
+          <p>=== 2017-02-19 Updated ===<br>因原文寫得不夠清楚<del>(其實是之前亂寫一通)</del>，導致錯誤的理解</p>
+<p>先補上 MDN 的說明：<br><blockquote><p>Hoisting was thought up as a general way of thinking about how execution context (specifically the creation and execution phases) work in JavaScript.<br>For example, hoisting teaches that variable and function declarations are physically moved to the top your coding, but this is not what happens at all.<br>What does happen is the variable and function declarations are put into memory during the compile phase, but stays exactly where you typed it in your coding.  </p>
+<footer><strong>Hoisting</strong><cite><a href="https://developer.mozilla.org/zh-TW/docs/Glossary/Hoisting" target="_blank" rel="external">MDN</a></cite></footer></blockquote></p>
+<p>第一段是說 Hoisting 通常被用來理解 JavaScript 的 execution context 如何運行(老實說我現在還是不知道該怎麼翻 context，翻”上下文”總覺得怪怪的…)，分為 creation phase 及 execution phase<br>第二段是說 hoisting 總是教我們把 變數宣告 及 宣告式函數 “物理上” 的提升到最上端，但<strong>實際上不是這麼一回事</strong>！<br>第三段則是說 變數宣告 及 宣告式函數 會在 compile phase 存入記憶體內，但實際上仍舊待在原本程式碼的位置</p>
+<p>最後在 execution phase 時才會逐行執行程式碼。</p>
+<hr>
+<p>這篇是上完<a href="https://www.facebook.com/will.fans" target="_blank" rel="external">保哥</a>的《JavaScript 開發實戰：核心概念篇》筆記之二 <del>(狀態仍顯示為拖稿)</del></p>
 <p><strong>Hoisting</strong> 翻成中文是提升，在 JavaScript 是要提升什麼呢？</p>
 <p>W3Schools <a href="http://www.w3schools.com/js/js_hoisting.asp" target="_blank" rel="external">JavaScript Hoisting</a> 是這樣定義的：<br><blockquote><p>Hoisting is JavaScript’s default behavior of moving declarations to the top.</p>
 <footer><strong>JavaScript Hoisting</strong><cite><a href="http://www.w3schools.com/js/js_hoisting.asp" target="_blank" rel="external">W3Schools</a></cite></footer></blockquote></p>
-<p>JavaScript 預設會把<strong>宣告(declarations)提升到最上端</strong></p>
+<p>JavaScript 預設會把<strong>宣告(declarations)提升到最上端</strong> 【但不是真的將宣告”物理上”提升】</p>
 <p>即變數可以先使用，後宣告 (這跟一般程式語言不一樣XD)，以下兩段範例程式碼輸出結果是完全相同的</p>
 <ul>
 <li><p>Example 1</p>
@@ -157,10 +160,10 @@ ga('send', 'pageview');
 <p>請問以下程式碼執行時會回傳什麼?</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> test();</div><div class="line">    <span class="keyword">var</span> test = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="number">1</span>; &#125;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="number">2</span>; &#125;</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
 <ol>
-<li><p>逐行尋找 <code>var</code> 及 <code>function</code> 宣告，並提升至 function scope 的最上層。因此先將 <code>var test</code> 提升，初始化仍維持原位置</p>
+<li><p>逐行尋找 <code>var</code> 及 <code>function</code> 宣告，並提升至 function scoped 的最上層。因此先將 <code>var test</code> 提升，初始化仍維持原位置</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> test;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> test();</div><div class="line">    test = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="number">1</span>; &#125;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="number">2</span>; &#125;</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
 </li>
-<li><p>接著再往下遇到 <code>function test()</code>，一樣提升至 function scope 最上層 (注意提升後的位置，是在 <code>var test</code> 之後)</p>
+<li><p>接著再往下遇到 <code>function test()</code>，一樣提升至 function scoped 最上層 (注意提升後的位置，是在 <code>var test</code> 之後)</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> test;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="number">2</span>; &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> test();</div><div class="line">    test = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="number">1</span>; &#125;</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
 </li>
 <li><p>因此這樣便很清楚知道 <code>return test()</code> 會回傳 <code>2</code> &lt;( ‵▽′)b good job</p>
@@ -203,14 +206,16 @@ ga('send', 'pageview');
 <li>函式採用 <code>函式表示法 (function expression)</code> 方式宣告 (即 <code>var test = function() {}</code>)</li>
 </ol>
 <p>可參考範例 <a href="https://github.com/jquery/jquery/blob/1.6.2/jquery.js" target="_blank" rel="external">jQuery</a> 25 行開始宣告一堆的變數、72 行宣告了 fcamelCase 函式…等</p>
+<hr>
+<p>=== 2017-02-19 Updated ===<br>由於 <code>var</code> 是屬於 function scoped (或宣告全域變數)，因此到了 ES6 便有了 <a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Statements/let" target="_blank" rel="external">let</a> 及 <a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Statements/const" target="_blank" rel="external">const</a> 屬於 block scoped (也不會汙染全域變數) 新的宣告關鍵字</p>
 
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://coffee0127.github.io/blog/2016/11/28/js-hoisting/" data-id="ciw1sjf8k0000tcnx5pz11wxq" class="article-share-link">Share</a>
+      <a data-url="https://coffee0127.github.io/blog/blog/2016/11/28/js-hoisting/" data-id="ciyofynjq000h0snxbwiffpzp" class="article-share-link">Share</a>
       
-        <a href="https://coffee0127.github.io/blog/2016/11/28/js-hoisting/#disqus_thread" class="article-comment-link">留言</a>
+        <a href="https://coffee0127.github.io/blog/blog/2016/11/28/js-hoisting/#disqus_thread" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Must-Know/">Must-Know</a></li></ul>
@@ -224,18 +229,7 @@ ga('send', 'pageview');
         <h3 class="article-title" style="font-size: 20px;">相關文章</h3>
     </div>
     <div class="article-entry">
-      <ul class="related-posts"><li class="related-posts-item"><a href="/blog/2016/11/26/js-value-reference/">畫圖理解 JavaScript value reference</a><div class="related-posts-item-abstract">這篇是上完保哥的《JavaScript 開發實戰：核心概念篇》筆記之一 (狀態顯示為拖稿)
-開始之前可以先看看 Stack Overflow 上這篇 Is JavaScript a pass-by-reference o</div></li><li class="related-posts-item"><a href="/blog/2016/10/18/User-Timing-API/">User Timing API</a><div class="related-posts-item-abstract">常常在寫 JavaScript 時，會想知道效能到底好不好之類的
-最直覺的方法就是測 JavaScript 執行時間
-開始之前先寫個假裝讓 JavaScript 執行很久的 sleep 函式
-1234function s</div></li><li class="related-posts-item"><a href="/blog/2016/09/20/Angular2-Custom-Element/">Angular2 自訂元素</a><div class="related-posts-item-abstract">Angular2 終於在 2016-09-15 發布正式版本，
-由於之前使用的 Angular CLI 建立的專案版本為 2.0.0-rc.5 才一直沒注意到這個問題，
-直到今天升級後發現專案直接掛了…XD
-
-錯誤訊息很</div></li><li class="related-posts-item"><a href="/blog/2016/09/24/js-tips/">JavaScript 小技巧</a><div class="related-posts-item-abstract">JavaScript 對小弟而言，真是一門似懂非懂的語言XD
-儘管使用 JavaScript 也三年多，但畢竟 Java 後端工程師會用到的仍有限。
-最近到處惡補後，蒐集整理了一些 JavaScript 小技巧，
-一來做</div></li>
+      <ul class="related-posts"><li class="related-posts-item"><a href="/blog/2016/11/26/js-value-reference/">畫圖理解 JavaScript value reference</a></li><li class="related-posts-item"><a href="/blog/2016/09/24/js-tips/">JavaScript 小技巧</a></li><li class="related-posts-item"><a href="/blog/2016/10/18/User-Timing-API/">User Timing API</a></li><li class="related-posts-item"><a href="/blog/2016/09/20/Angular2-Custom-Element/">Angular2 自訂元素</a></li>
     </div>
   </div>
 </article>
@@ -359,7 +353,7 @@ ga('send', 'pageview');
 <script>
   var disqus_shortname = 'xuans-blog';
   
-  var disqus_url = 'https://coffee0127.github.io/blog/2016/11/28/js-hoisting/';
+  var disqus_url = 'https://coffee0127.github.io/blog/blog/2016/11/28/js-hoisting/';
   
   (function(){
     var dsq = document.createElement('script');
