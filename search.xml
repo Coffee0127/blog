@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title><![CDATA[【轉錄】Top 10 Angular VS Code Extensions]]></title>
+      <url>https://coffee0127.github.io/blog/blog/2017/04/03/Top-10-Angular-VSCode-Extensions/</url>
+      <content type="html"><![CDATA[<p><strong>※ 本文用於備份好用的 Angular VSCode 外掛及加上小弟對外掛的見解，著作權仍屬 <a href="http://devboosts.com" target="_blank" rel="external">http://devboosts.com</a> </strong></p>
+<h3 id="Bracket-Pair-Colorizer"><a href="#Bracket-Pair-Colorizer" class="headerlink" title="Bracket Pair Colorizer"></a><a href="https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer" target="_blank" rel="external">Bracket Pair Colorizer</a></h3><p>可針對不同的 bracket 加上不同的顏色，我覺得這個不僅用於 Angular，拿來寫 JavaScript 也是很棒的 = ˇ =<br><img src="http://res.cloudinary.com/dk1rn2kmf/image/upload/v1486523096/bracket-colorizer_cicdeq.gif" class="inline"></p>
+<h3 id="HTML-CSS-Class-Completion"><a href="#HTML-CSS-Class-Completion" class="headerlink" title="HTML CSS Class Completion"></a><a href="https://marketplace.visualstudio.com/items?itemName=Zignd.html-css-class-completion" target="_blank" rel="external">HTML CSS Class Completion</a></h3><p>針對已載入的 css class 自動完成<br><img src="http://res.cloudinary.com/dk1rn2kmf/image/upload/v1486523096/html-class-completion_lb3q2o.gif" class="inline"></p>
+<h3 id="Angular-2-TypeScript-Emmet"><a href="#Angular-2-TypeScript-Emmet" class="headerlink" title="Angular 2 TypeScript Emmet"></a><a href="https://marketplace.visualstudio.com/items?itemName=jakethashi.vscode-angular2-emmet" target="_blank" rel="external">Angular 2 TypeScript Emmet</a></h3><p>Angular inline template 內可使用 emmet <em>(不過小弟沒有在寫 inline template，就沒裝了XD)</em><br><img src="http://res.cloudinary.com/dk1rn2kmf/image/upload/v1486523096/angular2-typescript-emmet_digepq.gif" class="inline"></p>
+<h3 id="angular2-inline"><a href="#angular2-inline" class="headerlink" title="angular2-inline"></a><a href="https://marketplace.visualstudio.com/items?itemName=natewallace.angular2-inline" target="_blank" rel="external">angular2-inline</a></h3><p>inline css &amp; template 有醒目標示、自動完成及 hover 提示 <em>(理由同上就沒裝了XD)</em><br><img src="http://res.cloudinary.com/dk1rn2kmf/image/upload/v1486523096/angular2-inline_yi3evb.gif" class="inline"></p>
+<h3 id="angular2-switcher"><a href="#angular2-switcher" class="headerlink" title="angular2-switcher"></a><a href="https://marketplace.visualstudio.com/items?itemName=infinity1207.angular2-switcher" target="_blank" rel="external">angular2-switcher</a></h3><p>可用來快速切換檔案，如 html -&gt; typescrit<br><img src="http://res.cloudinary.com/dk1rn2kmf/image/upload/v1486523096/angular2-switcher_dif1ze.gif" class="inline"></p>
+<h3 id="vscode-icons"><a href="#vscode-icons" class="headerlink" title="vscode-icons"></a><a href="https://marketplace.visualstudio.com/items?itemName=robertohuertasm.vscode-icons" target="_blank" rel="external">vscode-icons</a></h3><p>使 VSCode 針對 Angular 有特定 icon (讓 VSCode 更好看XD)<br><img src="http://res.cloudinary.com/dk1rn2kmf/image/upload/v1486523094/angular-icons_rhqxbp.png" class="inline"></p>
+<h3 id="TSLint"><a href="#TSLint" class="headerlink" title="TSLint"></a><a href="https://marketplace.visualstudio.com/items?itemName=eg2.tslint" target="_blank" rel="external">TSLint</a></h3><p>針對 TypeScript 的 <a href="https://zh.wikipedia.org/wiki/Lint" target="_blank" rel="external">Lint</a>，可標註有問題的程式碼及提供快速修正<br><img src="http://res.cloudinary.com/dk1rn2kmf/image/upload/v1486523095/tslint_uteshx.gif" class="inline"></p>
+<h3 id="Angular-2-Snippets"><a href="#Angular-2-Snippets" class="headerlink" title="Angular 2+ Snippets"></a><a href="https://marketplace.visualstudio.com/items?itemName=Mikael.Angular-BeastCode" target="_blank" rel="external">Angular 2+ Snippets</a></h3><p>提供更多的 Angular 程式碼片段</p>
+<h3 id="TypeScript-Hero"><a href="#TypeScript-Hero" class="headerlink" title="TypeScript Hero"></a><a href="https://marketplace.visualstudio.com/items?itemName=rbbit.typescript-hero" target="_blank" rel="external">TypeScript Hero</a></h3><p>可用來管理程式碼 import 及 auto import<br><img src="http://res.cloudinary.com/dk1rn2kmf/image/upload/v1486523096/typescript-hero_vxxzuk.gif" class="inline"></p>
+<h3 id="Path-Intellisense"><a href="#Path-Intellisense" class="headerlink" title="Path Intellisense"></a><a href="https://marketplace.visualstudio.com/items?itemName=christian-kohler.path-intellisense" target="_blank" rel="external">Path Intellisense</a></h3><p>檔案路徑的 Intellisense，同樣不僅用於 Angular，拿來寫 JavaScript / HTML / CSS 也是很棒的 = ˇ =<br><img src="http://res.cloudinary.com/dk1rn2kmf/image/upload/v1486523096/path-intelisense_ge4e0u.gif" class="inline"></p>
+<h3 id="Angular-Language-Service"><a href="#Angular-Language-Service" class="headerlink" title="Angular Language Service"></a><a href="https://github.com/angular/vscode-ng-language-service" target="_blank" rel="external">Angular Language Service</a></h3><p>這個不僅能檢查 Template 中的錯誤，也可以提供更完善的 IntelliSense 提示<br>不過要注意，若 Angular 專案路徑有任何一層「非英文」的路徑名稱，就會讓 Angular Language Service 失效！<br>安裝方法可以參考 <a href="https://www.facebook.com/will.fans" target="_blank" rel="external">Will 保哥</a> 影片教學<br><div class="video-container"><iframe src="//www.youtube.com/embed/3hUAYNzgzYQ" frameborder="0" allowfullscreen></iframe></div></p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
+<li><a href="http://devboosts.com/2017/02/08/top-10-vs-code-extensions/index.html" target="_blank" rel="external">Top 10 Angular VS Code Extensions</a></li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[JavaScript Hoisting]]></title>
       <url>https://coffee0127.github.io/blog/blog/2016/11/28/js-hoisting/</url>
       <content type="html"><![CDATA[<p>=== 2017-02-19 Updated ===<br>因原文寫得不夠清楚<del>(其實是之前亂寫一通)</del>，導致錯誤的理解</p>
@@ -326,9 +347,11 @@
     </entry>
     
     <entry>
-      <title><![CDATA[Angular2 自訂元素]]></title>
+      <title><![CDATA[Angular 自訂元素]]></title>
       <url>https://coffee0127.github.io/blog/blog/2016/09/20/Angular2-Custom-Element/</url>
-      <content type="html"><![CDATA[<p><a href="https://angular.io/" target="_blank" rel="external">Angular2</a> 終於在 2016-09-15 發布正式版本，</p>
+      <content type="html"><![CDATA[<p>=== 2017-04-03 Updated ===<br>配合 Angular 正名，因此 Angular 1.x ==&gt; AngularJS，Angular 2.x 之後的版本 ==&gt; Angular<br>修改文章標題 &amp; 分類，內文仍維持原樣 <del>絕對不是偷懶</del></p>
+<hr>
+<p><a href="https://angular.io/" target="_blank" rel="external">Angular2</a> 終於在 2016-09-15 發布正式版本，</p>
 <p>由於之前使用的 <a href="https://cli.angular.io/" target="_blank" rel="external">Angular CLI</a> 建立的專案版本為 <code>2.0.0-rc.5</code> 才一直沒注意到這個問題，</p>
 <p>直到今天升級後發現專案直接掛了…XD</p>
 <img src="/blog/2016/09/20/Angular2-Custom-Element/template-parse-errors.jpg" class="inline">
