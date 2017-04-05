@@ -20,6 +20,7 @@
 <h3 id="Angular-Language-Service"><a href="#Angular-Language-Service" class="headerlink" title="Angular Language Service"></a><a href="https://marketplace.visualstudio.com/items?itemName=Angular.ng-template&amp;showReviewDialog=true" target="_blank" rel="external">Angular Language Service</a></h3><p>這個不僅能檢查 Template 中的錯誤，也可以提供更完善的 IntelliSense 提示<br>不過要注意，若 Angular 專案路徑有任何一層「非英文」的路徑名稱，就會讓 Angular Language Service 失效！<br><del>安裝方法可以參考 <a href="https://www.facebook.com/will.fans" target="_blank" rel="external">Will 保哥</a> 影片教學 <a href="https://www.youtube.com/watch?v=3hUAYNzgzYQ" target="_blank" rel="external">https://www.youtube.com/watch?v=3hUAYNzgzYQ</a></del><br>=== 2017-04-04 Updated ===<br>VSCode Marketplace 上架囉，不過目前版本(0.1.1)需要 <code>@angular/language-service@4.1.0-beta</code> 和 <code>typescript@2.1.5</code><br>若未升級到 Angular 4.x 的專案需要自行安裝 dependency<br><em>Angular 4.x 專案完全相容 Angular 2.x，這麼好康的事情還不快升級!!XD</em></p>
 <h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
 <li><a href="http://devboosts.com/2017/02/08/top-10-vs-code-extensions/index.html" target="_blank" rel="external">Top 10 Angular VS Code Extensions</a></li>
+<li><a href="https://paper.dropbox.com/doc/-Angular-2-VSCode-Kh2w3saOyZtJSHawFoBem" target="_blank" rel="external">開發 Angular 2 必備 VSCode 擴充套件</a></li>
 </ul>
 ]]></content>
     </entry>
