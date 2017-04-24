@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://coffee0127.github.io/blog/"/>
-  <updated>2017-04-23T09:38:55.662Z</updated>
+  <updated>2017-04-24T01:07:11.765Z</updated>
   <id>https://coffee0127.github.io/blog/</id>
   
   <author>
@@ -14,6 +14,45 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>透過 Angular 路由建立 SPA 網站</title>
+    <link href="https://coffee0127.github.io/blog/2017/04/24/Angular-simple-routing/"/>
+    <id>https://coffee0127.github.io/blog/2017/04/24/Angular-simple-routing/</id>
+    <published>2017-04-24T00:49:52.000Z</published>
+    <updated>2017-04-24T01:07:11.765Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="程式碼範例-Angular-SpringMVC-Integration"><a href="#程式碼範例-Angular-SpringMVC-Integration" class="headerlink" title="程式碼範例 Angular-SpringMVC-Integration"></a><em>程式碼範例 <a href="https://github.com/Coffee0127/Angular-SpringMVC-Integration/commit/688659d58e5e4067a511a4b2819707e0caecaabe" target="_blank" rel="external">Angular-SpringMVC-Integration</a></em></h4><h3 id="建立-Angular-專案及頁面元件"><a href="#建立-Angular-專案及頁面元件" class="headerlink" title="建立 Angular 專案及頁面元件"></a>建立 Angular 專案及頁面元件</h3><ol>
+<li>透過 Angular CLI 建立專案 <code>ng new SampleProject --routing</code><br> <code>--routing</code> 加入路由機制，會自動建立 <code>app-routing.module.ts</code></li>
+<li>透過 Angular CLI 建立元件 <code>ng g c pages/page1 --spec false</code> 及 <code>ng g c pages/page2 --spec false</code> 在 pages 下建立兩個 Component</li>
+<li>修改 <code>app-routing.module.ts</code> 設定路由<img src="/blog/2017/04/24/Angular-simple-routing/step3.png" class="inline"></li>
+<li>修改 <code>app.component.html</code> 加入路由連結 及 路由插座(?XD)<br><code>[routerLinkActiveOptions]=&quot;{ exact: true }&quot;</code> 必須是根路徑才套用 active class<img src="/blog/2017/04/24/Angular-simple-routing/step4.png" class="inline"></li>
+<li>修改 <code>app.component.css</code> 加入 active class，利於辨識路由運作<br><img src="/blog/2017/04/24/Angular-simple-routing/step5.png" class="inline"></li>
+<li>透過 <code>npm start</code> 確認實際運作情形<br><img src="/blog/2017/04/24/Angular-simple-routing/step6.gif" class="inline">
+</li>
+</ol>
+<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ul>
+<li><a href="https://angular.io/docs/ts/latest/guide/router.html" target="_blank" rel="external">ROUTING &amp; NAVIGATION
+</a></li>
+<li><a href="https://www.youtube.com/watch?v=sQx9s6fGI8E" target="_blank" rel="external">使用 Angular 2 Router 快速建構 SPA 網站</a><ul>
+<li>投影片 <a href="https://www.slideshare.net/WillHuangTW/build-spa-website-with-angular-2-router" target="_blank" rel="external">https://www.slideshare.net/WillHuangTW/build-spa-website-with-angular-2-router</a></li>
+</ul>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;程式碼範例-Angular-SpringMVC-Integration&quot;&gt;&lt;a href=&quot;#程式碼範例-Angular-SpringMVC-Integration&quot; class=&quot;headerlink&quot; title=&quot;程式碼範例 Angular-SpringMV
+    
+    </summary>
+    
+      <category term="Angular" scheme="https://coffee0127.github.io/blog/categories/Angular/"/>
+    
+    
+      <category term="Angular" scheme="https://coffee0127.github.io/blog/tags/Angular/"/>
+    
+  </entry>
   
   <entry>
     <title>Angular 呼叫遠端 API</title>
