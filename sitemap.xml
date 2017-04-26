@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://coffee0127.github.io/blog/blog/2017/04/26/convert-spring-boot-jar-to-war/</loc>
+    
+    <lastmod>2017-04-26T14:49:33.553Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://coffee0127.github.io/blog/blog/2017/04/23/spring-boot-rest/</loc>
+    
+    <lastmod>2017-04-26T14:49:33.537Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://coffee0127.github.io/blog/blog/2017/04/25/Maven-Angular-integration/</loc>
     
     <lastmod>2017-04-24T16:04:33.151Z</lastmod>
@@ -12,13 +26,6 @@
     <loc>https://coffee0127.github.io/blog/blog/2017/04/24/Angular-simple-routing/</loc>
     
     <lastmod>2017-04-24T01:07:11.765Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://coffee0127.github.io/blog/blog/2017/04/23/spring-boot-rest/</loc>
-    
-    <lastmod>2017-04-23T09:38:55.668Z</lastmod>
     
   </url>
   
