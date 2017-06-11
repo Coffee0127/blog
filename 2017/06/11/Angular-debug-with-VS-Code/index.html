@@ -3,27 +3,27 @@
 <head>
   <meta charset="utf-8">
   
-  <title>關於我 | Xuan&#39;s Blog</title>
+  <title>使用 VS Code 替 Angular 除錯 | Xuan&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在 MS-DOS 時代，用 486 電腦敲打不知所云的程式碼 (應該是 Basic 吧我猜…XD) 後，播出小蜜蜂嗡嗡嗡～～
-讓我從小對電腦產生了興趣XD (Key-in 人員養成計畫)，當時英文自介總是這樣寫…“I want to be a programer.”
-可惜高中變成了愛打電玩的阿宅 (無誤)，大學也沒有就讀資訊相關科系….
-“如果對喜歡的事情沒法放棄，就要更努力讓別人看見自己的存在。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="關於我">
-<meta property="og:url" content="https://coffee0127.github.io/blog/about/index.html">
+  <meta name="description" content="在 使用 Chrome 替 Angular 除錯 寫了如何使用 Chrome 來進行除錯，不過在雙螢幕情況下，這時反而會顯得工作效率低落
+修改程式 -&amp;gt; 切換瀏覽器開發者工具 -&amp;gt; 設置中斷點除錯 -&amp;gt; 切回 VS Code -&amp;gt; 修改程式 -&amp;gt; …
+應該善用 VS Code 本身的除錯工具，就不需要視窗切來切去了">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 VS Code 替 Angular 除錯">
+<meta property="og:url" content="https://coffee0127.github.io/blog/2017/06/11/Angular-debug-with-VS-Code/index.html">
 <meta property="og:site_name" content="Xuan's Blog">
-<meta property="og:description" content="在 MS-DOS 時代，用 486 電腦敲打不知所云的程式碼 (應該是 Basic 吧我猜…XD) 後，播出小蜜蜂嗡嗡嗡～～
-讓我從小對電腦產生了興趣XD (Key-in 人員養成計畫)，當時英文自介總是這樣寫…“I want to be a programer.”
-可惜高中變成了愛打電玩的阿宅 (無誤)，大學也沒有就讀資訊相關科系….
-“如果對喜歡的事情沒法放棄，就要更努力讓別人看見自己的存在。">
-<meta property="og:updated_time" content="2016-11-27T14:48:59.169Z">
+<meta property="og:description" content="在 使用 Chrome 替 Angular 除錯 寫了如何使用 Chrome 來進行除錯，不過在雙螢幕情況下，這時反而會顯得工作效率低落
+修改程式 -&amp;gt; 切換瀏覽器開發者工具 -&amp;gt; 設置中斷點除錯 -&amp;gt; 切回 VS Code -&amp;gt; 修改程式 -&amp;gt; …
+應該善用 VS Code 本身的除錯工具，就不需要視窗切來切去了">
+<meta property="og:image" content="https://coffee0127.github.io/blog/blog/2017/06/11/Angular-debug-with-VS-Code/add-launch-json.gif">
+<meta property="og:image" content="https://coffee0127.github.io/blog/blog/2017/06/11/Angular-debug-with-VS-Code/vs-code-debug.gif">
+<meta property="og:updated_time" content="2017-06-11T08:38:06.490Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="關於我">
-<meta name="twitter:description" content="在 MS-DOS 時代，用 486 電腦敲打不知所云的程式碼 (應該是 Basic 吧我猜…XD) 後，播出小蜜蜂嗡嗡嗡～～
-讓我從小對電腦產生了興趣XD (Key-in 人員養成計畫)，當時英文自介總是這樣寫…“I want to be a programer.”
-可惜高中變成了愛打電玩的阿宅 (無誤)，大學也沒有就讀資訊相關科系….
-“如果對喜歡的事情沒法放棄，就要更努力讓別人看見自己的存在。">
+<meta name="twitter:title" content="使用 VS Code 替 Angular 除錯">
+<meta name="twitter:description" content="在 使用 Chrome 替 Angular 除錯 寫了如何使用 Chrome 來進行除錯，不過在雙螢幕情況下，這時反而會顯得工作效率低落
+修改程式 -&amp;gt; 切換瀏覽器開發者工具 -&amp;gt; 設置中斷點除錯 -&amp;gt; 切回 VS Code -&amp;gt; 修改程式 -&amp;gt; …
+應該善用 VS Code 本身的除錯工具，就不需要視窗切來切去了">
+<meta name="twitter:image" content="https://coffee0127.github.io/blog/blog/2017/06/11/Angular-debug-with-VS-Code/add-launch-json.gif">
   
     <link rel="alternate" href="/atom.xml" title="Xuan&#39;s Blog" type="application/atom+xml">
   
@@ -98,12 +98,16 @@ ga('send', 'pageview');
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="page-undefined" class="article article-type-page" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Angular-debug-with-VS-Code" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/blog/about/index.html" class="article-date">
-  <time datetime="2016-08-12T09:37:29.000Z" itemprop="datePublished">2016-08-12</time>
+    <a href="/blog/2017/06/11/Angular-debug-with-VS-Code/" class="article-date">
+  <time datetime="2017-06-11T06:35:50.000Z" itemprop="datePublished">2017-06-11</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/Angular/">Angular</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -111,7 +115,7 @@ ga('send', 'pageview');
       <header class="article-header">
         
   <h1 class="article-title" itemprop="name">
-    <a  href="/blog/about/index.html">關於我</a>
+    <a  href="/blog/2017/06/11/Angular-debug-with-VS-Code/">使用 VS Code 替 Angular 除錯</a>
   </h1>
 
       </header>
@@ -121,22 +125,49 @@ ga('send', 'pageview');
         
         
         
-          <p>在 MS-DOS 時代，用 486 電腦敲打不知所云的程式碼 (應該是 Basic 吧我猜…XD) 後，播出小蜜蜂嗡嗡嗡～～</p>
-<p>讓我從小對電腦產生了興趣XD <del>(Key-in 人員養成計畫)</del>，當時英文自介總是這樣寫…“<em>I want to be a programer.</em>”</p>
-<p>可惜高中變成了愛打電玩的阿宅 (無誤)，大學也沒有就讀資訊相關科系….</p>
-<div style="font-size: 24px;padding-top: 20px;"><em>“如果對喜歡的事情沒法放棄，就要更努力讓別人看見自己的存在。”</em></div>
-
-<p>雖然非本科系出身，但是我樂愛資訊這塊領域。小弟生平無大志，但求能寫一輩子的 code！</p>
+          <p>在 <a href="/blog/2017/06/11/Angular-debug-with-chrome/">使用 Chrome 替 Angular 除錯</a> 寫了如何使用 Chrome 來進行除錯，<br>不過在雙螢幕情況下，這時反而會顯得工作效率低落</p>
+<p><em>修改程式 -&gt; 切換瀏覽器開發者工具 -&gt; 設置中斷點除錯 -&gt; 切回 VS Code -&gt; 修改程式 -&gt; …</em></p>
+<p>應該善用 VS Code 本身的除錯工具，就不需要視窗切來切去了</p>
+<a id="more"></a>
+<h4 id="執行步驟："><a href="#執行步驟：" class="headerlink" title="執行步驟："></a>執行步驟：</h4><ol>
+<li>先安裝 <a href="https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome" target="_blank" rel="external">Debugger for Chrome</a></li>
+<li>建立 <code>launch.json</code><ul>
+<li>如果之前已建立過，此步驟可省略</li>
+<li>如果沒有 <code>launch.json</code>，可輸入指令 <code>ctrl + p</code> → <code>&gt;debuglaunch.json</code> 並選擇 <code>Chrome</code> (VS Code 會自動建立 <code>.vscode</code> 資料夾與 <code>launch.json</code>)<img src="/blog/2017/06/11/Angular-debug-with-VS-Code/add-launch-json.gif" class="inline"></li>
+</ul>
+</li>
+<li><p>於 <code>launch.json</code> 加入以下設定</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"version"</span>: <span class="string">"0.2.0"</span>,</div><div class="line">  <span class="attr">"configurations"</span>: [</div><div class="line">    &#123;</div><div class="line">      <span class="attr">"type"</span>: <span class="string">"chrome"</span>,</div><div class="line">      <span class="attr">"request"</span>: <span class="string">"launch"</span>,</div><div class="line">      <span class="attr">"name"</span>: <span class="string">"Launch Chrome against localhost"</span>,</div><div class="line">      <span class="attr">"url"</span>: <span class="string">"http://localhost:4200"</span>,</div><div class="line">      <span class="attr">"webRoot"</span>: <span class="string">"$&#123;workspaceRoot&#125;/src"</span>,</div><div class="line">      <span class="attr">"userDataDir"</span>: <span class="string">"$&#123;workspaceRoot&#125;/.chrome"</span>,</div><div class="line">      <span class="attr">"sourceMapPathOverrides"</span>: &#123;</div><div class="line">        <span class="attr">"webpack:///./src/*"</span>: <span class="string">"$&#123;webRoot&#125;/*"</span></div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><code>url</code>：修改成 Angular 專案的網址 (即預設的 <a href="http://localhost:4200" target="_blank" rel="external">http://localhost:4200</a>)</li>
+<li><code>webRoot</code>：指定路徑至 <code>src</code> 目錄資料夾 (存放 source code 的路徑)</li>
+<li><code>sourceMapPathOverrides</code>：加入 <code>&quot;webpack:///./src/*&quot;: &quot;${webRoot}/*&quot;</code><ul>
+<li><a href="/blog/2017/06/11/Angular-debug-with-chrome/">使用 Chrome 替 Angular 除錯</a> 時，於 Chrome 設定 Webpack 中斷點的路徑 <code>./</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>透過 <code>npm start</code> 啟動 Angular 專案</li>
+<li>按下 <code>F5</code> 開始執行除錯 (VS Code 會自動開啟新的 Chrome 瀏覽器)</li>
+<li>開始進行除錯<br> <em>修改程式 -&gt; 設置中斷點除錯 -&gt; 修改程式 -&gt; …</em> <img src="/blog/2017/06/11/Angular-debug-with-VS-Code/vs-code-debug.gif" class="inline">
+ <br>p.s 不需要切換視窗，VS Code 改完 Angular cli 會自動刷新頁面</li>
+</ol>
+<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ul>
+<li><a href="https://github.com/Microsoft/vscode-chrome-debug" target="_blank" rel="external">VS Code - Debugger for Chrome</a></li>
+<li><a href="https://medium.com/@auchenberg/live-edit-and-debug-your-react-apps-directly-from-vs-code-without-leaving-the-editor-3da489ed905f" target="_blank" rel="external">Live edit and debug your React apps directly from VS Code — without leaving the editor </a></li>
+</ul>
 
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://coffee0127.github.io/blog/about/index.html" data-id="cj11uc4tf00003onxti1wv4qq" class="article-share-link">Share</a>
+      <a data-url="https://coffee0127.github.io/blog/blog/2017/06/11/Angular-debug-with-VS-Code/" data-id="cj3sgjure00002snxyooja397" class="article-share-link">Share</a>
       
-        <a href="https://coffee0127.github.io/blog/about/index.html#disqus_thread" class="article-comment-link">留言</a>
+        <a href="https://coffee0127.github.io/blog/blog/2017/06/11/Angular-debug-with-VS-Code/#disqus_thread" class="article-comment-link">留言</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Angular/">Angular</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/VS-Code/">VS Code</a></li></ul>
+
     </footer>
   </div>
   
@@ -146,11 +177,24 @@ ga('send', 'pageview');
         <h3 class="article-title" style="font-size: 20px;">相關文章</h3>
     </div>
     <div class="article-entry">
-      <p>No related post.</p>
+      <ul class="related-posts"><li class="related-posts-item"><a href="/blog/2017/04/03/Top-10-Angular-VSCode-Extensions/">【轉錄】Top 10 Angular VS Code Extensions</a><div class="related-posts-item-abstract">※ 本文用於備份好用的 Angular VSCode 外掛及加上小弟對外掛的見解，著作權仍屬 http://devboosts.com 
+Bracket Pair Colorizer可針對不同的 bracket 加上不同</div></li><li class="related-posts-item"><a href="/blog/2017/04/24/Angular-simple-routing/">透過 Angular 路由建立 SPA 網站</a><div class="related-posts-item-abstract">程式碼範例 Angular-SpringMVC-Integration建立 Angular 專案及頁面元件
+透過 Angular CLI 建立專案 ng new SampleProject --routing --rou</div></li><li class="related-posts-item"><a href="/blog/2017/04/23/Angular-proxy-to-backend-rest/">Angular 呼叫遠端 API</a><div class="related-posts-item-abstract">Angular 內建的 Http 可幫助我們呼叫遠端 API，搭配 Angular CLI 工具更可以快速建立 Angular 開發環境，由於前後端會分別開發 (不是說 Eclipse 不好用，是 VSCode 真的太好</div></li><li class="related-posts-item"><a href="/blog/2017/06/11/Angular-debug-with-chrome/">使用 Chrome 替 Angular 除錯</a><div class="related-posts-item-abstract">使用 Angular cli 工具好處就是可以節省許多環境面的設定 (如 TypeScript 轉譯、Webpack 打包、程式最小化等)讓我們能夠專注於業務邏輯的撰寫  
+不過也因為所有程式會被 Webpack 打包成</div></li><li class="related-posts-item"><a href="/blog/2016/09/20/Angular2-Custom-Element/">Angular 自訂元素</a><div class="related-posts-item-abstract">=== 2017-04-03 Updated ===配合 Angular 正名，因此 Angular 1.x ==&gt; AngularJS，Angular 2.x 之後的版本 ==&gt; Angular修改文章標題</div></li>
     </div>
   </div>
 </article>
     
+<nav id="article-nav">
+  
+  
+    <a href="/blog/2017/06/11/Angular-debug-with-chrome/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">使用 Chrome 替 Angular 除錯</div>
+    </a>
+  
+</nav>
+
   
 </article>
 
@@ -260,7 +304,7 @@ ga('send', 'pageview');
 <script>
   var disqus_shortname = 'xuans-blog';
   
-  var disqus_url = 'https://coffee0127.github.io/blog/about/index.html';
+  var disqus_url = 'https://coffee0127.github.io/blog/blog/2017/06/11/Angular-debug-with-VS-Code/';
   
   (function(){
     var dsq = document.createElement('script');
