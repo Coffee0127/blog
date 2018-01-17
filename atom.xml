@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://coffee0127.github.io/blog/"/>
-  <updated>2017-06-11T08:38:06.490Z</updated>
+  <updated>2018-01-17T04:12:08.533Z</updated>
   <id>https://coffee0127.github.io/blog/</id>
   
   <author>
@@ -14,6 +14,64 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CXF Unmarshalling Error: unexpected element</title>
+    <link href="https://coffee0127.github.io/blog/2017/11/12/unmarshalling-error-unexpected-element/"/>
+    <id>https://coffee0127.github.io/blog/2017/11/12/unmarshalling-error-unexpected-element/</id>
+    <published>2017-11-12T07:02:40.000Z</published>
+    <updated>2018-01-17T04:12:08.533Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近在使用 <a href="http://cxf.apache.org/docs/index.html" target="_blank" rel="external">Apache CXF</a> 搭配 SpringBoot 進行 WebService 開發</p>
+<p>測試 Server 端時先使用 <a href="https://www.soapui.org/" target="_blank" rel="external">SoapUI</a> 確認沒問題後，再改用 CXF Client 端呼叫，</p>
+<p>本機開發使用 Tomcat 跑 Server 端沒有問題，SoapUI 可正常執行並取得結果，CXF Client 端亦是如此</p>
+<p>不過實際佈署到 Weblogic 上，SoapUI 可正常執行並取得結果，CXF Client 端卻拋例外了….◢▆▅▄▃崩╰(〒皿〒)╯潰▃▄▅▇◣</p>
+<p>例外訊息為 <code>javax.xml.ws.soap.SOAPFaultException: Unmarshalling Error: unexpected element (uri:&quot;http://io.github.coffee0127/&quot;, local:&quot;return&quot;). Expected elements are &lt;{}return&gt;</code></p>
+<p>後來發現可透過 <code>StaxTransformFeature</code> 將未預期的 namespace 去除掉<br><em>(不過至於為何 Weblogic 會加上這些 namespace 還要研究…Orz)</em></p>
+<p>專案架構如下，程式碼可到 <a href="https://github.com/Coffee0127/cxf-test-proj" target="_blank" rel="external">cxf-test-proj</a> 下載</p>
+<ul>
+<li>ws-api 放置 WebService 介面與訊息物件</li>
+<li>ws-client 放置 WebService Client 端 CXF 設定</li>
+<li>ws-server 放置 WebService Server 端 CXF 設定及 WebService 實作</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">cxf-test-proj</div><div class="line">├─ws-api</div><div class="line">│  └─src</div><div class="line">│     └─main</div><div class="line">│         └─java</div><div class="line">│             └─io</div><div class="line">│                 └─github</div><div class="line">│                     └─coffee0127</div><div class="line">│                        └─service</div><div class="line">├─ws-client</div><div class="line">│   └─src</div><div class="line">│      └─main</div><div class="line">│         └─resources</div><div class="line">│              └─META-INF</div><div class="line">│                  └─spring</div><div class="line">└─ws-server</div><div class="line">    └─src</div><div class="line">       └─main</div><div class="line">          ├─java</div><div class="line">          │   └─io</div><div class="line">          │      └─github</div><div class="line">          │          └─coffee0127</div><div class="line">          │             └─service</div><div class="line">          │                 └─impl</div><div class="line">          └─resources</div><div class="line">              └─META-INF</div><div class="line">                  └─spring</div></pre></td></tr></table></figure>
+<h3 id="ws-server"><a href="#ws-server" class="headerlink" title="ws-server"></a>ws-server</h3><ul>
+<li><p>service-wss.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span></span></div><div class="line">    <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="attr">xmlns:jaxws</span>=<span class="string">"http://cxf.apache.org/jaxws"</span></div><div class="line">    <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.springframework.org/schema/beans</span></div><div class="line">            http://www.springframework.org/schema/beans/spring-beans.xsd</div><div class="line">            http://cxf.apache.org/jaxws</div><div class="line">            http://cxf.apache.org/schemas/jaxws.xsd"&gt;</div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">jaxws:endpoint</span> <span class="attr">implementor</span>=<span class="string">"io.github.coffee0127.service.impl.FunctionProcessServiceImpl"</span></span></div><div class="line">        <span class="attr">address</span>=<span class="string">"/s001"</span> /&gt;</div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>FunctionProcessServiceImpl.java (簡單的實作，並無其他特別設定)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Service</span>(<span class="string">"FunctionProcessService"</span>)</div><div class="line"><span class="meta">@WebService</span>(name = <span class="string">"FunctionProcessService"</span>, serviceName = <span class="string">"FunctionProcessServiceClient"</span>,</div><div class="line">    portName = <span class="string">"FunctionProcessServicePort"</span>, targetNamespace = <span class="string">"http://service.coffee0127.github.io/"</span>)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FunctionProcessServiceImpl</span> <span class="keyword">implements</span> <span class="title">FunctionProcessService</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String DATE_TIME_FORMAT = LocalDateTime.now().format(DateTimeFormatter.ofPattern(<span class="string">"yyyy-MM-dd HH:mm:ss.SSS"</span>));</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> ServiceMsg <span class="title">msgProcess</span><span class="params">(ServiceMsg serviceMsg)</span> </span>&#123;</div><div class="line">        serviceMsg.getHeader().setMessageTimestamp(DATE_TIME_FORMAT);</div><div class="line">        serviceMsg.setBody(<span class="string">"Return-"</span> + serviceMsg.getBody());</div><div class="line">        <span class="keyword">return</span> serviceMsg;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="ws-client"><a href="#ws-client" class="headerlink" title="ws-client"></a>ws-client</h3><ul>
+<li>service-wsc.xml<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span></span></div><div class="line">    <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="attr">xmlns:jaxws</span>=<span class="string">"http://cxf.apache.org/jaxws"</span></div><div class="line">    <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.springframework.org/schema/beans</span></div><div class="line">            http://www.springframework.org/schema/beans/spring-beans.xsd</div><div class="line">            http://cxf.apache.org/jaxws</div><div class="line">            http://cxf.apache.org/schemas/jaxws.xsd"&gt;</div><div class="line"></div><div class="line">    <span class="comment">&lt;!-- 透過 jaxws:client 取得 WebService Client 端: 指定 "介面" 與 "發佈網址" --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jaxws:client</span> <span class="attr">id</span>=<span class="string">"FunctionProcessService"</span></span></div><div class="line">        <span class="attr">serviceClass</span>=<span class="string">"io.github.coffee0127.service.FunctionProcessService"</span></div><div class="line">        <span class="attr">address</span>=<span class="string">"http://127.0.0.1:8080/my-service/wsdl/s001"</span>&gt;</div><div class="line">        <span class="tag">&lt;<span class="name">jaxws:features</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.apache.cxf.feature.StaxTransformFeature"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"inTransformElements"</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;<span class="name">map</span>&gt;</span></div><div class="line">                        <span class="tag">&lt;<span class="name">entry</span> <span class="attr">key</span>=<span class="string">"&#123;http://io.github.coffee0127/&#125;return"</span> <span class="attr">value</span>=<span class="string">"return"</span> /&gt;</span></div><div class="line">                        <span class="tag">&lt;<span class="name">entry</span> <span class="attr">key</span>=<span class="string">"&#123;http://io.github.coffee0127/&#125;header"</span> <span class="attr">value</span>=<span class="string">"header"</span> /&gt;</span></div><div class="line">                        <span class="tag">&lt;<span class="name">entry</span> <span class="attr">key</span>=<span class="string">"&#123;http://io.github.coffee0127/&#125;body"</span> <span class="attr">value</span>=<span class="string">"body"</span> /&gt;</span></div><div class="line">                        <span class="tag">&lt;<span class="name">entry</span> <span class="attr">key</span>=<span class="string">"&#123;http://io.github.coffee0127/&#125;accessIp"</span> <span class="attr">value</span>=<span class="string">"accessIp"</span> /&gt;</span></div><div class="line">                        <span class="tag">&lt;<span class="name">entry</span> <span class="attr">key</span>=<span class="string">"&#123;http://io.github.coffee0127/&#125;caseId"</span> <span class="attr">value</span>=<span class="string">"caseId"</span> /&gt;</span></div><div class="line">                        <span class="tag">&lt;<span class="name">entry</span> <span class="attr">key</span>=<span class="string">"&#123;http://io.github.coffee0127/&#125;serviceId"</span> <span class="attr">value</span>=<span class="string">"serviceId"</span> /&gt;</span></div><div class="line">                        <span class="tag">&lt;<span class="name">entry</span> <span class="attr">key</span>=<span class="string">"&#123;http://io.github.coffee0127/&#125;messageTimestamp"</span> <span class="attr">value</span>=<span class="string">"messageTimestamp"</span> /&gt;</span></div><div class="line">                    <span class="tag">&lt;/<span class="name">map</span>&gt;</span></div><div class="line">                <span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">jaxws:features</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">jaxws:client</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ul>
+<li><a href="http://cxf.apache.org/docs/springboot.html" target="_blank" rel="external">Apache CXF SpringBoot</a><ul>
+<li><a href="http://cxf.apache.org/docs/transformationfeature.html" target="_blank" rel="external">Transformation Feature</a></li>
+</ul>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近在使用 &lt;a href=&quot;http://cxf.apache.org/docs/index.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Apache CXF&lt;/a&gt; 搭配 SpringBoot 進行 WebService 開發&lt;/p&gt;
+&lt;p
+    
+    </summary>
+    
+      <category term="Apache CXF" scheme="https://coffee0127.github.io/blog/categories/Apache-CXF/"/>
+    
+    
+      <category term="Java" scheme="https://coffee0127.github.io/blog/tags/Java/"/>
+    
+      <category term="Apache CXF" scheme="https://coffee0127.github.io/blog/tags/Apache-CXF/"/>
+    
+      <category term="Weblogic" scheme="https://coffee0127.github.io/blog/tags/Weblogic/"/>
+    
+  </entry>
   
   <entry>
     <title>使用 VS Code 替 Angular 除錯</title>
@@ -1215,86 +1273,6 @@
     
       &lt;p&gt;接續上一篇 &lt;a href=&quot;/blog/2016/08/08/how-to-install-hexo/&quot;&gt;Hexo 安裝&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&quot;認識-GitHub&quot;&gt;&lt;a href=&quot;#認識-GitHub&quot; class=&quot;headerlink&quot; title=&quot;認
-    
-    </summary>
-    
-      <category term="Hexo" scheme="https://coffee0127.github.io/blog/categories/Hexo/"/>
-    
-    
-      <category term="Hexo" scheme="https://coffee0127.github.io/blog/tags/Hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo 安裝</title>
-    <link href="https://coffee0127.github.io/blog/2016/08/08/how-to-install-hexo/"/>
-    <id>https://coffee0127.github.io/blog/2016/08/08/how-to-install-hexo/</id>
-    <published>2016-08-08T13:08:49.000Z</published>
-    <updated>2016-11-27T14:48:59.046Z</updated>
-    
-    <content type="html"><![CDATA[<div style="font-size: 24px;padding-top: 20px;"><em>“取之於社會，用之於社會”</em></div>
-
-<p>從土木工程轉行 Key-in 人員也三年多了，現在才開始寫 Blog 會不會太慢 (￣□￣|||)a</p>
-<p>一來是寫下在這行打滾的心得，做個里程碑，<br>二來是希望他日若有人遇到一樣問題，能夠幫上忙。(找到的資料是繁體中文不是很親切嗎 ㄟ(￣▽￣ㄟ))</p>
-<p>選用 GitHub 理由：容量無限啊XD<br><span style="padding-left: 8.5em"><del>(絕對不是有自己的 domain name 是件很 cooooooooooooool 的事)</del></span><br>選用 Hexo 理由：透過 <a href="http://markdown.tw/" target="_blank" rel="external">MarkDown</a> 的簡單語法即可撰寫出有層次網頁！<br><span style="padding-left: 8em">(另一個理由就是我想熟悉他的語法….XD)</span></p>
-<p>因此第一篇 Blog，不免俗就是簡單搭建 Hexo 並且佈署至 GitHub 上來個 Hello World 一下。</p>
-<hr>
-<h3 id="前置安裝"><a href="#前置安裝" class="headerlink" title="前置安裝"></a>前置安裝</h3><p>開始之前，我們需先確認電腦有安裝以下環境</p>
-<ul>
-<li><a href="http://nodejs.org/" target="_blank" rel="external">Node.js</a></li>
-<li><a href="http://git-scm.com/" target="_blank" rel="external">Git</a></li>
-</ul>
-<h3 id="安裝-Hexo"><a href="#安裝-Hexo" class="headerlink" title="安裝 Hexo"></a>安裝 Hexo</h3><p>安裝好 Node.js 後，即可透過 <code>npm</code> 方式快速安裝 hexo<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g hexo-cli</div></pre></td></tr></table></figure></p>
-<h3 id="建立-Hexo"><a href="#建立-Hexo" class="headerlink" title="建立 Hexo"></a>建立 Hexo</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ hexo init &lt;folder&gt;</div><div class="line">$ <span class="built_in">cd</span> &lt;folder&gt;</div><div class="line">$ npm install</div></pre></td></tr></table></figure>
-<p>建立完成後，專案資料夾會有下列檔案：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">.</div><div class="line">├─ _config.yml    // hexo 設定檔</div><div class="line">├─ package.json   // Node.js 相依設定檔</div><div class="line">├─ node_modules   // Node.js 模組</div><div class="line">├─ scaffolds      // Blog 文章 layout</div><div class="line">├─ source</div><div class="line">│　　└─ _posts    // Blog 文章</div><div class="line">└─ themes         // Hexo 主題</div><div class="line">　　 └─ landscape</div></pre></td></tr></table></figure>
-<h3 id="啟動-Hexo-Server"><a href="#啟動-Hexo-Server" class="headerlink" title="啟動 Hexo Server"></a>啟動 Hexo Server</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ hexo server [-p][-s][-l]</div><div class="line">or</div><div class="line">$ hexo s [-p][-s][-l]</div></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th>選項</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>-p</code>, <code>--port</code></td>
-<td>覆蓋連接埠設定，預設 4000</td>
-</tr>
-<tr>
-<td><code>-s</code>, <code>--static</code></td>
-<td>只使用靜態檔案</td>
-</tr>
-<tr>
-<td><code>-l</code>, <code>--log</code></td>
-<td>啟動記錄器，或覆蓋記錄格式</td>
-</tr>
-</tbody>
-</table>
-<p>連線至 <a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a> 查看，就可以看到第一篇 Hello World 文章</p>
-<h3 id="自動刷新-Optional"><a href="#自動刷新-Optional" class="headerlink" title="自動刷新 (Optional)"></a>自動刷新 (Optional)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-browsersync --save</div></pre></td></tr></table></figure>
-<h3 id="建立檔案"><a href="#建立檔案" class="headerlink" title="建立檔案"></a>建立檔案</h3><p>接下來我們要建立自己的文章，輸入以下指令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ hexo new [layout] &lt;title&gt;</div><div class="line">or</div><div class="line">$ hexo n [layout] &lt;title&gt;</div></pre></td></tr></table></figure></p>
-<p><code>hexo new FirstBlog</code> 在 <code>source</code> 資料夾下即建立 <code>FirstBlog.md</code> 檔案，就可以開始編寫 Blog 囉</p>
-<h3 id="設定檔-config-yml"><a href="#設定檔-config-yml" class="headerlink" title="設定檔 _config.yml"></a>設定檔 _config.yml</h3><p>Hexo 分兩個設定檔，這邊講的是根目錄下的 <code>_config.yml</code>，而非主題下的</p>
-<h4 id="Site"><a href="#Site" class="headerlink" title="Site"></a>Site</h4><figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Site</span></div><div class="line"><span class="attr">title:</span>  <span class="comment"># 網站主標題</span></div><div class="line"><span class="attr">subtitle:</span> <span class="comment"># 網站副標題</span></div><div class="line"><span class="attr">description:</span> <span class="comment"># 用於產生 &lt;meta property="og:description"&gt; 標籤</span></div><div class="line"><span class="attr">author:</span> <span class="comment"># 網站作者</span></div><div class="line"><span class="attr">language:</span> <span class="comment"># 網站語言</span></div><div class="line"><span class="attr">timezone:</span> <span class="comment"># 網站時區，預設使用電腦時區</span></div></pre></td></tr></table></figure>
-<h4 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h4><p>這邊要注意 <code>url</code> 跟 <code>root</code>，當你的網站是放置於子資料夾下時，例如 <code>http://yoursite.com/child</code>，<br>請將 url 設定為 <code>http://yoursite.com/child</code>，root 則設定為 <code>/child/</code>。<br>note: 子資料夾會有分享連結失效問題，解決方法參考 <a href="/blog/2016/08/10/hexo-share-link-fix/">Hexo 分享連結失效</a></p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># URL</span></div><div class="line"><span class="comment">## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'</span></div><div class="line"><span class="attr">url:</span> https://coffee0127.github.io/blog/ <span class="comment">#網站的網址</span></div><div class="line"><span class="attr">root:</span> /blog/    <span class="comment">#網站的根目錄</span></div><div class="line"><span class="attr">permalink:</span> :year/:month/:day/:title/    <span class="comment"># 文章永久連結的格式</span></div><div class="line"><span class="attr">permalink_defaults:</span>     <span class="comment"># 永久連結中各區段的預設值，小弟沒試過XD</span></div></pre></td></tr></table></figure>
-<h4 id="Writing"><a href="#Writing" class="headerlink" title="Writing"></a>Writing</h4><p>這邊僅針對 <code>new_post_name</code> 稍作說明，<code>new_post_name</code> 是新文章的檔案名稱，預設是 <code>:title.md</code>。<br>小弟將其修改為 <code>:year-:month-:day-:title.md</code>，將其修改為 <code>年-月-日-標題.md</code>，以日期為檔名，方便文章管理。<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Writing</span></div><div class="line"><span class="attr">new_post_name:</span> :year-:month-:day-:title.md</div></pre></td></tr></table></figure></p>
-<p>其他說明可再參考官網 <a href="https://hexo.io/docs/configuration.html" target="_blank" rel="external">Configuration</a></p>
-<p>接著佈署至 GitHub 請見下一篇 <a href="/blog/2016/08/09/how-to-deploy-to-git">Hexo 佈署</a></p>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
-<li><a href="https://hexo.io/" target="_blank" rel="external">Hexo</a></li>
-<li><a href="https://wsgzao.github.io/post/hexo-guide/" target="_blank" rel="external">使用GitHub和Hexo搭建免费静态Blog</a></li>
-<li><a href="http://www.jianshu.com/p/05289a4bc8b2" target="_blank" rel="external">如何搭建一个独立博客——简明Github Pages与Hexo教程</a></li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;div style=&quot;font-size: 24px;padding-top: 20px;&quot;&gt;&lt;em&gt;“取之於社會，用之於社會”&lt;/em&gt;&lt;/div&gt;
-
-&lt;p&gt;從土木工程轉行 Key-in 人員也三年多了，現在才開始寫 Blog 會不會太慢 (￣□￣|||)a&lt;/p&gt;
-&lt;p&gt;一
     
     </summary>
     
