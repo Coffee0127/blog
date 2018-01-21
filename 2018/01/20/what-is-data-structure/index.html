@@ -14,7 +14,7 @@
 <meta property="og:description" content="決定數據(Data)的順序和位置數據儲存在電腦的記憶體中，而記憶體如下圖所示，呈現箱子排成一列的形狀，每個箱子都存有一個數據。
 當數據儲存在記憶體中時，決定數據的順序和位置的，就是「資料結構」(Data Structure)。">
 <meta property="og:image" content="https://coffee0127.github.io/blog/blog/2018/01/20/what-is-data-structure/memory.png">
-<meta property="og:updated_time" content="2018-01-21T08:01:48.647Z">
+<meta property="og:updated_time" content="2018-01-21T08:17:46.207Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="何謂資料結構">
 <meta name="twitter:description" content="決定數據(Data)的順序和位置數據儲存在電腦的記憶體中，而記憶體如下圖所示，呈現箱子排成一列的形狀，每個箱子都存有一個數據。
@@ -121,7 +121,7 @@ ga('send', 'pageview');
         
           <div id="toc" class="toc-article">
             <strong class="toc-title">文章目錄</strong>
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#決定數據-Data-的順序和位置"><span class="toc-number">1.</span> <span class="toc-text">決定數據(Data)的順序和位置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#以電話簿的資料結構為例"><span class="toc-number">2.</span> <span class="toc-text">以電話簿的資料結構為例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#依序上往下追加"><span class="toc-number">2.1.</span> <span class="toc-text">依序上往下追加</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#依姓名的聲母順序管理"><span class="toc-number">2.2.</span> <span class="toc-text">依姓名的聲母順序管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#各自優缺點"><span class="toc-number">2.3.</span> <span class="toc-text">各自優缺點</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#試著結合兩者"><span class="toc-number">2.4.</span> <span class="toc-text">試著結合兩者</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ㄌ-表"><span class="toc-number">2.4.1.</span> <span class="toc-text">ㄌ 表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ㄒ-表"><span class="toc-number">2.4.2.</span> <span class="toc-text">ㄒ 表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ㄧ-表"><span class="toc-number">2.4.3.</span> <span class="toc-text">ㄧ 表</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在資料結構下工夫，就能提高記憶體使用效率"><span class="toc-number">3.</span> <span class="toc-text">在資料結構下工夫，就能提高記憶體使用效率</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#決定數據-Data-的順序和位置"><span class="toc-number">1.</span> <span class="toc-text">決定數據(Data)的順序和位置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#以電話簿的資料結構為例"><span class="toc-number">2.</span> <span class="toc-text">以電話簿的資料結構為例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#依序上往下追加"><span class="toc-number">2.1.</span> <span class="toc-text">依序上往下追加</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#依姓名的聲母順序管理"><span class="toc-number">2.2.</span> <span class="toc-text">依姓名的聲母順序管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#各自優缺點"><span class="toc-number">2.3.</span> <span class="toc-text">各自優缺點</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#試著結合兩者"><span class="toc-number">2.4.</span> <span class="toc-text">試著結合兩者</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ㄌ-表"><span class="toc-number">2.4.1.</span> <span class="toc-text">ㄌ 表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ㄒ-表"><span class="toc-number">2.4.2.</span> <span class="toc-text">ㄒ 表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ㄧ-表"><span class="toc-number">2.4.3.</span> <span class="toc-text">ㄧ 表</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在資料結構下工夫，就能提高記憶體使用效率"><span class="toc-number">3.</span> <span class="toc-text">在資料結構下工夫，就能提高記憶體使用效率</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">4.</span> <span class="toc-text">Reference</span></a></li></ol>
           </div>
         
         
@@ -259,6 +259,15 @@ ga('send', 'pageview');
 </table>
 <p>像這樣，新增聯絡資訊時，只要加在該聲母開頭的表格最末行就好，查找電話時，也只需查找該聲母表格<br>(不過，因為各表格並無特別順序，因此該表仍需整份檢索，但比起整本電話簿查找已省去不少時間)</p>
 <h2 id="在資料結構下工夫，就能提高記憶體使用效率"><a href="#在資料結構下工夫，就能提高記憶體使用效率" class="headerlink" title="在資料結構下工夫，就能提高記憶體使用效率"></a>在資料結構下工夫，就能提高記憶體使用效率</h2><p>資料結構的邏輯與上述電話簿相同。當數據儲存在記憶體中，根據目的妥善結構化數據，就能提高使用效率。</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a href="http://www.books.com.tw/products/0010771263" target="_blank" rel="external">演算法圖鑑</a></li>
+<li>Algorithms: Explained and Animated<ul>
+<li><a href="https://itunes.apple.com/us/app/algorithms-explained-and-animated/id1047532631" target="_blank" rel="external">App Store</a></li>
+<li><a href="https://play.google.com/store/apps/details?id=wiki.algorithm.algorithms" target="_blank" rel="external">Google Play</a></li>
+</ul>
+</li>
+</ul>
+<p>此一系列筆記為閱讀演算法圖鑑後心得，畢竟不是本科系出身，希望能透過撰寫電子檔過程中，對於資料結構、演算法等有進一步認識╰(<em>´︶`</em>)╯♡</p>
 
         
       

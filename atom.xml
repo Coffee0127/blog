@@ -64,7 +64,7 @@
     <link href="https://coffee0127.github.io/blog/2018/01/20/what-is-data-structure/"/>
     <id>https://coffee0127.github.io/blog/2018/01/20/what-is-data-structure/</id>
     <published>2018-01-20T12:06:42.000Z</published>
-    <updated>2018-01-21T08:01:48.647Z</updated>
+    <updated>2018-01-21T08:17:46.207Z</updated>
     
     <content type="html"><![CDATA[<h2 id="決定數據-Data-的順序和位置"><a href="#決定數據-Data-的順序和位置" class="headerlink" title="決定數據(Data)的順序和位置"></a>決定數據(Data)的順序和位置</h2><p>數據儲存在電腦的記憶體中，而記憶體如下圖所示，呈現箱子排成一列的形狀，每個箱子都存有一個數據。<br><img src="/blog/2018/01/20/what-is-data-structure/memory.png" class="inline"></p>
 <p>當數據儲存在記憶體中時，決定數據的順序和位置的，就是「資料結構」(Data Structure)。</p>
@@ -199,6 +199,15 @@
 </table>
 <p>像這樣，新增聯絡資訊時，只要加在該聲母開頭的表格最末行就好，查找電話時，也只需查找該聲母表格<br>(不過，因為各表格並無特別順序，因此該表仍需整份檢索，但比起整本電話簿查找已省去不少時間)</p>
 <h2 id="在資料結構下工夫，就能提高記憶體使用效率"><a href="#在資料結構下工夫，就能提高記憶體使用效率" class="headerlink" title="在資料結構下工夫，就能提高記憶體使用效率"></a>在資料結構下工夫，就能提高記憶體使用效率</h2><p>資料結構的邏輯與上述電話簿相同。當數據儲存在記憶體中，根據目的妥善結構化數據，就能提高使用效率。</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a href="http://www.books.com.tw/products/0010771263" target="_blank" rel="external">演算法圖鑑</a></li>
+<li>Algorithms: Explained and Animated<ul>
+<li><a href="https://itunes.apple.com/us/app/algorithms-explained-and-animated/id1047532631" target="_blank" rel="external">App Store</a></li>
+<li><a href="https://play.google.com/store/apps/details?id=wiki.algorithm.algorithms" target="_blank" rel="external">Google Play</a></li>
+</ul>
+</li>
+</ul>
+<p>此一系列筆記為閱讀演算法圖鑑後心得，畢竟不是本科系出身，希望能透過撰寫電子檔過程中，對於資料結構、演算法等有進一步認識╰(<em>´︶`</em>)╯♡</p>
 ]]></content>
     
     <summary type="html">
