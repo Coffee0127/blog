@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://coffee0127.github.io/blog/"/>
-  <updated>2018-01-17T04:12:08.533Z</updated>
+  <updated>2018-01-21T08:01:48.666Z</updated>
   <id>https://coffee0127.github.io/blog/</id>
   
   <author>
@@ -14,6 +14,206 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>列表</title>
+    <link href="https://coffee0127.github.io/blog/2018/01/21/list/"/>
+    <id>https://coffee0127.github.io/blog/2018/01/21/list/</id>
+    <published>2018-01-21T05:51:13.000Z</published>
+    <updated>2018-01-21T08:01:48.666Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="指標"><a href="#指標" class="headerlink" title="指標"></a>指標</h2><p>列表是資料結構的一種，這類結構的數據排成一直線，便於追加或刪除，但存取數據卻很費時。</p>
+<p>每個「數據」和一個「指標」配對，指向下一個數據在記憶體中的位址<br>其中，Red 是最後的數據，所以其指標沒有指向任何位址</p>
+<img src="/blog/2018/01/21/list/list.png" class="inline">
+<a id="more"></a>
+<p>列表中，數據不需要連續儲存於記憶體中，一般多是分散於各個記憶體區塊<br><img src="/blog/2018/01/21/list/memory.gif" class="inline"></p>
+<h2 id="順序存取-sequential-access"><a href="#順序存取-sequential-access" class="headerlink" title="順序存取 (sequential access)"></a>順序存取 (sequential access)</h2><p>因為數據被分散儲存，所以只能從頭依序跟著指標存取個數據<br>如上圖動畫：要存取 Red，必須透過 Blue 取得 Yellow 後，才能取得 Red</p>
+<h2 id="增加數據"><a href="#增加數據" class="headerlink" title="增加數據"></a>增加數據</h2><p>只要把追加位址前後的指標轉向即可，例如想在 Blue 與 Yellow 之間增加 Green<br>僅需將 Blue 指標指向 Green，再把 Green 的指標指向 Yellow 即可<br><img src="/blog/2018/01/21/list/add.gif" class="inline"></p>
+<p>p.s 記得，所有數據在記憶體區塊中都可不必連續儲存</p>
+<h2 id="刪除數據"><a href="#刪除數據" class="headerlink" title="刪除數據"></a>刪除數據</h2><p>同樣將指標轉向即可，例如想刪除 Yellow，僅需將 Green 的指標指向 Red<br>Yellow 區塊雖仍存在記憶體中，但是已無法被存取。<br><img src="/blog/2018/01/21/list/remove.gif" class="inline"></p>
+<p>p.s 若要重複使用這個記憶體區塊，僅需覆寫即可。</p>
+<h2 id="執行時間討論-以-大O符號-表示"><a href="#執行時間討論-以-大O符號-表示" class="headerlink" title="執行時間討論 (以 大O符號 表示)"></a>執行時間討論 (以 <a href="https://zh.wikipedia.org/wiki/%E5%A4%A7O%E7%AC%A6%E5%8F%B7" target="_blank" rel="external">大O符號</a> 表示)</h2><ol>
+<li>使用列表內的所有數據的執行時間<br> 假設列表中的數據有 n 個，存取所有數據必須從頭開始，因此為 <code>O(n)</code></li>
+<li>新增數據<br> 僅需改變 2 個指標指向，與列表中 n 個數據無關，因此為常數時間 <code>O(1)</code><br> 前提是已知數據新增位置，否則需考慮從數據查找的執行時間</li>
+<li>刪除數據<br> 同樣僅需耗費常數時間 <code>O(1)</code></li>
+</ol>
+<h2 id="其他列表"><a href="#其他列表" class="headerlink" title="其他列表"></a>其他列表</h2><ul>
+<li>環狀列表 / 循環列表 (Circular List)<br>  將最後一個數據的指標指向第一個數據，就能形成環狀。此列表沒有頭尾區分，可用來限制列表內的數據數量。  <img src="/blog/2018/01/21/list/circular-list.png" class="inline"></li>
+<li>雙向列表 (Bidirectional List)<br>  當每個數據帶 2 個指標，分別指向前後數據。此列表一樣沒有頭尾區分，且可從另一端來存取。<br>  此列表的缺點為必須增加記憶體使用量，且新增或刪除數據時，要變更方向的指標數也變多了。  <img src="/blog/2018/01/21/list/bidirectional-list.png" class="inline">
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;指標&quot;&gt;&lt;a href=&quot;#指標&quot; class=&quot;headerlink&quot; title=&quot;指標&quot;&gt;&lt;/a&gt;指標&lt;/h2&gt;&lt;p&gt;列表是資料結構的一種，這類結構的數據排成一直線，便於追加或刪除，但存取數據卻很費時。&lt;/p&gt;
+&lt;p&gt;每個「數據」和一個「指標」配對，指向下一個數據在記憶體中的位址&lt;br&gt;其中，Red 是最後的數據，所以其指標沒有指向任何位址&lt;/p&gt;
+&lt;img src=&quot;/blog/2018/01/21/list/list.png&quot; class=&quot;inline&quot;&gt;
+    
+    </summary>
+    
+      <category term="資料結構" scheme="https://coffee0127.github.io/blog/categories/%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B/"/>
+    
+    
+      <category term="資料結構" scheme="https://coffee0127.github.io/blog/tags/%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>何謂資料結構</title>
+    <link href="https://coffee0127.github.io/blog/2018/01/20/what-is-data-structure/"/>
+    <id>https://coffee0127.github.io/blog/2018/01/20/what-is-data-structure/</id>
+    <published>2018-01-20T12:06:42.000Z</published>
+    <updated>2018-01-21T08:01:48.647Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="決定數據-Data-的順序和位置"><a href="#決定數據-Data-的順序和位置" class="headerlink" title="決定數據(Data)的順序和位置"></a>決定數據(Data)的順序和位置</h2><p>數據儲存在電腦的記憶體中，而記憶體如下圖所示，呈現箱子排成一列的形狀，每個箱子都存有一個數據。<br><img src="/blog/2018/01/20/what-is-data-structure/memory.png" class="inline"></p>
+<p>當數據儲存在記憶體中時，決定數據的順序和位置的，就是「資料結構」(Data Structure)。</p>
+<a id="more"></a>
+<h2 id="以電話簿的資料結構為例"><a href="#以電話簿的資料結構為例" class="headerlink" title="以電話簿的資料結構為例"></a>以電話簿的資料結構為例</h2><h3 id="依序上往下追加"><a href="#依序上往下追加" class="headerlink" title="依序上往下追加"></a>依序上往下追加</h3><p>在手機不盛行的年代，記下朋友電話就只能用紙筆記錄，通常都會每得到一組電話號碼，都由上往下依序寫在紙上。</p>
+<table>
+<thead>
+<tr>
+<th>姓名</th>
+<th>電話號碼</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>楊美珍</td>
+<td>0987-654-321</td>
+</tr>
+<tr>
+<td>駱欣怡</td>
+<td>0912-345-678</td>
+</tr>
+<tr>
+<td>許如木</td>
+<td>0956-781-234</td>
+</tr>
+<tr>
+<td>林秀昌</td>
+<td>0943-218-765</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody>
+</table>
+<p>當要找「王珮雯」的電話時，因為資訊只是單純的以先後順序排列，所以不知道「王珮雯」的電話寫在哪裡，只能從<em>頭</em>開始尋找<br>(或是從<em>最後</em>開始，或是<em>隨機</em>尋找，但是非常耗時)</p>
+<p>如果只有幾組電話或許可以馬上找到，但是當有數百、數千時可就非常麻煩了…ヾ(<em>´∀｀</em>)ﾉ</p>
+<h3 id="依姓名的聲母順序管理"><a href="#依姓名的聲母順序管理" class="headerlink" title="依姓名的聲母順序管理"></a>依姓名的聲母順序管理</h3><p>若換用注音(ㄅ、ㄆ、ㄇ)來管理電話號碼，因為姓名依照聲母順序排列，所以這類數據具有「結構」</p>
+<table>
+<thead>
+<tr>
+<th>姓名</th>
+<th>電話號碼</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>林(ㄌㄧㄣˊ)秀昌</td>
+<td>0943-218-765</td>
+</tr>
+<tr>
+<td>駱(ㄌㄨㄛˋ)欣怡</td>
+<td>0912-345-678</td>
+</tr>
+<tr>
+<td>許(ㄒㄩˇ)如木</td>
+<td>0956-781-234</td>
+</tr>
+<tr>
+<td>楊(ㄧㄤˊ)美珍</td>
+<td>0987-654-321</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody>
+</table>
+<p>注意到，因「林秀昌」與「駱欣怡」聲母一樣(皆為ㄌ)，因此再以第二個注音做排序</p>
+<p>如此一來，從姓氏第一個字就大概能推測出位在電話簿何處位置，能較輕鬆找到對方電話號碼了</p>
+<p><em>我想新增號碼怎麼辦?</em><br>今天認識了一位李(ㄌㄧˇ)安琪，要把電話號碼加進電話簿時，必須加在電話簿的第一順位<br>因此必須把所有電話號碼皆往下移動一行，才能將李安琪的電話插入電話簿第一行</p>
+<p>依序進行「電話號碼皆往下移動一行」，假設每10秒可移動1筆資料，1分鐘才可移動6筆資料，一小時也才不過360筆資料….</p>
+<h3 id="各自優缺點"><a href="#各自優缺點" class="headerlink" title="各自優缺點"></a>各自優缺點</h3><p>依序上往下追加：追加數據時相當容易，但查找費力。反之，根據姓名的聲母順序便於查找，但是不利於追加數據<br>一本電話簿，多種紀錄方式，各自精采，要用哪一種，取決於怎麼使用電話簿。<br>頻繁增加資訊卻不太需要查找(使用前者) vs 建立完成後幾乎不再更新 (使用後者)</p>
+<h3 id="試著結合兩者"><a href="#試著結合兩者" class="headerlink" title="試著結合兩者"></a>試著結合兩者</h3><p>例如將注音(ㄅ、ㄆ、ㄇ…)每一個聲母分成獨立的表格，在同一個表格中則採用依序上往下追加聯絡資訊。</p>
+<h4 id="ㄌ-表"><a href="#ㄌ-表" class="headerlink" title="ㄌ 表"></a>ㄌ 表</h4><table>
+<thead>
+<tr>
+<th>姓名</th>
+<th>電話號碼</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>駱欣怡</td>
+<td>0912-345-678</td>
+</tr>
+<tr>
+<td>林秀昌</td>
+<td>0943-218-765</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ㄒ-表"><a href="#ㄒ-表" class="headerlink" title="ㄒ 表"></a>ㄒ 表</h4><table>
+<thead>
+<tr>
+<th>姓名</th>
+<th>電話號碼</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>許如木</td>
+<td>0956-781-234</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ㄧ-表"><a href="#ㄧ-表" class="headerlink" title="ㄧ 表"></a>ㄧ 表</h4><table>
+<thead>
+<tr>
+<th>姓名</th>
+<th>電話號碼</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>楊美珍</td>
+<td>0987-654-321</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody>
+</table>
+<p>像這樣，新增聯絡資訊時，只要加在該聲母開頭的表格最末行就好，查找電話時，也只需查找該聲母表格<br>(不過，因為各表格並無特別順序，因此該表仍需整份檢索，但比起整本電話簿查找已省去不少時間)</p>
+<h2 id="在資料結構下工夫，就能提高記憶體使用效率"><a href="#在資料結構下工夫，就能提高記憶體使用效率" class="headerlink" title="在資料結構下工夫，就能提高記憶體使用效率"></a>在資料結構下工夫，就能提高記憶體使用效率</h2><p>資料結構的邏輯與上述電話簿相同。當數據儲存在記憶體中，根據目的妥善結構化數據，就能提高使用效率。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;決定數據-Data-的順序和位置&quot;&gt;&lt;a href=&quot;#決定數據-Data-的順序和位置&quot; class=&quot;headerlink&quot; title=&quot;決定數據(Data)的順序和位置&quot;&gt;&lt;/a&gt;決定數據(Data)的順序和位置&lt;/h2&gt;&lt;p&gt;數據儲存在電腦的記憶體中，而記憶體如下圖所示，呈現箱子排成一列的形狀，每個箱子都存有一個數據。&lt;br&gt;&lt;img src=&quot;/blog/2018/01/20/what-is-data-structure/memory.png&quot; class=&quot;inline&quot;&gt;&lt;/p&gt;
+&lt;p&gt;當數據儲存在記憶體中時，決定數據的順序和位置的，就是「資料結構」(Data Structure)。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="資料結構" scheme="https://coffee0127.github.io/blog/categories/%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B/"/>
+    
+    
+      <category term="資料結構" scheme="https://coffee0127.github.io/blog/tags/%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>CXF Unmarshalling Error: unexpected element</title>
@@ -1122,157 +1322,6 @@
     
       &lt;p&gt;今天想來試試看分享功能，結果 FB 連結分享出來的卻是 404….XD&lt;/p&gt;
 &lt;p&gt;看了一下分享的網址 &lt;a href=&quot;https://coffee0127.github.io/blog/blog/2016/08/09/hexo-configuration/&quot;&gt;http
-    
-    </summary>
-    
-      <category term="Hexo" scheme="https://coffee0127.github.io/blog/categories/Hexo/"/>
-    
-    
-      <category term="Hexo" scheme="https://coffee0127.github.io/blog/tags/Hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo 相關設定</title>
-    <link href="https://coffee0127.github.io/blog/2016/08/09/hexo-configuration/"/>
-    <id>https://coffee0127.github.io/blog/2016/08/09/hexo-configuration/</id>
-    <published>2016-08-09T09:31:38.000Z</published>
-    <updated>2016-11-27T14:48:59.058Z</updated>
-    
-    <content type="html"><![CDATA[<p>經過前兩篇 <a href="/blog/2016/08/08/how-to-install-hexo/">Hexo 安裝</a> &amp; <a href="/blog/2016/08/09/how-to-deploy-to-git">Hexo 佈署</a></p>
-<p>我們已經可以開始編寫 Blog 了&lt;(￣︶￣)&gt;</p>
-<p>但是還是過於陽春，因此這篇會講些簡單設定 Hexo，看起來更有模有樣。</p>
-<h3 id="網頁-Icon"><a href="#網頁-Icon" class="headerlink" title="網頁 Icon"></a>網頁 Icon</h3><p><em>Icon 代表著網站的精神呢，這當然很重要啊ˋ(′ε‵”)ˊ</em></p>
-<ol>
-<li>將你的 <code>favicon.ico</code> 放置於 <code>source</code> 資料夾下</li>
-<li>修改 <code>themes/&lt;主題名稱&gt;/_config.yml</code> 的 favicon 為 <code>favicon.ico</code> (若你圖示名稱是 favicon.png，這步驟可省略)</li>
-<li>修改 <code>themes/&lt;主題名稱&gt;/layout/_partial/head.ejs</code>，加入 context root url<br> 將 <code>&lt;link rel=&quot;icon&quot; href=&quot;&lt;%- theme.favicon %&gt;&quot;&gt;</code> 修改為 <code>&lt;link rel=&quot;icon&quot; href=&quot;&lt;%- config.root %&gt;&lt;%- theme.favicon %&gt;&quot;&gt;</code> 即可</li>
-</ol>
-<h3 id="Read-More"><a href="#Read-More" class="headerlink" title="Read More"></a>Read More</h3><ul>
-<li>方法一：文章中加入 <code>&lt;!--more--&gt;</code> 即可 (但是需要自行設置，頗麻煩)</li>
-<li><p>方法二：參考  <a href="https://twiceyuan.com/2014/05/25/hexo%E8%87%AA%E5%8A%A8%E6%B7%BB%E5%8A%A0readmore%E6%A0%87%E8%AE%B0/" target="_blank" rel="external">Hexo自动添加ReadMore标记</a>，修改 <code>themes/[主题名]/layout/_partial/article.ejs</code>，<br>但該篇提供之方法只會於首頁處顯示第一段落，稍微修改成可以決定要顯示的行數 (即 <code>const THRESH_HOLD = 5</code>)</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;article-entry&quot; itemprop=&quot;articleBody&quot;&gt;</div><div class="line">  &lt;% if (post.excerpt &amp;&amp; index)&#123; %&gt;</div><div class="line">    &lt;%- post.excerpt %&gt;</div><div class="line">    &lt;% if (theme.excerpt_link)&#123; %&gt;</div><div class="line">      &lt;p class=&quot;article-more-link&quot;&gt;</div><div class="line">        &lt;a href=&quot;&lt;%- url_for(post.path) %&gt;#more&quot;&gt;&lt;%= theme.excerpt_link %&gt;&lt;/a&gt;</div><div class="line">      &lt;/p&gt;</div><div class="line">    &lt;% &#125; %&gt;</div><div class="line">  &lt;% &#125; else &#123; %&gt;</div><div class="line">    &lt;%- post.content %&gt;</div><div class="line">  &lt;% &#125; %&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
-<p>  修改為</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;article-entry&quot; itemprop=&quot;articleBody&quot;&gt;</div><div class="line">  &lt;% if (post.excerpt &amp;&amp; index) &#123; %&gt;</div><div class="line">    &lt;%- post.excerpt %&gt;</div><div class="line">    &lt;% if (theme.excerpt_link) &#123; %&gt;</div><div class="line">      &lt;p class=&quot;article-more-link&quot;&gt;</div><div class="line">        &lt;a href=&quot;&lt;%=url_for(post.path)%&gt;#more&quot;&gt;&lt;%= theme.excerpt_link %&gt;&lt;/a&gt;</div><div class="line">      &lt;/p&gt;</div><div class="line">    &lt;% &#125; %&gt;</div><div class="line">  &lt;% &#125; else &#123; %&gt;</div><div class="line">    &lt;% if (!index &amp;&amp; post.toc) &#123; %&gt;</div><div class="line">      &lt;div id=&quot;toc&quot; class=&quot;toc-article&quot;&gt;</div><div class="line">        &lt;strong class=&quot;toc-title&quot;&gt;文章目錄&lt;/strong&gt;</div><div class="line">        &lt;%- toc(post.content) %&gt;</div><div class="line">      &lt;/div&gt;</div><div class="line">    &lt;% &#125; %&gt;</div><div class="line">    &lt;%</div><div class="line">       const THRESH_HOLD = 5;   // 要出現的段落數</div><div class="line">       var newLines = (post.content.match(/\n/g) || []).length;</div><div class="line">       var indexOfThreshHold = -1;</div><div class="line">       for (var i = 0; i &lt; THRESH_HOLD; i++) &#123;</div><div class="line">         indexOfThreshHold = post.content.indexOf(&apos;\n&apos;, indexOfThreshHold + 1);</div><div class="line">       &#125;</div><div class="line">    %&gt;</div><div class="line">    &lt;% if (newLines &lt; THRESH_HOLD || !index) &#123; %&gt;</div><div class="line">      &lt;%- post.content %&gt;</div><div class="line">    &lt;% &#125; else &#123; %&gt;</div><div class="line">      &lt;%- post.content.substring(0, indexOfThreshHold) %&gt;</div><div class="line">      &lt;% if (theme.excerpt_link) &#123; %&gt;</div><div class="line">        &lt;p class=&quot;article-more-link&quot;&gt;</div><div class="line">          &lt;a href=&quot;&lt;%=url_for(post.path)%&gt;&quot;&gt;&lt;%= theme.excerpt_link %&gt;&lt;/a&gt;</div><div class="line">        &lt;/p&gt;</div><div class="line">      &lt;% &#125; %&gt;</div><div class="line">    &lt;% &#125; %&gt;</div><div class="line">  &lt;% &#125; %&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="加入評論"><a href="#加入評論" class="headerlink" title="加入評論"></a>加入評論</h3><ol>
-<li>先到 <a href="http://disqus.com/" target="_blank" rel="external">Disqus</a> 註冊帳號後，在 Create New Site 時 ，會根據你的 WebSite Name 提供對應的 Short Name，也可以自訂 Shortname</li>
-<li>修改 <code>_config.yml</code>，加入以下資訊後，即可生效。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># Disqus</div><div class="line">disqus_shortname: &lt;剛剛申請的 Shortname&gt;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="加入相關文章"><a href="#加入相關文章" class="headerlink" title="加入相關文章"></a>加入相關文章</h3><ol>
-<li>透過以下指令安裝 <a href="https://github.com/nkmk/hexo-list-related-posts" target="_blank" rel="external">hexo-list-related-posts</a><br><code>$ npm install hexo-list-related-posts --save</code></li>
-<li>修改 <code>themes/&lt;主題名稱&gt;/layout/_partial/article.ejs</code>，找到 <code>&lt;%- partial(&#39;post/nav&#39;) %&gt;</code> 並於前一段落加入 <code>partial(&#39;post/related&#39;)</code></li>
-<li>接著在 <code>themes/landscape/layout/_partial/post</code> 新增 <code>related.ejs</code> 檔案 (對應前一步驟之檔名)</li>
-<li>相關文章樣式版型可再依個人喜好自行修改，主要程式碼為 <code>&lt;%- list_related_posts([options]) %&gt;</code>，小弟目前樣式為<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;article class=&quot;article&quot;&gt;</div><div class="line">  &lt;div class=&quot;article-inner&quot;&gt;</div><div class="line">    &lt;div class=&quot;article-header&quot;&gt;</div><div class="line">        &lt;h3 class=&quot;article-title&quot; style=&quot;font-size: 20px;&quot;&gt;相關文章&lt;/h3&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;div class=&quot;article-entry&quot;&gt;</div><div class="line">      &lt;%- list_related_posts(&#123;maxCount: 5, orderBy: &apos;random&apos;&#125;) %&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/article&gt;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>並且在 <code>themes/&lt;主題名稱&gt;/source/css/_partial/article.styl</code> 加入樣式<br><figure class="highlight styl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.related-posts-item</span></div><div class="line">  <span class="attribute">font-size</span>: <span class="number">16px</span></div></pre></td></tr></table></figure></p>
-<h3 id="加入-TOC-Table-Of-Content"><a href="#加入-TOC-Table-Of-Content" class="headerlink" title="加入 TOC ( Table Of Content )"></a>加入 TOC ( Table Of Content )</h3><ol>
-<li><p>修改 <code>themes/&lt;主題名稱&gt;/layout/_partial/article.ejs</code>，找到 <code>&lt;%- post.content %&gt;</code> 並於前一段落加入以下程式碼</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;% if (!index &amp;&amp; post.toc)&#123; %&gt;</div><div class="line">  &lt;div id=&quot;toc&quot; class=&quot;toc-article&quot;&gt;</div><div class="line">    &lt;strong class=&quot;toc-title&quot;&gt;文章目錄&lt;/strong&gt;</div><div class="line">    &lt;%- toc(post.content) %&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;% &#125; %&gt;</div></pre></td></tr></table></figure>
-<p>其中 <code>!index</code> 讓首頁摘要不產生目錄，<code>post.toc</code> 則是需於文章設定 <code>toc: true</code> 才生效</p>
-</li>
-<li>修改樣式，<code>themes/&lt;主題名稱&gt;/source/css/_partial/article.styl</code>，於最末端加入以下 CSS 樣式，依個人喜好微調<figure class="highlight styl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*toc*/</span></div><div class="line"><span class="selector-class">.toc-article</span></div><div class="line">  <span class="attribute">background</span> <span class="number">#eee</span></div><div class="line">  <span class="attribute">border</span> <span class="number">1px</span> solid <span class="number">#bbb</span></div><div class="line">  <span class="attribute">border-radius</span> <span class="number">10px</span></div><div class="line">  <span class="attribute">margin</span> <span class="number">1.5em</span> <span class="number">0</span> <span class="number">0.3em</span> <span class="number">1.5em</span></div><div class="line">  <span class="attribute">padding</span> <span class="number">1.2em</span> <span class="number">1em</span> <span class="number">0</span> <span class="number">1em</span></div><div class="line">  <span class="attribute">max-width</span> <span class="number">28%</span></div><div class="line"></div><div class="line"><span class="selector-class">.toc-title</span></div><div class="line">  <span class="attribute">font-size</span> <span class="number">120%</span></div><div class="line"></div><div class="line"><span class="selector-id">#toc</span></div><div class="line">  <span class="attribute">line-height</span> <span class="number">1em</span></div><div class="line">  <span class="attribute">font-size</span> <span class="number">0.9em</span></div><div class="line">  <span class="attribute">float</span> right</div><div class="line">  <span class="selector-class">.toc</span></div><div class="line">    <span class="attribute">padding</span> <span class="number">0</span></div><div class="line">    <span class="attribute">margin</span> <span class="number">1em</span></div><div class="line">    <span class="attribute">line-height</span> <span class="number">1.8em</span></div><div class="line">    <span class="selector-tag">li</span></div><div class="line">      <span class="attribute">list-style-type</span> none</div><div class="line"></div><div class="line">  <span class="selector-class">.toc-child</span></div><div class="line">    <span class="attribute">margin-left</span> <span class="number">1em</span></div></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="加入-Google-Analytics"><a href="#加入-Google-Analytics" class="headerlink" title="加入 Google Analytics"></a>加入 Google Analytics</h3><ol>
-<li>先到 <a href="https://www.google.com.tw/intl/zh-TW/analytics/" target="_blank" rel="external">Google Analytics</a> 註冊取得追蹤編號</li>
-<li>修改 <code>themes/&lt;主題名稱&gt;/_config.yml</code>，找到 <code>google_analytics</code>  後，將追蹤編號貼上即可</li>
-</ol>
-<h3 id="加入-sitemap"><a href="#加入-sitemap" class="headerlink" title="加入 sitemap"></a>加入 sitemap</h3><p>「Sitemap」是一種檔案，可以在其中列出網站上的網頁，讓其他搜尋引擎瞭解網站內容架構，以更靈活的方式檢索網站。</p>
-<ol>
-<li>透過以下指令安裝 <a href="https://github.com/hexojs/hexo-generator-sitemap" target="_blank" rel="external">hexo-generator-sitemap</a><br><code>$ npm install hexo-generator-sitemap --save</code></li>
-<li><p>修改 <code>_config.yml</code> 加入以下選項</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># Sitemap</div><div class="line">sitemap:</div><div class="line">    path: sitemap.xml</div></pre></td></tr></table></figure>
-</li>
-<li><p>重啟後連線至 <a href="#">http://localhost:4000/&lt;Blog 名稱&gt;/sitemap.xml</a> 即可看見 sitemap.xml 囉</p>
-</li>
-<li>提交你的 Sitemap<ul>
-<li><a href="https://www.google.com/webmasters/tools" target="_blank" rel="external">Google 網站管理員工具</a></li>
-<li><a href="http://www.bing.com/toolbox/webmaster" target="_blank" rel="external">Yahoo 和 Bing 網站管理員工具</a></li>
-<li><a href="http://zhanzhang.baidu.com" target="_blank" rel="external">百度站長平台</a></li>
-<li><a href="http://zhanzhang.haosou.com" target="_blank" rel="external">360好搜站長平台</a></li>
-</ul>
-</li>
-</ol>
-<h3 id="加入-RSS-Feed"><a href="#加入-RSS-Feed" class="headerlink" title="加入 RSS Feed"></a>加入 RSS Feed</h3><p>透過 RSS，讓別人訂閱你的文章</p>
-<ol>
-<li>透過以下指令安裝 <a href="https://github.com/hexojs/hexo-generator-feed" target="_blank" rel="external">hexo-generator-feed</a><br><code>$ npm install hexo-generator-feed --save</code></li>
-<li><p>修改 <code>_config.yml</code> 加入以下選項</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># Feed Atom</div><div class="line">feed:</div><div class="line">    type: atom</div><div class="line">    path: atom.xml</div><div class="line">    limit: 20</div></pre></td></tr></table></figure>
-</li>
-<li><p>修改 <code>themes/&lt;主題名稱&gt;/layout/_partial/header.ejs</code>，將原本 <code>&lt;%- theme.rss %&gt;</code> 修改為 <code>&lt;%=url_for(theme.rss)%&gt;</code></p>
-</li>
-</ol>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
-<li><a href="https://wwssllabcd.github.io/blog/2014/12/22/how-to-install-hexo/" target="_blank" rel="external">Hexo 安裝教學、心得筆記</a></li>
-<li><a href="http://kuangqi.me/tricks/enable-table-of-contents-on-hexo/" target="_blank" rel="external">为Hexo博客添加目录</a></li>
-<li><a href="http://www.jianshu.com/p/05289a4bc8b2" target="_blank" rel="external">如何搭建一个独立博客——简明Github Pages与Hexo教程</a></li>
-<li><a href="http://longxdragon.github.io/2015/03/07/Hexo-GitHub-create-blog/" target="_blank" rel="external">Hexo+GitHub创建博客及使用技巧</a></li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;經過前兩篇 &lt;a href=&quot;/blog/2016/08/08/how-to-install-hexo/&quot;&gt;Hexo 安裝&lt;/a&gt; &amp;amp; &lt;a href=&quot;/blog/2016/08/09/how-to-deploy-to-git&quot;&gt;Hexo 佈署&lt;/a&gt;&lt;/p&gt;
-&lt;
-    
-    </summary>
-    
-      <category term="Hexo" scheme="https://coffee0127.github.io/blog/categories/Hexo/"/>
-    
-    
-      <category term="Hexo" scheme="https://coffee0127.github.io/blog/tags/Hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo 佈署</title>
-    <link href="https://coffee0127.github.io/blog/2016/08/09/how-to-deploy-to-git/"/>
-    <id>https://coffee0127.github.io/blog/2016/08/09/how-to-deploy-to-git/</id>
-    <published>2016-08-09T06:21:18.000Z</published>
-    <updated>2016-11-27T14:48:59.059Z</updated>
-    
-    <content type="html"><![CDATA[<p>接續上一篇 <a href="/blog/2016/08/08/how-to-install-hexo/">Hexo 安裝</a></p>
-<h3 id="認識-GitHub"><a href="#認識-GitHub" class="headerlink" title="認識 GitHub "></a>認識 GitHub <img src="/blog/2016/08/09/how-to-deploy-to-git/PEO-octocat-0.svg" class="inline" width="64"></h3><ul>
-<li><a href="https://zh.wikipedia.org/zh-tw/GitHub" target="_blank" rel="external">GitHub</a></li>
-<li><a href="http://www.ithome.com.tw/news/95283" target="_blank" rel="external">Git達人教你搞懂GitHub基礎觀念</a></li>
-</ul>
-<h3 id="建立-github-io"><a href="#建立-github-io" class="headerlink" title="建立 github.io"></a>建立 github.io</h3><ul>
-<li><a href="https://help.github.com/articles/creating-project-pages-manually/" target="_blank" rel="external">Creating Project Pages manually</a><br>主要目的為替你的 repository 建立一個名為 <code>gh-pages</code> 的 branch</li>
-</ul>
-<p>小弟規劃如下 <img src="/blog/2016/08/09/how-to-deploy-to-git/branch.jpg" class="inline"></p>
-<ul>
-<li>master：用來放 Hexo 相關檔案</li>
-<li>gh-pages：用來放 Hexo 產出之靜態網頁，也就是 Blog</li>
-</ul>
-<h3 id="佈署至-GitHub"><a href="#佈署至-GitHub" class="headerlink" title="佈署至 GitHub"></a>佈署至 GitHub</h3><ol>
-<li><p>手動佈署<br> 下列其中一個指令，皆可產生靜態網頁，再自行 commit &amps; push 到 gh-pages</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div><div class="line">$ hexo g</div></pre></td></tr></table></figure>
-</li>
-<li><p>產生完檔案後佈署 (自動化很棒吧XD)</p>
-<ol>
-<li>使用 NPM 安裝 <a href="https://github.com/hexojs/hexo-deployer-git" target="_blank" rel="external">hexo-deployer-git</a><br><code>npm install hexo-deployer-git --save</code></li>
-<li><p>修改 <code>_config.yml</code></p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">type: git</div><div class="line">repo: https://github.com/Coffee0127/blog.git  // 前一步開的 repository git url</div><div class="line">branch: gh-pages  // github.io</div><div class="line">message:          // 預設值為：Site updated: &#123;&#123; now(&apos;YYYY-MM-DD HH:mm:ss&apos;) &#125;&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>佈署指令<br> 下列的其中一個指令，皆可讓 Hexo 在建立完畢後自動佈署至 GitHub，兩個指令的作用是相同的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo generate --deploy</div><div class="line">$ hexo deploy --generate</div></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-</ol>
-<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><ul>
-<li><a href="https://blog.ivanwei.co/2015/10/11/2015-10-11-build-blog-by-hexojs/" target="_blank" rel="external">[Hexo] Gtihub 上架 Blog</a></li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;接續上一篇 &lt;a href=&quot;/blog/2016/08/08/how-to-install-hexo/&quot;&gt;Hexo 安裝&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;認識-GitHub&quot;&gt;&lt;a href=&quot;#認識-GitHub&quot; class=&quot;headerlink&quot; title=&quot;認
     
     </summary>
     
