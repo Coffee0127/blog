@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://coffee0127.github.io/blog/blog/2018/01/20/what-is-data-structure/</loc>
+    <loc>https://coffee0127.github.io/blog/blog/2018/01/25/array/</loc>
     
-    <lastmod>2018-01-21T08:17:46.207Z</lastmod>
+    <lastmod>2018-01-25T11:56:41.862Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://coffee0127.github.io/blog/blog/2018/01/21/list/</loc>
     
-    <lastmod>2018-01-21T08:01:48.666Z</lastmod>
+    <lastmod>2018-01-25T11:56:41.856Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://coffee0127.github.io/blog/blog/2018/01/20/what-is-data-structure/</loc>
+    
+    <lastmod>2018-01-21T08:17:46.207Z</lastmod>
     
   </url>
   
