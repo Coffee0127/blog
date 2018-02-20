@@ -4,6 +4,26 @@
   
     
     <entry>
+      <title><![CDATA[堆疊]]></title>
+      <url>https://coffee0127.github.io/blog/blog/2018/02/20/stack/</url>
+      <content type="html"><![CDATA[<h2 id="後進先出-LIFO，Last-In-First-Out"><a href="#後進先出-LIFO，Last-In-First-Out" class="headerlink" title="後進先出 (LIFO，Last In First Out)"></a>後進先出 (LIFO，Last In First Out)</h2><p>同樣屬於資料結構的一種，但是限制了數據的存取方式，必須由上而下依序由新而舊存取</p>
+<p>工廠將餅乾(數據)依序放入餅乾盒(堆疊)內，消費者必須先將後面放入的餅乾(數據)取出才能吃到(存取)下層的餅乾(數據)<br><img src="https://www.fu-chu.com.tw/adm/server/php/files88734d41179082f05ed4f2063ce93e21/03.jpg" class="inline" width="250"></p>
+<a id="more"></a>
+<p>又或者是書堆，最下面的書不易取得閱讀 (因此實際生活上我們書會採用<a href="/blog/2018/01/25/array/">陣列</a>方式擺放，而不是堆疊XD)<br><img src="https://pic.pimg.tw/koeorsyow/8f12bdaedc9256a34329247138697781.jpg" class="inline" width="250"></p>
+<h2 id="Stack-示意圖"><a href="#Stack-示意圖" class="headerlink" title="Stack 示意圖"></a>Stack 示意圖</h2><ol>
+<li>目前僅有 Blue 存放於堆疊中</li>
+<li>堆疊最頂端稱之為 Top<br><img src="/blog/2018/02/20/stack/stack.png" class="inline">
+</li>
+</ol>
+<h2 id="新增數據-推入-Push"><a href="#新增數據-推入-Push" class="headerlink" title="新增數據 - 推入 (Push)"></a>新增數據 - 推入 (Push)</h2><p>將數據新增到堆疊中，稱為「推入 (Push)」，以下圖動畫為例，依序推入 Red、Yellow<br><img src="/blog/2018/02/20/stack/push.gif" class="inline"></p>
+<h2 id="取出數據-彈出-Pop"><a href="#取出數據-彈出-Pop" class="headerlink" title="取出數據 - 彈出 (Pop)"></a>取出數據 - 彈出 (Pop)</h2><p>將數據從堆疊中取出，稱為「彈出 (Pop)」，以下圖動畫為例，依序彈出 Yellow、Red (記得 LIFO 原則)<br><img src="/blog/2018/02/20/stack/pop.gif" class="inline"></p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a href="https://en.wikipedia.org/wiki/Stack_(abstract_data_type)" target="_blank" rel="external">Stack (abstract data type)</a></li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[陣列]]></title>
       <url>https://coffee0127.github.io/blog/blog/2018/01/25/array/</url>
       <content type="html"><![CDATA[<h2 id="索引-Index"><a href="#索引-Index" class="headerlink" title="索引 (Index)"></a>索引 (Index)</h2><p>相較於<a href="/blog/2018/01/21/list/">列表 (List)</a>分散儲存於各個記憶體區塊，陣列則是將所有數據排在連續區塊。<br>不透過指標存取數據，而是透過<strong>索引</strong>存取 (由 0 開始)，因此要存取 Red 則是透過 <code>a[2]</code></p>

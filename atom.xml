@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://coffee0127.github.io/blog/"/>
-  <updated>2018-01-25T11:56:41.862Z</updated>
+  <updated>2018-02-20T08:49:08.085Z</updated>
   <id>https://coffee0127.github.io/blog/</id>
   
   <author>
@@ -14,6 +14,43 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>堆疊</title>
+    <link href="https://coffee0127.github.io/blog/2018/02/20/stack/"/>
+    <id>https://coffee0127.github.io/blog/2018/02/20/stack/</id>
+    <published>2018-02-20T07:49:19.000Z</published>
+    <updated>2018-02-20T08:49:08.085Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="後進先出-LIFO，Last-In-First-Out"><a href="#後進先出-LIFO，Last-In-First-Out" class="headerlink" title="後進先出 (LIFO，Last In First Out)"></a>後進先出 (LIFO，Last In First Out)</h2><p>同樣屬於資料結構的一種，但是限制了數據的存取方式，必須由上而下依序由新而舊存取</p>
+<p>工廠將餅乾(數據)依序放入餅乾盒(堆疊)內，消費者必須先將後面放入的餅乾(數據)取出才能吃到(存取)下層的餅乾(數據)<br><img src="https://www.fu-chu.com.tw/adm/server/php/files88734d41179082f05ed4f2063ce93e21/03.jpg" class="inline" width="250"></p>
+<a id="more"></a>
+<p>又或者是書堆，最下面的書不易取得閱讀 (因此實際生活上我們書會採用<a href="/blog/2018/01/25/array/">陣列</a>方式擺放，而不是堆疊XD)<br><img src="https://pic.pimg.tw/koeorsyow/8f12bdaedc9256a34329247138697781.jpg" class="inline" width="250"></p>
+<h2 id="Stack-示意圖"><a href="#Stack-示意圖" class="headerlink" title="Stack 示意圖"></a>Stack 示意圖</h2><ol>
+<li>目前僅有 Blue 存放於堆疊中</li>
+<li>堆疊最頂端稱之為 Top<br><img src="/blog/2018/02/20/stack/stack.png" class="inline">
+</li>
+</ol>
+<h2 id="新增數據-推入-Push"><a href="#新增數據-推入-Push" class="headerlink" title="新增數據 - 推入 (Push)"></a>新增數據 - 推入 (Push)</h2><p>將數據新增到堆疊中，稱為「推入 (Push)」，以下圖動畫為例，依序推入 Red、Yellow<br><img src="/blog/2018/02/20/stack/push.gif" class="inline"></p>
+<h2 id="取出數據-彈出-Pop"><a href="#取出數據-彈出-Pop" class="headerlink" title="取出數據 - 彈出 (Pop)"></a>取出數據 - 彈出 (Pop)</h2><p>將數據從堆疊中取出，稱為「彈出 (Pop)」，以下圖動畫為例，依序彈出 Yellow、Red (記得 LIFO 原則)<br><img src="/blog/2018/02/20/stack/pop.gif" class="inline"></p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a href="https://en.wikipedia.org/wiki/Stack_(abstract_data_type)" target="_blank" rel="external">Stack (abstract data type)</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;後進先出-LIFO，Last-In-First-Out&quot;&gt;&lt;a href=&quot;#後進先出-LIFO，Last-In-First-Out&quot; class=&quot;headerlink&quot; title=&quot;後進先出 (LIFO，Last In First Out)&quot;&gt;&lt;/a&gt;後進先出 (LIFO，Last In First Out)&lt;/h2&gt;&lt;p&gt;同樣屬於資料結構的一種，但是限制了數據的存取方式，必須由上而下依序由新而舊存取&lt;/p&gt;
+&lt;p&gt;工廠將餅乾(數據)依序放入餅乾盒(堆疊)內，消費者必須先將後面放入的餅乾(數據)取出才能吃到(存取)下層的餅乾(數據)&lt;br&gt;&lt;img src=&quot;https://www.fu-chu.com.tw/adm/server/php/files88734d41179082f05ed4f2063ce93e21/03.jpg&quot; class=&quot;inline&quot; width=&quot;250&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="資料結構" scheme="https://coffee0127.github.io/blog/categories/%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B/"/>
+    
+    
+      <category term="資料結構" scheme="https://coffee0127.github.io/blog/tags/%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>陣列</title>
@@ -1324,51 +1361,6 @@
       <category term="Eclipse" scheme="https://coffee0127.github.io/blog/tags/Eclipse/"/>
     
       <category term="Java" scheme="https://coffee0127.github.io/blog/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo 相關文章摘要</title>
-    <link href="https://coffee0127.github.io/blog/2016/08/11/hexo-abstract-of-related-post/"/>
-    <id>https://coffee0127.github.io/blog/2016/08/11/hexo-abstract-of-related-post/</id>
-    <published>2016-08-11T15:49:26.000Z</published>
-    <updated>2017-02-19T15:49:10.986Z</updated>
-    
-    <content type="html"><![CDATA[<p>在 <a href="/blog/2016/08/09/hexo-configuration/#加入相關文章">Hexo 相關設定</a> 有跟各位介紹過新增“相關文章”功能，</p>
-<p>老實說小弟覺得只有標題實在是太空洞了，因此看看原本的 <a href="https://github.com/nkmk/hexo-list-related-posts" target="_blank" rel="external">hexo-list-related-posts</a> 是否有相關功能</p>
-<p><del>測試了一下發現其實是有的，只不過原作者並未提供 API 讓人使用，那就只好自己來囉&lt;(￣︶￣)&gt;</del><br>=== 2016-09-11 Updated ===<br>原作者已接受 PR，因此不需要再自行修改。不過沒有設置 tags 導致的錯誤，原作者並未修復，因此還是要修改一下XD</p>
-<h3 id="安裝-striptags"><a href="#安裝-striptags" class="headerlink" title="安裝 striptags"></a>安裝 striptags</h3><p>先確認你的 <code>&lt;repository&gt;/node_modules/</code> 是否有 <code>striptags</code> 模組，<br>若未看見該模組再透過以下指令安裝<br><code>$ npm install striptags</code></p>
-<h3 id="修改-hexo-list-related-posts"><a href="#修改-hexo-list-related-posts" class="headerlink" title="修改 hexo-list-related-posts"></a>修改 <code>hexo-list-related-posts</code></h3><p>檔案路徑為 <code>&lt;repository&gt;/node_modules/hexo-list-related-posts/lib/index.js</code><br>查閱小弟發給原作者的 <a href="https://github.com/nkmk/hexo-list-related-posts/pull/3/commits/80e9739cb525f9907881d243bd04b90f6a2264d0#diff-1" target="_blank" rel="external">pull request</a> 會比較容易理解差異</p>
-<ol>
-<li><p>引入 <code>striptags</code> 模組</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> striptags = <span class="built_in">require</span>(<span class="string">'striptags'</span>);</div></pre></td></tr></table></figure>
-</li>
-<li><p>修改 function listRelatedPosts 的 options，程式碼如下</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">options = assign(&#123;</div><div class="line">  <span class="attr">maxCount</span>: <span class="number">5</span>,</div><div class="line">  <span class="attr">ulClass</span>: <span class="string">'related-posts'</span>,</div><div class="line">  <span class="attr">liClass</span>: <span class="string">'related-posts-item'</span>,</div><div class="line">  <span class="attr">generateAbstract</span>: <span class="literal">false</span>,    <span class="comment">// 是否產生摘要</span></div><div class="line">  abstractClass: <span class="string">'related-posts-item-abstract'</span>,   <span class="comment">// 摘要的 css class</span></div><div class="line">  abstractLength: <span class="number">110</span>,        <span class="comment">// 摘要節錄長度</span></div><div class="line">  orderBy: <span class="string">'date'</span>,</div><div class="line">  <span class="attr">isAscending</span>: <span class="literal">false</span></div><div class="line">&#125;, options);</div></pre></td></tr></table></figure>
-</li>
-<li><p>修改function listRelatedPosts 的呈現方式 (在原 function 最末端)，程式碼如下</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(count === <span class="number">0</span>)&#123;</div><div class="line">  result += <span class="string">'&lt;p&gt;No related post.&lt;/p&gt;'</span>;</div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">  result += <span class="string">'&lt;ul class="'</span> + options.ulClass + <span class="string">'"&gt;'</span>;</div><div class="line">  <span class="keyword">if</span> (options.generateAbstract) &#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; count; i++) &#123;</div><div class="line">      result += <span class="string">'&lt;li class="'</span> + options.liClass + <span class="string">'"&gt;'</span> + <span class="string">'&lt;a href="'</span> + root + postList[i].path + <span class="string">'"&gt;'</span> + postList[i].title + <span class="string">'&lt;/a&gt;&lt;div class="'</span> + options.abstractClass + <span class="string">'"&gt;'</span> + striptags(postList[i].content).substring(<span class="number">0</span>, options.abstractLength) + <span class="string">'&lt;/div&gt;&lt;/li&gt;'</span>;</div><div class="line">    &#125;</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; count; i++) &#123;</div><div class="line">      result += <span class="string">'&lt;li class="'</span> + options.liClass + <span class="string">'"&gt;'</span> + <span class="string">'&lt;a href="'</span> + root + postList[i].path + <span class="string">'"&gt;'</span> + postList[i].title + <span class="string">'&lt;/a&gt;&lt;/li&gt;'</span>;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>修改文章沒有設置 tags 發生錯誤<br>大家要乖乖替文章加上 tag 啊 (誤)<br>參考另一段 <a href="https://github.com/nkmk/hexo-list-related-posts/pull/2/files" target="_blank" rel="external">pull request</a> 加上檢查即可，程式碼如下</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">this</span>.post.tags &amp;&amp; <span class="keyword">this</span>.post.tags.each(<span class="function"><span class="keyword">function</span>(<span class="params">tag</span>)</span>&#123;</div><div class="line">  tag.posts.each(<span class="function"><span class="keyword">function</span>(<span class="params">post</span>)</span>&#123;</div><div class="line">    postList.push(post);</div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="加入-generateAbstract-true"><a href="#加入-generateAbstract-true" class="headerlink" title="加入 generateAbstract: true"></a>加入 <code>generateAbstract: true</code></h3><p>修改 <code>themes/[主题名]/layout/_partial/post/related.ejs</code>  (在 <a href="/blog/2016/08/09/hexo-configuration/#加入相關文章">Hexo 相關設定</a> 新增的檔案)<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;%- list_related_posts(&#123;<span class="attr">maxCount</span>: <span class="number">5</span>, <span class="attr">orderBy</span>: <span class="string">'random'</span>, <span class="attr">generateAbstract</span>: <span class="literal">true</span>&#125;) %&gt;</div></pre></td></tr></table></figure></p>
-<h3 id="加入-CSS"><a href="#加入-CSS" class="headerlink" title="加入 CSS"></a>加入 CSS</h3><p>修改 <code>themes/&lt;主題名稱&gt;/source/css/_partial/article.styl</code>，加入以下樣式<br>重點在於 <code>text-overflow: ellipsis</code> 讓多餘的文字以 <code>...</code> 方式呈現<br><figure class="highlight styl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">ul</span><span class="selector-class">.related-posts</span></div><div class="line">  <span class="attribute">margin-left</span>: <span class="number">0</span></div><div class="line">  <span class="attribute">margin-right</span>: <span class="number">0</span></div><div class="line">  <span class="attribute">padding-left</span>: <span class="number">0</span></div><div class="line">  <span class="attribute">list-style</span>: none</div><div class="line">  <span class="selector-tag">li</span><span class="selector-class">.related-posts-item</span></div><div class="line">    <span class="attribute">font-size</span>: <span class="number">16px</span></div><div class="line">    <span class="selector-tag">div</span><span class="selector-class">.related-posts-item-abstract</span></div><div class="line">      <span class="attribute">overflow</span>: hidden</div><div class="line">      <span class="attribute">white-space</span>: nowrap</div><div class="line">      <span class="attribute">text-overflow</span>: ellipsis</div><div class="line">      <span class="attribute">color</span>: rgb(<span class="number">136</span>, <span class="number">136</span>, <span class="number">136</span>)</div><div class="line">      <span class="attribute">margin-bottom</span>: <span class="number">10px</span></div><div class="line">      <span class="attribute">font-size</span>: <span class="number">85%</span></div></pre></td></tr></table></figure></p>
-<p>這個<del>世界</del>相關文章不再這麼空洞了 (=´∀｀)人(´∀｀=)</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;在 &lt;a href=&quot;/blog/2016/08/09/hexo-configuration/#加入相關文章&quot;&gt;Hexo 相關設定&lt;/a&gt; 有跟各位介紹過新增“相關文章”功能，&lt;/p&gt;
-&lt;p&gt;老實說小弟覺得只有標題實在是太空洞了，因此看看原本的 &lt;a href=&quot;https
-    
-    </summary>
-    
-      <category term="Hexo" scheme="https://coffee0127.github.io/blog/categories/Hexo/"/>
-    
-    
-      <category term="Hexo" scheme="https://coffee0127.github.io/blog/tags/Hexo/"/>
     
   </entry>
   
