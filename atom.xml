@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://coffee0127.github.io/blog/"/>
-  <updated>2018-02-20T08:49:08.085Z</updated>
+  <updated>2018-07-01T09:11:03.700Z</updated>
   <id>https://coffee0127.github.io/blog/</id>
   
   <author>
@@ -14,6 +14,71 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Angular 2.0 升級至 6.0</title>
+    <link href="https://coffee0127.github.io/blog/2018/07/01/Angular-migrate-from-2-x/"/>
+    <id>https://coffee0127.github.io/blog/2018/07/01/Angular-migrate-from-2-x/</id>
+    <published>2018-07-01T07:06:43.000Z</published>
+    <updated>2018-07-01T09:11:03.700Z</updated>
+    
+    <content type="html"><![CDATA[<p>在 <a href="/blog/2017/04/25/Maven-Angular-integration/">透過 Maven 整合 Angular 專案</a> 當時還是使用 Angular 2.4 版</p>
+<p>隨著今年 5 月 Angular 6 的正式發佈，當然程式也要做出相對應升級</p>
+<p>官方提供了 <a href="https://update.angular.io/" target="_blank" rel="external">Angular 升級指南</a>，點選 從哪個版本升到哪個版本 以及 專案複雜度 後，即會列出一份 TODO 清單</p>
+<a id="more"></a>
+<img src="/blog/2018/07/01/Angular-migrate-from-2-x/update-guide.jpg" class="inline">
+<p>不過官方並不建議一次跨太多版本，所以還是乖乖從 2.4 -&gt; 4.0 -&gt; 5.0 -&gt; 6.0 這樣逐步升版</p>
+<h3 id="逐步升級-Angular-版本"><a href="#逐步升級-Angular-版本" class="headerlink" title="逐步升級 Angular 版本"></a>逐步升級 Angular 版本</h3><h4 id="2-4-gt-4-0"><a href="#2-4-gt-4-0" class="headerlink" title="2.4 -&gt; 4.0"></a>2.4 -&gt; 4.0</h4><ol>
+<li>確保沒有使用 <code>extends</code> 任何 Angular 生命週期介面 (如 <code>OnInit</code>)，而是應該正確使用 <code>implements</code><br>結果發現當初寫的範例根本沒有 extends / implements (遮臉)，那就快修正 <a href="https://github.com/Coffee0127/Angular-SpringMVC-Integration/blob/master/front/src/app/app.component.ts#L9" target="_blank" rel="external">app.component.ts</a></li>
+<li>更新相依性<br><code>npm install @angular/animations@^4.0.0 @angular/common@^4.0.0 @angular/compiler@^4.0.0 @angular/compiler-cli@^4.0.0 @angular/core@^4.0.0 @angular/forms@^4.0.0 @angular/http@^4.0.0 @angular/platform-browser@^4.0.0 @angular/platform-browser-dynamic@^4.0.0 @angular/platform-server@^4.0.0 @angular/router@^4.0.0 typescript@2.4.0 rxjs@^5.0.1 zone.js@^0.8.4</code></li>
+</ol>
+<h4 id="4-0-gt-5-0"><a href="#4-0-gt-5-0" class="headerlink" title="4.0 -&gt; 5.0"></a>4.0 -&gt; 5.0</h4><ol>
+<li>更新相依性<br><code>npm install @angular/animations@^5.0.0 @angular/common@^5.0.0 @angular/compiler@^5.0.0 @angular/compiler-cli@^5.0.0 @angular/core@^5.0.0 @angular/forms@^5.0.0 @angular/http@^5.0.0 @angular/platform-browser@^5.0.0 @angular/platform-browser-dynamic@^5.0.0 @angular/platform-server@^5.0.0 @angular/router@^5.0.0 typescript@2.4.2 rxjs@^5.5.2</code></li>
+<li>將 <code>HttpModule</code> 及 <code>Http</code> 服務元件改為 <code>HttpClientModule</code> 及 <code>HttpClient</code><ul>
+<li><a href="https://github.com/Coffee0127/Angular-SpringMVC-Integration/blob/master/front/src/app/app.module.ts#L20" target="_blank" rel="external"><code>app.module.ts</code></a> 改為匯入 <code>HttpClientModule</code></li>
+<li><a href="https://github.com/Coffee0127/Angular-SpringMVC-Integration/blob/master/front/src/app/app.component.ts#L12" target="_blank" rel="external"><code>app.component.ts</code></a> 改為注入 <code>HttpClient</code><br>  此外也不再需要自己做 json 轉換了!</li>
+</ul>
+</li>
+</ol>
+<h4 id="5-0-gt-6-0"><a href="#5-0-gt-6-0" class="headerlink" title="5.0 -&gt; 6.0"></a>5.0 -&gt; 6.0</h4><ol>
+<li>先確認 NodeJS 使用 8 (或之後)的版本</li>
+<li>更新 Angular CLI 版本 (global &amp; local)<br> <code>npm install -g @angular/cli@latest</code><br> <code>npm install @angular/cli@latest</code><br> <code>ng update @angular/cli</code><br> Angular CLI 從原本 <code>.angular-cli.json</code> 改名成 <code>angular.json</code></li>
+<li>更新 codelyzer 版本<br> <code>npm install codelyzer@~4.2.0</code></li>
+<li>更新 Angular / TypeScript / RxJS 版本<br> <strong>Angular 6 必須搭配 TypeScript 2.7 及 RxJS 6</strong><br> <code>ng update @angular/core</code></li>
+<li>檢查是否尚有其他相依性未更新<br> <code>ng update</code> </li>
+<li>修改 RxJS 6 deprecated 的功能 <a href="https://github.com/ReactiveX/rxjs-tslint" target="_blank" rel="external">rxjs-tslint auto update rules</a><br> <code>npm install -g rxjs-tslint</code><br> <code>rxjs-5-to-6-migrate -p src/tsconfig.json</code></li>
+<li>修改完後刪除 <code>rxjs-compat</code><br> <code>npm uninstall rxjs-compat</code></li>
+</ol>
+<p><del>當然如果不想做這麼多步驟，也可以用 Angular CLI 重新 <code>ng new</code> 一個 project，再把原本的程式碼丟進去就好 (逃)</del></p>
+<h3 id="修改-angular-json"><a href="#修改-angular-json" class="headerlink" title="修改 angular.json"></a>修改 angular.json</h3><p>將 <code>sample-project-e2e</code> 進行以下修改，避免 Angular CLI 無法正確將 component / service / class 放到 src 下<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">"sample-project-e2e": &#123;</div><div class="line">  "root": "e2e/",</div><div class="line">  "sourceRoot": "",</div><div class="line">  ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="修改-Angular-httpClient-程式的-base-url"><a href="#修改-Angular-httpClient-程式的-base-url" class="headerlink" title="修改 Angular httpClient 程式的 base url"></a>修改 Angular httpClient 程式的 base url</h3><ol>
+<li>建立 APIInterceptor 服務元件 <code>ng g s api-interceptor</code></li>
+<li>實作 <a href="https://angular.io/api/common/http/HttpInterceptor" target="_blank" rel="external">HttpInterceptor</a> 的 <a href="https://angular.io/api/common/http/HttpInterceptor#intercept" target="_blank" rel="external">intercept</a> 方法<br>若是 production 環境下，則將 <a href="https://angular.io/api/common/http/HttpRequest" target="_blank" rel="external">HttpRequest</a> URL 加上 context path<img src="/blog/2018/07/01/Angular-migrate-from-2-x/api-interceptor.jpg" class="inline"></li>
+<li>修改 <code>app.module.ts</code> 透過 DI 方式注入 APIInterceptor 元件<img src="/blog/2018/07/01/Angular-migrate-from-2-x/app-module.jpg" class="inline">
+</li>
+</ol>
+<h3 id="透過-Maven-打包-amp-執行"><a href="#透過-Maven-打包-amp-執行" class="headerlink" title="透過 Maven 打包 &amp; 執行"></a>透過 Maven 打包 &amp; 執行</h3><p>可參考之前文章 <a href="/blog/2017/04/25/Maven-Angular-integration/#%E9%80%8F%E9%81%8E-Maven-%E6%89%93%E5%8C%85-amp-%E5%9F%B7%E8%A1%8C">透過 Maven 整合 Angular 專案</a></p>
+<p><span style="font-size: 1.3em"><br><em>程式碼範例 <a href="https://github.com/Coffee0127/Angular-SpringMVC-Integration" target="_blank" rel="external">Angular-SpringMVC-Integration</a></em><br></span><br>(原本 2.4 版本移到分支 <a href="https://github.com/Coffee0127/Angular-SpringMVC-Integration/tree/angular2.x" target="_blank" rel="external">angular2.x</a>)</p>
+<hr>
+<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ul>
+<li><a href="https://alligator.io/angular/angular-6/" target="_blank" rel="external">Angular 6: Upgrading &amp; Summary of New Features</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在 &lt;a href=&quot;/blog/2017/04/25/Maven-Angular-integration/&quot;&gt;透過 Maven 整合 Angular 專案&lt;/a&gt; 當時還是使用 Angular 2.4 版&lt;/p&gt;
+&lt;p&gt;隨著今年 5 月 Angular 6 的正式發佈，當然程式也要做出相對應升級&lt;/p&gt;
+&lt;p&gt;官方提供了 &lt;a href=&quot;https://update.angular.io/&quot;&gt;Angular 升級指南&lt;/a&gt;，點選 從哪個版本升到哪個版本 以及 專案複雜度 後，即會列出一份 TODO 清單&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Angular" scheme="https://coffee0127.github.io/blog/categories/Angular/"/>
+    
+    
+      <category term="Angular" scheme="https://coffee0127.github.io/blog/tags/Angular/"/>
+    
+  </entry>
   
   <entry>
     <title>堆疊</title>
@@ -529,7 +594,7 @@
     <link href="https://coffee0127.github.io/blog/2017/04/25/Maven-Angular-integration/"/>
     <id>https://coffee0127.github.io/blog/2017/04/25/Maven-Angular-integration/</id>
     <published>2017-04-24T16:07:30.000Z</published>
-    <updated>2017-09-16T04:55:51.882Z</updated>
+    <updated>2018-07-01T09:11:03.698Z</updated>
     
     <content type="html"><![CDATA[<p>在 <a href="/blog/2017/04/23/spring-boot-rest/">使用 SpringBoot 建立 RESTful 程式</a> 及 <a href="/blog/2017/04/23/Angular-proxy-to-backend-rest/">Angular 呼叫遠端 API</a> 已經分別完成<strong>開發時期</strong>前後端串接，<br>接下來是透過 Maven Plugin 將前後端程式打包再一起。</p>
 <p>不過為了增加程式的真實性，先加入兩個頁面以驅動 Angular 路由機制 (可參考 <a href="/2017/04/24/Angular-simple-routing/">透過 Angular 路由建立 SPA 網站</a>)</p>
@@ -563,7 +628,7 @@
 <p>※ 補充說明：此 plugin 不會使用系統已安裝好的 NodeJS，當然可以透過 <code>&lt;installDirectory&gt;</code> 指定含有 node 的系統資料夾<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">installDirectory</span>&gt;</span>C:/iCoding<span class="tag">&lt;/<span class="name">installDirectory</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>執行時會去 C:/iCoding/node 尋找 node 執行檔 (這個路徑可以是透過 symbolic link 建立出來的 XD)</p>
 <h3 id="設定-maven-resources-plugin"><a href="#設定-maven-resources-plugin" class="headerlink" title="設定 maven-resources-plugin"></a>設定 <a href="https://maven.apache.org/plugins/maven-resources-plugin/" target="_blank" rel="external">maven-resources-plugin</a></h3><p>若 <a href="https://github.com/eirslett/frontend-maven-plugin" target="_blank" rel="external">frontend-maven-plugin</a> 設定正確且運作正常的話，會在 <code>front</code> 下產出 <code>dist</code> 資料夾，並含有打包好的 Angular 專案<br>接著我們只需要透過 <a href="https://maven.apache.org/plugins/maven-resources-plugin/" target="_blank" rel="external">maven-resources-plugin</a> 把它複製到 SpringBoot 的 static 資料夾即可<br><em>(如果是 war 檔可以透過 <a href="https://maven.apache.org/plugins/maven-war-plugin/examples/including-excluding-files-from-war.html" target="_blank" rel="external">maven-war-plugin</a> 實現)</em><br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">plugin</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-resources-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">executions</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">execution</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>copy-angular<span class="tag">&lt;/<span class="name">id</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">goals</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">goal</span>&gt;</span>copy-resources<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">phase</span>&gt;</span>process-resources<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">overwrite</span>&gt;</span>true<span class="tag">&lt;/<span class="name">overwrite</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">outputDirectory</span>&gt;</span>$&#123;project.build.directory&#125;/classes/static<span class="tag">&lt;/<span class="name">outputDirectory</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">resources</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;<span class="name">resource</span>&gt;</span></div><div class="line">                        <span class="tag">&lt;<span class="name">directory</span>&gt;</span>front/dist<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></div><div class="line">                <span class="tag">&lt;/<span class="name">resources</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<h3 id="修改-Angular-http-程式的-base-url"><a href="#修改-Angular-http-程式的-base-url" class="headerlink" title="修改 Angular http 程式的 base url"></a>修改 Angular http 程式的 <code>base url</code></h3><p>老實說小弟很不確定這種寫法到底對不對…XD 如果有誤還請各位先進指點</p>
+<h3 id="修改-Angular-http-程式的-base-url"><a href="#修改-Angular-http-程式的-base-url" class="headerlink" title="修改 Angular http 程式的 base url"></a>修改 Angular http 程式的 <code>base url</code></h3><p><div style="color: red; font-size: 1.5em; font-weight: 100">此作法用於 Angular 2.x，Angular 5.x 之後做法還請參考 <a href="/blog/2018/07/01/Angular-migrate-from-2-x/#修改-Angular-httpClient-程式的-base-url">Angular 2.0 升級至 6.0</a></div><br>老實說小弟很不確定這種寫法到底對不對…XD 如果有誤還請各位先進指點</p>
 <ol>
 <li>建立 CustomRequestOptions 元件 <code>ng g class CustomRequestOptions</code></li>
 <li>繼承 <a href="https://angular.io/docs/ts/latest/api/http/index/BaseRequestOptions-class.html" target="_blank" rel="external">BaseRequestOptions</a> 並實作 <a href="https://angular.io/docs/ts/latest/api/http/index/RequestOptions-class.html#!#merge-anchor" target="_blank" rel="external">merge</a> 方法<br>若是 production 環境下，則將 <a href="https://angular.io/docs/ts/latest/api/http/index/Http-class.html" target="_blank" rel="external">Http</a> 所有 ‘/‘ 開頭的 URL 加上 context path<img src="/blog/2017/04/25/Maven-Angular-integration/step2.png" class="inline"></li>
@@ -1306,59 +1371,6 @@
     
       <category term="Java" scheme="https://coffee0127.github.io/blog/categories/Java/"/>
     
-    
-      <category term="Java" scheme="https://coffee0127.github.io/blog/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Eclipse Properties 顯示中文字</title>
-    <link href="https://coffee0127.github.io/blog/2016/08/15/eclipse-poperties/"/>
-    <id>https://coffee0127.github.io/blog/2016/08/15/eclipse-poperties/</id>
-    <published>2016-08-15T10:24:08.000Z</published>
-    <updated>2016-11-27T14:48:59.124Z</updated>
-    
-    <content type="html"><![CDATA[<p>做專案時，往往需要做國際化 (internationalization，簡稱 i18n，因為總共18個字 XD)</p>
-<p>Java 存放這些多國語言檔案使用 properties 檔案，由於該檔案採用 ISO-8859-1 編碼，</p>
-<p>Eclipse 針對那些非英文字會自動轉換為 Unicode，如下圖所示</p>
-<p>輸入階段仍是中文字 <img src="/blog/2016/08/15/eclipse-poperties/before.jpg" class="inline"></p>
-<p>一旦確認後，就<del>是見證奇蹟的時刻</del>自動轉成 Unicode 了 <img src="/blog/2016/08/15/eclipse-poperties/after.jpg" class="inline"></p>
-<p>雖然滑鼠移上去時，可以看到中文字 <img src="/blog/2016/08/15/eclipse-poperties/hint.jpg" class="inline"></p>
-<p>但是如果檔案有上萬行，豈不是看到眼花(￣□￣|||)a</p>
-<p>還好已經有人將外掛開發出來了，我們只需將其安裝到 Eclipse 即可~</p>
-<h3 id="安裝步驟"><a href="#安裝步驟" class="headerlink" title="安裝步驟"></a>安裝步驟</h3><ol>
-<li>Eclipse -&gt; Help -&gt; Install New Software…</li>
-<li>點選 Add…</li>
-<li>Name: Properties Editor<br> Location: <a href="http://propedit.sourceforge.jp/eclipse/updates/" target="_blank" rel="external">http://propedit.sourceforge.jp/eclipse/updates/</a> <img src="/blog/2016/08/15/eclipse-poperties/step1.jpg" class="inline">
- 讓 Eclipse 搜尋一下…</li>
-<li>勾選 <code>PropertiesEditor</code><br> <code>PropertiesEditor_Asian_NLS</code> 是否安裝外掛多國語言 (非必要) <img src="/blog/2016/08/15/eclipse-poperties/step2.jpg" class="inline"></li>
-<li>接著就是 Eclipse 安裝 plugin 時一些同意條款說明</li>
-<li>安裝完成後，在 Eclipse -&gt; Window -&gt; Preferences 即可看見 <code>Properties Editor</code><br><img src="/blog/2016/08/15/eclipse-poperties/step3.jpg" class="inline" width="600"><br> 若有安裝多國語言則如圖<br> <img src="/blog/2016/08/15/eclipse-poperties/step3-zh.jpg" class="inline"></li>
-<li>使用外掛提供的 <code>PropertiesEditor</code> 開啟 properties 檔案即可看見中文了 <img src="/blog/2016/08/15/eclipse-poperties/step4.jpg" class="inline"></li>
-<li>使用預設的編輯器看，卻仍舊是 Unicode<br> <img src="/blog/2016/08/15/eclipse-poperties/step5.jpg" class="inline"></li>
-<li><p>若不想將註解也轉為 Unicode，則在 Preferences 裡面勾選 Convert Option 的第二個選項</p>
- <img src="/blog/2016/08/15/eclipse-poperties/step6-1.jpg" class="inline">
-<p> 註解不再轉為 Unicode<br><img src="/blog/2016/08/15/eclipse-poperties/step6-2.jpg" class="inline"></p>
-<p> 若整份 properties 都不需轉為 unicode 則勾選第一個選項。<br> Ｑ：何時會用？<br> Ａ：<a href="https://www.zkoss.org/wiki/ZK_Developer&#39;s_Reference/Internationalization/Labels" target="_blank" rel="external">ZK i18n</a>，由於 ZK i18n 讀取的 properties 檔案編碼為 UTF-8，因此不需額外轉為 Unicode</p>
-</li>
-</ol>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
-<li><a href="http://openhome.cc/Gossip/Rails/i18n.html" target="_blank" rel="external">簡介 i18n</a></li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;做專案時，往往需要做國際化 (internationalization，簡稱 i18n，因為總共18個字 XD)&lt;/p&gt;
-&lt;p&gt;Java 存放這些多國語言檔案使用 properties 檔案，由於該檔案採用 ISO-8859-1 編碼，&lt;/p&gt;
-&lt;p&gt;Eclipse 針對那
-    
-    </summary>
-    
-      <category term="Eclipse" scheme="https://coffee0127.github.io/blog/categories/Eclipse/"/>
-    
-    
-      <category term="Eclipse" scheme="https://coffee0127.github.io/blog/tags/Eclipse/"/>
     
       <category term="Java" scheme="https://coffee0127.github.io/blog/tags/Java/"/>
     

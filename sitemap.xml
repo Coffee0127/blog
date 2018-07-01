@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://coffee0127.github.io/blog/blog/2018/07/01/Angular-migrate-from-2-x/</loc>
+    
+    <lastmod>2018-07-01T09:11:03.700Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://coffee0127.github.io/blog/blog/2017/04/25/Maven-Angular-integration/</loc>
+    
+    <lastmod>2018-07-01T09:11:03.698Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://coffee0127.github.io/blog/blog/2018/02/20/stack/</loc>
     
     <lastmod>2018-02-20T08:49:08.085Z</lastmod>
@@ -33,13 +47,6 @@
     <loc>https://coffee0127.github.io/blog/blog/2017/11/12/unmarshalling-error-unexpected-element/</loc>
     
     <lastmod>2018-01-17T04:12:08.533Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://coffee0127.github.io/blog/blog/2017/04/25/Maven-Angular-integration/</loc>
-    
-    <lastmod>2017-09-16T04:55:51.882Z</lastmod>
     
   </url>
   
