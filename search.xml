@@ -4,6 +4,55 @@
   
     
     <entry>
+      <title><![CDATA[IntelliJ 修改 Git commit 紀錄]]></title>
+      <url>https://coffee0127.github.io/blog/blog/2019/03/06/intellij-reword-git-commit/</url>
+      <content type="html"><![CDATA[<p>當要修改最後一次 commit 紀錄時，直覺反應就是 <code>git commit --amend</code></p>
+<p>但由於 <a href="https://www.jetbrains.com/idea/" target="_blank" rel="external">IntelliJ IDEA</a> Git 整合度非常高，幾乎絕大部分操作都能透過 GUI 完成</p>
+<p>以下介紹幾種在 IntelliJ 內修改 Git commit 紀錄的作法 (以 2018.3 為例)</p>
+<p>情境：修改 commit log <code>Commit 3</code><br><img src="/blog/2019/03/06/intellij-reword-git-commit/commit-logs.jpg" class="inline"><br><a id="more"></a></p>
+<h2 id="git-commit"><a href="#git-commit" class="headerlink" title="git commit"></a>git commit</h2><h3 id="使用內建-Terminal"><a href="#使用內建-Terminal" class="headerlink" title="使用內建 Terminal"></a>使用內建 Terminal</h3><ol>
+<li>確定 Terminal 已啟用<img src="/blog/2019/03/06/intellij-reword-git-commit/enable-plugins.jpg" class="inline"></li>
+<li>透過 <code>Alt + F12</code> 開啟 Terminal</li>
+<li>輸入 <code>git commit --amend</code><img src="/blog/2019/03/06/intellij-reword-git-commit/terminal-cmd.jpg" class="inline"></li>
+<li>接下來就是 vi 畫面，按下小寫 i 後可以編輯內容；編輯完畢後按 <code>Esc</code>，接著輸入 <code>:wq</code> 即可儲存離開<img src="/blog/2019/03/06/intellij-reword-git-commit/git-vi.jpg" class="inline">
+</li>
+</ol>
+<p><del>結果第一個就是打指令 (毆)</del></p>
+<h3 id="Commit-時勾選-Amend-commit"><a href="#Commit-時勾選-Amend-commit" class="headerlink" title="Commit 時勾選 Amend commit"></a>Commit 時勾選 Amend commit</h3><p>勾選 Amend commit 重新 commit 即可，不過限制檔案內容有修改過<br><img src="/blog/2019/03/06/intellij-reword-git-commit/commit-changes.jpg" class="inline"></p>
+<p><del>你也可以選擇 Amend commit 兩次，例如把上圖的 <code>Commit3</code> &gt; <code>Commit31</code> &gt; <code>Commit3</code>，並打上要修正的 commit 紀錄 (超大誤)</del></p>
+<h2 id="git-rebase"><a href="#git-rebase" class="headerlink" title="git rebase"></a>git rebase</h2><h3 id="透過-Git-rebase"><a href="#透過-Git-rebase" class="headerlink" title="透過 Git rebase"></a>透過 Git rebase</h3><ol>
+<li>VCS &gt; Git &gt; Rebase…<img src="/blog/2019/03/06/intellij-reword-git-commit/menu-git-rebase.jpg" class="inline"></li>
+<li>勾選 Interactive，並且 Onto 設定為 <code>HEAD~</code><br><img src="/blog/2019/03/06/intellij-reword-git-commit/git-rebase.jpg" class="inline"></li>
+<li>於 Action 選擇 <code>reword</code> 後點選 Start Rebasing<br><img src="/blog/2019/03/06/intellij-reword-git-commit/rebasing-commits.jpg" class="inline"></li>
+<li>輸入要修正的 Commit 內容後點選 Resume Rebasing<br><img src="/blog/2019/03/06/intellij-reword-git-commit/additional-rebase-input.jpg" class="inline">
+</li>
+</ol>
+<h3 id="透過-Version-Control-reword"><a href="#透過-Version-Control-reword" class="headerlink" title="透過 Version Control reword"></a>透過 Version Control reword</h3><ol>
+<li>View &gt; Tool Windows &gt; Version Control (或透過 <code>Alt + 9</code> 開啟)<img src="/blog/2019/03/06/intellij-reword-git-commit/menu-version-control.jpg" class="inline"></li>
+<li>右鍵 &gt; Reword… (或透過 <code>F2</code>)<img src="/blog/2019/03/06/intellij-reword-git-commit/version-control-reword.jpg" class="inline"></li>
+<li>輸入要修正的 Commit 內容後點選 OK<br><img src="/blog/2019/03/06/intellij-reword-git-commit/reword-commit.jpg" class="inline">
+</li>
+</ol>
+<h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>雖然 IntelliJ 提供精美 GUI 幫助我們，但本質上還是 Git 指令 (是個易學難精的版控😂)<br>推薦兩位大神的精美文章－</p>
+<ul>
+<li><a href="https://blog.miniasp.com/" target="_blank" rel="external">Will 保哥</a> － <a href="https://github.com/doggy8088/Learn-Git-in-30-days" target="_blank" rel="external">30 天精通 Git 版本控管</a> </li>
+<li><a href="https://kaochenlong.com/" target="_blank" rel="external">高見龍</a> － <a href="https://gitbook.tw/" target="_blank" rel="external">為你自己學 Git</a></li>
+</ul>
+<p>底下則是本篇文章運用到的 Git 指令</p>
+<h3 id="有關-git-commit-amend"><a href="#有關-git-commit-amend" class="headerlink" title="有關 git commit --amend"></a>有關 git commit --amend</h3><ul>
+<li><a href="https://git-scm.com/docs/git-commit#git-commit---amend" target="_blank" rel="external"><code>git commit --amend</code></a></li>
+<li><a href="https://github.com/doggy8088/Learn-Git-in-30-days/blob/master/zh-tw/18.md" target="_blank" rel="external">修正 commit 過的版本歷史紀錄 Part 1 ( reset, amend )</a></li>
+<li><a href="https://gitbook.tw/chapters/using-git/amend-commit1.html" target="_blank" rel="external">【狀況題】修改 Commit 紀錄</a></li>
+</ul>
+<h3 id="有關-git-rebase"><a href="#有關-git-rebase" class="headerlink" title="有關 git rebase"></a>有關 git rebase</h3><ul>
+<li><a href="https://git-scm.com/docs/git-rebase#git-rebase--i" target="_blank" rel="external"><code>git rebase -i</code></a></li>
+<li><a href="https://github.com/doggy8088/Learn-Git-in-30-days/blob/master/zh-tw/23.md" target="_blank" rel="external">修正 commit 過的版本歷史紀錄 Part 5 ( rebase -i )</a></li>
+<li><a href="https://gitbook.tw/chapters/branch/merge-with-rebase.html" target="_blank" rel="external">另一種合併方式（使用 rebase）</a></li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[OpenJDK PKIX path building failed]]></title>
       <url>https://coffee0127.github.io/blog/blog/2018/11/03/PKIX-path-building-failed/</url>
       <content type="html"><![CDATA[<p>故事是這樣子的，小弟用 <a href="https://www.rainlendar.net/cms/index.php" target="_blank" rel="external">Rainlendar</a> + GCALDaemon + Windows排程 同步 Google 行事曆</p>
