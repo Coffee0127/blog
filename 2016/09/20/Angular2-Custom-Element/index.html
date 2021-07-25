@@ -4,39 +4,41 @@
   <meta charset="utf-8">
   
   <title>Angular 自訂元素 | Xuan&#39;s Blog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="=== 2017-04-03 Updated ===配合 Angular 正名，因此 Angular 1.x ==&amp;gt; AngularJS，Angular 2.x 之後的版本 ==&amp;gt; Angular修改文章標題 &amp;amp; 分類，內文仍維持原樣 絕對不是偷懶
-
-Angular2 終於在 2016-09-15 發布正式版本，
-由於之前使用的 Angular CLI 建立的專案版本為 2.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="&#x3D;&#x3D;&#x3D; 2017-04-03 Updated &#x3D;&#x3D;&#x3D;配合 Angular 正名，因此 Angular 1.x &#x3D;&#x3D;&gt; AngularJS，Angular 2.x 之後的版本 &#x3D;&#x3D;&gt; Angular修改文章標題 &amp; 分類，內文仍維持原樣 絕對不是偷懶  Angular2 終於在 2016-09-15 發布正式版本， 由於之前使用的 Angular CLI 建立的專案版本為 2.0">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Angular 自訂元素">
 <meta property="og:url" content="https://coffee0127.github.io/blog/2016/09/20/Angular2-Custom-Element/index.html">
-<meta property="og:site_name" content="Xuan's Blog">
-<meta property="og:description" content="=== 2017-04-03 Updated ===配合 Angular 正名，因此 Angular 1.x ==&amp;gt; AngularJS，Angular 2.x 之後的版本 ==&amp;gt; Angular修改文章標題 &amp;amp; 分類，內文仍維持原樣 絕對不是偷懶
-
-Angular2 終於在 2016-09-15 發布正式版本，
-由於之前使用的 Angular CLI 建立的專案版本為 2.0">
-<meta property="og:image" content="https://coffee0127.github.io/blog/blog/2016/09/20/Angular2-Custom-Element/template-parse-errors.jpg">
-<meta property="og:image" content="https://coffee0127.github.io/blog/blog/2016/09/20/Angular2-Custom-Element/import-module.jpg">
-<meta property="og:updated_time" content="2017-09-16T04:55:51.881Z">
+<meta property="og:site_name" content="Xuan&#39;s Blog">
+<meta property="og:description" content="&#x3D;&#x3D;&#x3D; 2017-04-03 Updated &#x3D;&#x3D;&#x3D;配合 Angular 正名，因此 Angular 1.x &#x3D;&#x3D;&gt; AngularJS，Angular 2.x 之後的版本 &#x3D;&#x3D;&gt; Angular修改文章標題 &amp; 分類，內文仍維持原樣 絕對不是偷懶  Angular2 終於在 2016-09-15 發布正式版本， 由於之前使用的 Angular CLI 建立的專案版本為 2.0">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://coffee0127.github.io/blog/2016/09/20/Angular2-Custom-Element/template-parse-errors.jpg">
+<meta property="og:image" content="https://coffee0127.github.io/blog/2016/09/20/Angular2-Custom-Element/import-module.jpg">
+<meta property="article:published_time" content="2016-09-20T11:53:24.000Z">
+<meta property="article:modified_time" content="2021-07-25T09:13:54.985Z">
+<meta property="article:author" content="Bo-Xuan Fan">
+<meta property="article:tag" content="Angular">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Angular 自訂元素">
-<meta name="twitter:description" content="=== 2017-04-03 Updated ===配合 Angular 正名，因此 Angular 1.x ==&amp;gt; AngularJS，Angular 2.x 之後的版本 ==&amp;gt; Angular修改文章標題 &amp;amp; 分類，內文仍維持原樣 絕對不是偷懶
-
-Angular2 終於在 2016-09-15 發布正式版本，
-由於之前使用的 Angular CLI 建立的專案版本為 2.0">
-<meta name="twitter:image" content="https://coffee0127.github.io/blog/blog/2016/09/20/Angular2-Custom-Element/template-parse-errors.jpg">
+<meta name="twitter:image" content="https://coffee0127.github.io/blog/2016/09/20/Angular2-Custom-Element/template-parse-errors.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Xuan&#39;s Blog" type="application/atom+xml">
   
   
-    <link rel="icon" href="/blog/favicon.ico">
+    <link rel="shortcut icon" href="/blog/favicon.ico">
   
   
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
   
-  <link rel="stylesheet" href="/blog/css/style.css">
+  
+<link rel="stylesheet" href="/blog/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.min.css">
+
+  
   
 <!-- Google Analytics -->
 <script type="text/javascript">
@@ -52,7 +54,7 @@ ga('send', 'pageview');
 <!-- End Google Analytics -->
 
 
-</head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 <body>
   <div id="container">
@@ -70,7 +72,7 @@ ga('send', 'pageview');
         </h2>
       
     </div>
-    <div id="header-inner" class="inner ovf-h">
+    <div id="header-inner" class="inner">
       <nav id="main-nav">
         <a id="main-nav-toggle" class="nav-icon"></a>
         
@@ -82,9 +84,9 @@ ga('send', 'pageview');
         
       </nav>
       <nav id="sub-nav">
-        <a id="linkedin-link" class="nav-icon" href="https://www.linkedin.com/in/bo-xuan-fan" title="Linkedin"></a>
-        <a id="fb-link" class="nav-icon" href="https://www.facebook.com/Boxuan.Fan" title="Facebook"></a>
-        <a id="github-link" class="nav-icon" href="https://github.com/Coffee0127" title="GitHub"></a>
+        <a id="linkedin-link" class="nav-icon" target="_blank" rel="noopener" href="https://www.linkedin.com/in/bo-xuan-fan" title="Linkedin"></a>
+        <a id="fb-link" class="nav-icon" target="_blank" rel="noopener" href="https://www.facebook.com/Boxuan.Fan" title="Facebook"></a>
+        <a id="github-link" class="nav-icon" target="_blank" rel="noopener" href="https://github.com/Coffee0127" title="GitHub"></a>
         
           <a id="nav-rss-link" class="nav-icon" href="/blog/atom.xml" title="RSS Feed"></a>
         
@@ -102,11 +104,12 @@ ga('send', 'pageview');
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-Angular2-Custom-Element" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Angular2-Custom-Element" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/blog/2016/09/20/Angular2-Custom-Element/" class="article-date">
-  <time datetime="2016-09-20T11:53:24.000Z" itemprop="datePublished">2016-09-20</time>
+  <time class="dt-published" datetime="2016-09-20T11:53:24.000Z" itemprop="datePublished">2016-09-20</time>
 </a>
+
     
   <div class="article-category">
     <a class="article-category-link" href="/blog/categories/Angular/">Angular</a>
@@ -118,23 +121,25 @@ ga('send', 'pageview');
     
       <header class="article-header">
         
-  <h1 class="article-title" itemprop="name">
+  <h1 class="p-name article-title" itemprop="name">
     <a  href="/blog/2016/09/20/Angular2-Custom-Element/">Angular 自訂元素</a>
   </h1>
 
+
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+    <div class="e-content article-entry" itemprop="articleBody">
       
         
         
         
           <p>=== 2017-04-03 Updated ===<br>配合 Angular 正名，因此 Angular 1.x ==&gt; AngularJS，Angular 2.x 之後的版本 ==&gt; Angular<br>修改文章標題 &amp; 分類，內文仍維持原樣 <del>絕對不是偷懶</del></p>
 <hr>
-<p><a href="https://angular.io/" target="_blank" rel="external">Angular2</a> 終於在 2016-09-15 發布正式版本，</p>
-<p>由於之前使用的 <a href="https://cli.angular.io/" target="_blank" rel="external">Angular CLI</a> 建立的專案版本為 <code>2.0.0-rc.5</code> 才一直沒注意到這個問題，</p>
+<p><a target="_blank" rel="noopener" href="https://angular.io/">Angular2</a> 終於在 2016-09-15 發布正式版本，</p>
+<p>由於之前使用的 <a target="_blank" rel="noopener" href="https://cli.angular.io/">Angular CLI</a> 建立的專案版本為 <code>2.0.0-rc.5</code> 才一直沒注意到這個問題，</p>
 <p>直到今天升級後發現專案直接掛了…XD</p>
 <img src="/blog/2016/09/20/Angular2-Custom-Element/template-parse-errors.jpg" class="inline">
+
 <p>錯誤訊息很明顯：<code>&#39;hgroup&#39; is not a known element</code></p>
 <p>由於 Angular2 將網頁視為元件，因此 HTML 標籤都必須是合法的 Directive 元件才行。</p>
 <p>最簡單作法當然是將 hgroup 元素改成用 div 表示即可(無誤)</p>
@@ -142,6 +147,7 @@ ga('send', 'pageview');
 <hr>
 <p>修改 <code>src/app.module.ts</code>，使用 <code>NO_ERRORS_SCHEMA</code> schema</p>
 <img src="/blog/2016/09/20/Angular2-Custom-Element/import-module.jpg" class="inline">
+
 <p>根據官方說明，schemas 可傳入兩種 <code>SchemaMetadata</code></p>
 <ul>
 <li><code>NO_ERRORS_SCHEMA</code>：允許任意元素及屬性</li>
@@ -149,20 +155,20 @@ ga('send', 'pageview');
 </ul>
 <p>設定完成後，畫面即正常運作了～</p>
 <h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
-<li><a href="http://blog.miniasp.com/post/2016/09/19/Angular-2-Custom-Element-Tips.aspx" target="_blank" rel="external">Angular 2 開發心得分享 (01)：使用 HTML 自訂元素的注意事項</a></li>
-<li><a href="https://angular.io/docs/ts/latest/api/core/index/NgModule-interface.html" target="_blank" rel="external">Angular2 NgModule</a></li>
+<li><a target="_blank" rel="noopener" href="http://blog.miniasp.com/post/2016/09/19/Angular-2-Custom-Element-Tips.aspx">Angular 2 開發心得分享 (01)：使用 HTML 自訂元素的注意事項</a></li>
+<li><a target="_blank" rel="noopener" href="https://angular.io/docs/ts/latest/api/core/index/NgModule-interface.html">Angular2 NgModule</a></li>
 </ul>
 
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://coffee0127.github.io/blog/blog/2016/09/20/Angular2-Custom-Element/" data-id="cj11uc4tq00053onx575p0duz" class="article-share-link">Share</a>
+      <a data-url="https://coffee0127.github.io/blog/2016/09/20/Angular2-Custom-Element/" data-id="ckrizih1g000iq4tl2ssehve9" data-title="Angular 自訂元素" class="article-share-link">Share</a>
       
-        <a href="https://coffee0127.github.io/blog/blog/2016/09/20/Angular2-Custom-Element/#disqus_thread" class="article-comment-link">留言</a>
+        <a href="https://coffee0127.github.io/blog/2016/09/20/Angular2-Custom-Element/#disqus_thread" class="article-comment-link">留言</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Angular/">Angular</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Angular/" rel="tag">Angular</a></li></ul>
 
     </footer>
   </div>
@@ -173,12 +179,11 @@ ga('send', 'pageview');
         <h3 class="article-title" style="font-size: 20px;">相關文章</h3>
     </div>
     <div class="article-entry">
-      <ul class="related-posts"><li class="related-posts-item"><a href="/blog/2017/06/11/Angular-debug-with-VS-Code/">使用 VS Code 替 Angular 除錯</a><div class="related-posts-item-abstract">在 使用 Chrome 替 Angular 除錯 寫了如何使用 Chrome 來進行除錯，不過在雙螢幕情況下，這時反而會顯得工作效率低落
-修改程式 -&gt; 切換瀏覽器開發者工具 -&gt; 設置中斷點除錯 -&gt;</div></li><li class="related-posts-item"><a href="/blog/2017/04/24/Angular-simple-routing/">透過 Angular 路由建立 SPA 網站</a><div class="related-posts-item-abstract">程式碼範例 Angular-SpringMVC-Integration建立 Angular 專案及頁面元件
-透過 Angular CLI 建立專案 ng new SampleProject --routing --rou</div></li><li class="related-posts-item"><a href="/blog/2017/04/25/Maven-Angular-integration/">透過 Maven 整合 Angular 專案</a><div class="related-posts-item-abstract">在 使用 SpringBoot 建立 RESTful 程式 及 Angular 呼叫遠端 API 已經分別完成開發時期前後端串接，接下來是透過 Maven Plugin 將前後端程式打包再一起。
-不過為了增加程式的真實性</div></li><li class="related-posts-item"><a href="/blog/2017/06/11/Angular-debug-with-chrome/">使用 Chrome 替 Angular 除錯</a><div class="related-posts-item-abstract">使用 Angular cli 工具好處就是可以節省許多環境面的設定 (如 TypeScript 轉譯、Webpack 打包、程式最小化等)讓我們能夠專注於業務邏輯的撰寫  
-不過也因為所有程式會被 Webpack 打包成</div></li><li class="related-posts-item"><a href="/blog/2017/04/03/Top-10-Angular-VSCode-Extensions/">【轉錄】Top 10 Angular VS Code Extensions</a><div class="related-posts-item-abstract">※ 本文用於備份好用的 Angular VSCode 外掛及加上小弟對外掛的見解，著作權仍屬 http://devboosts.com 
-Bracket Pair Colorizer可針對不同的 bracket 加上不同</div></li>
+      <ul class="related-posts"><li class="related-posts-item"><a class="related-posts-link" href="/blog/2017/04/03/Top-10-Angular-VSCode-Extensions/">【轉錄】Top 10 Angular VS Code Extensions</a><div class="related-posts-item-abstract">※ 本文用於備份好用的 Angular VSCode 外掛及加上小弟對外掛的見解，著作權仍屬 http://devboosts.com
+Bracket Pair Colorizer可針對不同的 bracket 加上不同的</div></li><li class="related-posts-item"><a class="related-posts-link" href="/blog/2017/04/24/Angular-simple-routing/">透過 Angular 路由建立 SPA 網站</a><div class="related-posts-item-abstract">程式碼範例 Angular-SpringMVC-Integration建立 Angular 專案及頁面元件
+透過 Angular CLI 建立專案 ng new SampleProject --routing --rou</div></li><li class="related-posts-item"><a class="related-posts-link" href="/blog/2017/06/11/Angular-debug-with-VS-Code/">使用 VS Code 替 Angular 除錯</a><div class="related-posts-item-abstract">在 使用 Chrome 替 Angular 除錯 寫了如何使用 Chrome 來進行除錯， 不過在雙螢幕情況下，這時反而會顯得工作效率低落
+修改程式 -&gt; 切換瀏覽器開發者工具 -&gt; 設置中斷點除錯 -&gt</div></li><li class="related-posts-item"><a class="related-posts-link" href="/blog/2017/06/11/Angular-debug-with-chrome/">使用 Chrome 替 Angular 除錯</a><div class="related-posts-item-abstract">使用 Angular cli 工具好處就是可以節省許多環境面的設定 (如 TypeScript 轉譯、Webpack 打包、程式最小化等)讓我們能夠專注於業務邏輯的撰寫  
+不過也因為所有程式會被 Webpack 打包成</div></li><li class="related-posts-item"><a class="related-posts-link" href="/blog/2017/04/23/Angular-proxy-to-backend-rest/">Angular 呼叫遠端 API</a><div class="related-posts-item-abstract">Angular 內建的 Http 可幫助我們呼叫遠端 API，搭配 Angular CLI 工具更可以快速建立 Angular 開發環境，由於前後端會分別開發 (不是說 Eclipse 不好用，是 VSCode 真的太好</div></li></ul>
     </div>
   </div>
 </article>
@@ -208,9 +213,10 @@ Bracket Pair Colorizer可針對不同的 bracket 加上不同</div></li>
 
 <section id="comments">
   <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
 </section>
+
 </section>
         
           <aside id="sidebar">
@@ -219,7 +225,7 @@ Bracket Pair Colorizer可針對不同的 bracket 加上不同</div></li>
   <div class="widget-wrap">
     <h3 class="widget-title">分類</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/Angular/">Angular</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/Apache-CXF/">Apache CXF</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/Eclipse/">Eclipse</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/Hexo/">Hexo</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/IntelliJ/">IntelliJ</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/Java/">Java</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/JavaScript/">JavaScript</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/Maven/">Maven</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/Spring/">Spring</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/資料結構/">資料結構</a><span class="category-list-count">4</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/Angular/">Angular</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/Apache-CXF/">Apache CXF</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/Eclipse/">Eclipse</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/Hexo/">Hexo</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/IntelliJ/">IntelliJ</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/Java/">Java</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/JavaScript/">JavaScript</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/Maven/">Maven</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/Spring/">Spring</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/macOS/">macOS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B/">資料結構</a><span class="category-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -229,7 +235,7 @@ Bracket Pair Colorizer可針對不同的 bracket 加上不同</div></li>
   <div class="widget-wrap">
     <h3 class="widget-title">標籤</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Angular/">Angular</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Apache-CXF/">Apache CXF</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Eclipse/">Eclipse</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Hexo/">Hexo</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Integration/">Integration</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/IntelliJ/">IntelliJ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Java/">Java</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Maven/">Maven</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Must-Know/">Must-Know</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/OpenJDK/">OpenJDK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Spring/">Spring</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/SpringBoot/">SpringBoot</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/SpringMVC/">SpringMVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/VS-Code/">VS Code</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Weblogic/">Weblogic</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/資料結構/">資料結構</a><span class="tag-list-count">4</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Angular/" rel="tag">Angular</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Apache-CXF/" rel="tag">Apache CXF</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Eclipse/" rel="tag">Eclipse</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Git/" rel="tag">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Integration/" rel="tag">Integration</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/IntelliJ/" rel="tag">IntelliJ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Java/" rel="tag">Java</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Maven/" rel="tag">Maven</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Must-Know/" rel="tag">Must-Know</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/OpenJDK/" rel="tag">OpenJDK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Spring/" rel="tag">Spring</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/SpringBoot/" rel="tag">SpringBoot</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/SpringMVC/" rel="tag">SpringMVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/TouchID/" rel="tag">TouchID</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/VS-Code/" rel="tag">VS Code</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Weblogic/" rel="tag">Weblogic</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/macOS/" rel="tag">macOS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B/" rel="tag">資料結構</a><span class="tag-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -239,7 +245,7 @@ Bracket Pair Colorizer可針對不同的 bracket 加上不同</div></li>
   <div class="widget-wrap">
     <h3 class="widget-title">標籤雲</h3>
     <div class="widget tagcloud">
-      <a href="/blog/tags/Angular/" style="font-size: 20px;">Angular</a> <a href="/blog/tags/Apache-CXF/" style="font-size: 10px;">Apache CXF</a> <a href="/blog/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/blog/tags/Git/" style="font-size: 10px;">Git</a> <a href="/blog/tags/Hexo/" style="font-size: 17.5px;">Hexo</a> <a href="/blog/tags/Integration/" style="font-size: 10px;">Integration</a> <a href="/blog/tags/IntelliJ/" style="font-size: 10px;">IntelliJ</a> <a href="/blog/tags/Java/" style="font-size: 15px;">Java</a> <a href="/blog/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/blog/tags/Maven/" style="font-size: 12.5px;">Maven</a> <a href="/blog/tags/Must-Know/" style="font-size: 12.5px;">Must-Know</a> <a href="/blog/tags/OpenJDK/" style="font-size: 10px;">OpenJDK</a> <a href="/blog/tags/Spring/" style="font-size: 12.5px;">Spring</a> <a href="/blog/tags/SpringBoot/" style="font-size: 12.5px;">SpringBoot</a> <a href="/blog/tags/SpringMVC/" style="font-size: 10px;">SpringMVC</a> <a href="/blog/tags/VS-Code/" style="font-size: 12.5px;">VS Code</a> <a href="/blog/tags/Weblogic/" style="font-size: 10px;">Weblogic</a> <a href="/blog/tags/資料結構/" style="font-size: 15px;">資料結構</a>
+      <a href="/blog/tags/Angular/" style="font-size: 20px;">Angular</a> <a href="/blog/tags/Apache-CXF/" style="font-size: 10px;">Apache CXF</a> <a href="/blog/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/blog/tags/Git/" style="font-size: 10px;">Git</a> <a href="/blog/tags/Hexo/" style="font-size: 17.5px;">Hexo</a> <a href="/blog/tags/Integration/" style="font-size: 10px;">Integration</a> <a href="/blog/tags/IntelliJ/" style="font-size: 10px;">IntelliJ</a> <a href="/blog/tags/Java/" style="font-size: 15px;">Java</a> <a href="/blog/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/blog/tags/Maven/" style="font-size: 12.5px;">Maven</a> <a href="/blog/tags/Must-Know/" style="font-size: 12.5px;">Must-Know</a> <a href="/blog/tags/OpenJDK/" style="font-size: 10px;">OpenJDK</a> <a href="/blog/tags/Spring/" style="font-size: 12.5px;">Spring</a> <a href="/blog/tags/SpringBoot/" style="font-size: 12.5px;">SpringBoot</a> <a href="/blog/tags/SpringMVC/" style="font-size: 10px;">SpringMVC</a> <a href="/blog/tags/TouchID/" style="font-size: 10px;">TouchID</a> <a href="/blog/tags/VS-Code/" style="font-size: 12.5px;">VS Code</a> <a href="/blog/tags/Weblogic/" style="font-size: 10px;">Weblogic</a> <a href="/blog/tags/macOS/" style="font-size: 10px;">macOS</a> <a href="/blog/tags/%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B/" style="font-size: 15px;">資料結構</a>
     </div>
   </div>
 
@@ -248,7 +254,7 @@ Bracket Pair Colorizer可針對不同的 bracket 加上不同</div></li>
   <div class="widget-wrap">
     <h3 class="widget-title">彙整</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/07/">七月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/01/">一月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2017/11/">十一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2017/06/">六月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2017/04/">四月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/09/">九月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2021/07/">七月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/07/">七月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/01/">一月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2017/11/">十一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2017/06/">六月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2017/04/">四月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/09/">九月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li></ul>
     </div>
   </div>
 
@@ -259,6 +265,10 @@ Bracket Pair Colorizer可針對不同的 bracket 加上不同</div></li>
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/blog/2021/07/25/macOS-use-touchID-to-authenticate-sudo/">在 macOS 上使用 TouchID 來驗證 sudo 密碼</a>
+          </li>
         
           <li>
             <a href="/blog/2019/03/06/intellij-reword-git-commit/">IntelliJ 修改 Git commit 紀錄</a>
@@ -273,16 +283,13 @@ Bracket Pair Colorizer可針對不同的 bracket 加上不同</div></li>
           </li>
         
           <li>
-            <a href="/blog/2018/02/20/stack/">堆疊</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2018/01/25/array/">陣列</a>
+            <a href="/blog/2018/02/20/ds-stack/">堆疊</a>
           </li>
         
       </ul>
     </div>
   </div>
+
 
   
 </aside>
@@ -292,11 +299,13 @@ Bracket Pair Colorizer可針對不同的 bracket 加上不同</div></li>
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2019 Bo-Xuan Fan<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      
+      &copy; 2021 Bo-Xuan Fan<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
+
     </div>
     <nav id="mobile-nav">
   
@@ -311,35 +320,42 @@ Bracket Pair Colorizer可針對不同的 bracket 加上不同</div></li>
 <script>
   var disqus_shortname = 'xuans-blog';
   
-  var disqus_url = 'https://coffee0127.github.io/blog/blog/2016/09/20/Angular2-Custom-Element/';
+  var disqus_url = 'https://coffee0127.github.io/blog/2016/09/20/Angular2-Custom-Element/';
   
   (function(){
     var dsq = document.createElement('script');
-    dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
   })();
 </script>
 
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 
-  <link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css">
-  <script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+
+  
+<script src="/blog/fancybox/jquery.fancybox.min.js"></script>
+
+
 
 
 <script src="/blog/js/script.js"></script>
+
+
 <script src="/blog/js/search.js"></script>
+
 <script type="text/javascript">
-     var search_path = "search.xml";
-     if (search_path.length == 0) {
-     	search_path = "search.xml";
-     }
-     var path = "/blog/" + search_path;
-     searchFunc(path, 'local-search-input', 'local-search-result');
+var searchPath = "search.xml";
+if (searchPath.length == 0) {
+  searchPath = "search.xml";
+}
+var path = "/blog/" + searchPath;
+enableLocalSearch(path, 'local-search-input', 'local-search-result');
 </script>
+
   </div>
 </body>
 </html>

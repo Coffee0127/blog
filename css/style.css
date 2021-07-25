@@ -114,8 +114,8 @@ button::-moz-focus-inner {
   font-family: FontAwesome;
   font-style: normal;
   font-weight: normal;
-  src: url("fonts/fontawesome-webfont.eot?v=#4.0.3");
-  src: url("fonts/fontawesome-webfont.eot?#iefix&v=#4.0.3") format("embedded-opentype"), url("fonts/fontawesome-webfont.woff?v=#4.0.3") format("woff"), url("fonts/fontawesome-webfont.ttf?v=#4.0.3") format("truetype"), url("fonts/fontawesome-webfont.svg#fontawesomeregular?v=#4.0.3") format("svg");
+  src: url("fonts/fontawesome-webfont.eot?v=4.7.0");
+  src: url("fonts/fontawesome-webfont.eot?#iefix&v=4.7.0") format("embedded-opentype"), url("fonts/fontawesome-webfont.woff2?v=4.7.0") format("woff2"), url("fonts/fontawesome-webfont.woff?v=4.7.0") format("woff"), url("fonts/fontawesome-webfont.ttf?v=4.7.0") format("truetype"), url("fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular") format("svg");
 }
 html,
 body,
@@ -124,7 +124,7 @@ body,
 }
 body {
   background: #eee;
-  font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 14px -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-text-size-adjust: 100%;
 }
 .outer {
@@ -459,9 +459,9 @@ body {
   position: absolute;
   z-index: 9;
   top: 15px;
-  width: 150px;
+  right: 0;
   height: 30px;
-  right: -150px;
+  width: 0;
   opacity: 0;
   -webkit-transition: 0.2s ease-out;
   -moz-transition: 0.2s ease-out;
@@ -470,7 +470,7 @@ body {
 }
 #search-form-wrap.on {
   opacity: 1;
-  right: 0;
+  width: 150px;
 }
 @media screen and (max-width: 479px) {
   #search-form-wrap {
@@ -501,6 +501,7 @@ body {
 }
 .search-form ul.search-result-list li {
   padding: 5px 0px;
+  word-wrap: break-word;
 }
 .search-form ul.search-result-list li:not(:last-child) {
   border-bottom: 1px dashed #ddd;
@@ -510,7 +511,7 @@ body {
   background: none;
   color: #555;
   width: 90%;
-  font: 13px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 13px -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   outline: none;
 }
 .search-form-input::-webkit-search-results-decoration,
@@ -600,7 +601,7 @@ body {
 .article-entry p,
 .article-entry table {
   line-height: 1.6em;
-  margin: 1.6em 0;
+  margin: 0.5em 0;
 }
 .article-entry h1,
 .article-entry h2,
@@ -630,8 +631,8 @@ body {
 .article-entry ul,
 .article-entry ol,
 .article-entry dl {
-  margin-top: 1.6em;
-  margin-bottom: 1.6em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
 }
 .article-entry img,
 .article-entry video {
@@ -672,7 +673,8 @@ body {
 }
 .article-entry blockquote footer {
   font-size: 14px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 1.6em 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 .article-entry blockquote footer cite:before {
   content: "—";
@@ -736,7 +738,7 @@ body {
   line-height: 1.6em;
   border-top: 1px solid #ddd;
   padding-top: 1.6em;
-  margin: 0 20px 20px;
+  margin: 1em 20px 20px;
 }
 .article-footer:before,
 .article-footer:after {
@@ -877,7 +879,7 @@ body {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 14px -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   padding: 0 15px;
   color: #555;
   outline: none;
@@ -900,7 +902,7 @@ body {
 .article-share-twitter,
 .article-share-facebook,
 .article-share-pinterest,
-.article-share-google {
+.article-share-linkedin {
   width: 50px;
   height: 36px;
   display: block;
@@ -912,7 +914,7 @@ body {
 .article-share-twitter:before,
 .article-share-facebook:before,
 .article-share-pinterest:before,
-.article-share-google:before {
+.article-share-linkedin:before {
   font-size: 20px;
   font-family: FontAwesome;
   width: 20px;
@@ -927,7 +929,7 @@ body {
 .article-share-twitter:hover,
 .article-share-facebook:hover,
 .article-share-pinterest:hover,
-.article-share-google:hover {
+.article-share-linkedin:hover {
   color: #fff;
 }
 .article-share-twitter:before {
@@ -951,12 +953,12 @@ body {
   background: #cb2027;
   text-shadow: 0 1px #a21a1f;
 }
-.article-share-google:before {
-  content: "\f0d5";
+.article-share-linkedin:before {
+  content: "\f0e1";
 }
-.article-share-google:hover {
-  background: #dd4b39;
-  text-shadow: 0 1px #be3221;
+.article-share-linkedin:hover {
+  background: #0077b5;
+  text-shadow: 0 1px #005f91;
 }
 .article-gallery {
   background: #000;
@@ -1284,7 +1286,7 @@ ul.related-posts li.related-posts-item div.related-posts-item-abstract {
 .article-entry .gist .gist-file .gist-meta {
   background: #2d2d2d;
   color: #999;
-  font: 0.85em "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 0.85em -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   text-shadow: 0 0;
   padding: 0;
   margin-top: 1em;
